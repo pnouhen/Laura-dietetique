@@ -1,40 +1,98 @@
-header{
+header {
+  position: relative;
+  display: flex;
+  gap: 2vw;
+  margin-bottom: 55px;
+  img {
+    width: 100px;
+    object-fit: contain;
+    @media (max-width: 1024px) {
+      width: 50px;
+    }
+  }
+  .header___container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    .title{
+    justify-content: space-between;
+    .text {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      h1 {
+        font-size: 48px;
+        font-weight: 800;
+        font-family: "Montserrat", sans-serif;
+        @media (max-width: 1024px) {
+          font-size: 24px;
+        }
+      }
+      p {
+        font-size: 24px;
+        font-family: "Montserrat", sans-serif;
+        @media (max-width: 1024px) {
+          font-size: 18px;
+        }
+      }
+    }
+    nav {
+      @media (max-width: 1024px) {
+        position: absolute;
+        z-index: -1;
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+      }
+      ul {
         display: flex;
+        justify-content: flex-end;
+        gap: 1px;
+        list-style: none;
+      }
+      li {
+        background-color: rgb(100, 60, 36);
+        padding: 10px;
+        a {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          color: white;
+          text-decoration: none;
+          font-size: 18px;
+        }
+      }
+    }
+    .fa-bars {
+      display: none;
+      @media (max-width: 1024px) {
+        position: absolute;
+        display: block;
+        top: 50%;
+        right: 64px;
+        transform: translateY(-50%);
+        font-size: 22px;
+      }
+    }
+    .bars {
+      position: absolute;
+      right: 0;
+      top: 63px;
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transition: transform 4000ms ease, visibility 2000ms ease, opacity 2000ms ease;
+      ul {
+        flex-direction: column;
         gap: 10px;
-        img{
-            height: 100px;
+        li {
+          a {
+            font-size: 14px;
+          }
         }
-        .text{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            font-family: 'Montserrat', sans-serif;
-            p{                
-              font-size: 32px;
-              font-weight: 900;  
-            }
-            span{
-                font-size: 18px;
-            }
-        }
+      }
     }
-    nav{
-        ul{
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        li{
-            a{
-             background-color: rgb(100, 60, 36);  
-             color: white; 
-             text-decoration: none;
-             padding: 10px;
-             font-size: 16px;
-            }
-        }
-    }
+  }
 }

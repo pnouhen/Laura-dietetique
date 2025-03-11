@@ -11,49 +11,37 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div>
         <Home />
-      </div>
     ),
   },
   {
     path: "/qui-suis-je",
     element: (
-      <div>
         <About />
-      </div>
     ),
   },
   {
     path: "/methode-et-tarif",
     element: (
-      <div>
         <MethodRate />
-      </div>
     ),
   },
   {
     path: "/contact",
     element: (
-      <div>
         <Contact />
-      </div>
     ),
   },
   {
     path: "/recettes",
     element: (
-      <div>
         <Recipes />
-      </div>
     ),
   },
   {
     path: "/mon-compte",
     element: (
-      <div>
         <Account />
-      </div>
     ),
   },
 ]);
