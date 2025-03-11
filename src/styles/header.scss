@@ -1,0 +1,40 @@
+header{
+    display: flex;
+    flex-direction: column;
+    .title{
+        display: flex;
+        gap: 10px;
+        img{
+            height: 100px;
+        }
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-family: 'Montserrat', sans-serif;
+            p{                
+              font-size: 32px;
+              font-weight: 900;  
+            }
+            span{
+                font-size: 18px;
+            }
+        }
+    }
+    nav{
+        ul{
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        li{
+            a{
+             background-color: rgb(100, 60, 36);  
+             color: white; 
+             text-decoration: none;
+             padding: 10px;
+             font-size: 16px;
+            }
+        }
+    }
+}
