@@ -18,7 +18,10 @@ export default function Header() {
             setOpen(!open);
           }}
         ></i>
-        <nav className={ open ? "bars" : ""}>
+        <nav className={ open ? "mobile" : ""}>
+          <i class={open ? "fa-solid fa-xmark" : ""} onClick={() => {
+            setOpen(!open);
+          }}></i>
         <ul>
           <li>
             <NavLink
@@ -41,15 +44,7 @@ export default function Header() {
               to="/methode-et-tarif"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Méthode et Tarif
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Contact
+              Méthode et Tarifs
             </NavLink>
           </li>
           <li>

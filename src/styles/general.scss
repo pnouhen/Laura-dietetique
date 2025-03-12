@@ -5,5 +5,10 @@
   font-family: "Roboto", sans-serif;
 }
 body {
-  margin: 20px;
+  position: relative;
+  max-width: 1440px;
+  margin: 20px auto 0 auto;
+  @media (max-width: 1440px) {
+    margin: 20px;
+  }
 }
