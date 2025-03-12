@@ -1,4 +1,5 @@
-$img-marginTop : 50px;
+@import "./variables";
+$imgHeightMobile-marginTopNav: 50px;
 
 header {
   display: flex;
@@ -11,14 +12,14 @@ header {
       height: 100px;
     }
     @media (max-width: 768px) {
-      height: $img-marginTop;
+      height: $imgHeightMobile-marginTopNav;
     }
   }
   .header___container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
     .text {
       height: 100%;
       display: flex;
@@ -27,7 +28,6 @@ header {
       h1 {
         font-size: 48px;
         font-weight: 800;
-        font-family: "Montserrat", sans-serif;
         @media (max-width: 1024px) {
           font-size: 24px;
         }
@@ -62,16 +62,15 @@ header {
           text-align: center;
           color: white;
           text-decoration: none;
-          font-size: 18px;
-          background-color: rgb(100, 60, 36);
-        padding: 10px;
+          background-color: $brown;
+          padding: 10px;
           @media (max-width: 1024px) {
             font-size: 14px;
             padding: 5px;
           }
         }
-        .active{
-background-color: #486956;
+        .active {
+          background-color: $green;
         }
       }
       @media (max-width: 768px) {
@@ -102,14 +101,13 @@ background-color: #486956;
       visibility: visible;
       transition: visibility 200ms ease, opacity 200ms ease;
       ul {
-        margin-top: $img-marginTop;
+        margin-top: $imgHeightMobile-marginTopNav;
         flex-direction: column;
         gap: 10px;
         li {
           background-color: transparent;
           a {
-            color: rgb(100, 60, 36);
-            font-size: 10px;
+            color: rgb(100, 60, 36);            
           }
         }
       }

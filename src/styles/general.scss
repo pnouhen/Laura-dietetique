@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
 }
 body {
   position: relative;
@@ -11,4 +10,26 @@ body {
   @media (max-width: 1440px) {
     margin: 20px;
   }
+}
+h1, h2, h3{
+  font-family: "Montserrat", sans-serif;
+}
+p, span, li, a {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  text-align: justify;
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+
+}
+h2{
+  font-size: 24px;
+  text-align: center;
+}
+h3{
+  font-size: 20px;
 }

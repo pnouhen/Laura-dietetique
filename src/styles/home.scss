@@ -1,0 +1,33 @@
+@import "./variables";
+
+.objectifs {
+  background-image: url("../public/assets/img/backgroundHome.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &___container {
+    width: 60%;
+    margin: auto;
+    background-color: rgb(255, 255, 255, 0.8);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    h2 {
+      color: $brown;
+    }
+    article {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        li {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
