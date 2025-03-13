@@ -1,3 +1,5 @@
+@import "./variables";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,6 +31,7 @@ p, span, li, a {
 h2{
   font-size: 24px;
   text-align: center;
+  color: $brown;
 }
 h3{
   font-size: 20px;

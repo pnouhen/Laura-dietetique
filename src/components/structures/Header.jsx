@@ -19,7 +19,7 @@ export default function Header() {
           }}
         ></i>
         <nav className={ open ? "mobile" : ""}>
-          <i class={open ? "fa-solid fa-xmark" : ""} onClick={() => {
+          <i className={open ? "fa-solid fa-xmark" : ""} onClick={() => {
             setOpen(!open);
           }}></i>
         <ul>

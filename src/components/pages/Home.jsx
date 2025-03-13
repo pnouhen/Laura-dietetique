@@ -1,5 +1,7 @@
 import Header from "../structures/Header.jsx";
+import SlideShows from "../ui/SlideShow.jsx";
 import "../../styles/home.scss";
+
 export default function Home() {
   return (
     <>
@@ -48,6 +50,7 @@ export default function Home() {
           </article>
         </div>
       </section>
+      <SlideShows />
     </>
   );
 }
