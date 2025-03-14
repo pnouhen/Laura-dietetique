@@ -1,32 +1,24 @@
 @import "./variables";
 
 .reviews {
+  position: relative;
   width: 60%;
-  height: 300px;
   margin: auto;
   border: 1px solid black;
   padding: 20px;
-  h2 {
-    margin-bottom: 30px;
-  }
-  &___container {
-    position: relative;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .nameRatingContainer {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
     .name {
       font-family: "Montserrat", sans-serif;
-      font-size: 20px;
       font-weight: 700;
     }
-    .name, .comment{
-        padding: 0 40px 0 40px;
-    }
     .ratings {
-      position: absolute;
-      top: 0;
-      right: 40px;
+      display: flex;
+      gap: 5px;
       .fa-star {
         color: gray;
       }
@@ -34,35 +26,42 @@
         color: #f2d670;
       }
     }
-    .fa-chevron-left,
-    .fa-chevron-right {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 25px;
-      color: $brown;
-    }
-    .fa-chevron-left {
-      left: 0;
-    }
-    .fa-chevron-right {
-      right: 0;
-    }
-    ul {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      list-style: none;
+  }
+  .nameRatingContainer,
+  .comment {
+    padding: 0 40px 0 40px;
+  }
+  .fa-chevron-left,
+  .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: $brown;
+  }
 
-      li {
-        width: 20px;
-        height: 10px;
-        border-radius: 30%;
-        border: 1px solid $brown;
-      }
-      .dotSelected {
-        background-color: $brown;
-      }
+  .fa-chevron-left {
+    left: 20px;
+  }
+
+  .fa-chevron-right {
+    right: 20px;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+
+    li {
+      width: 20px;
+      height: 10px;
+      border-radius: 30%;
+      border: 1px solid $brown;
+    }
+
+    .dotSelected {
+      background-color: $brown;
     }
   }
 }
