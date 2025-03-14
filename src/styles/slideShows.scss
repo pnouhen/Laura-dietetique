@@ -1,13 +1,10 @@
 @import "./variables";
-
+@import "./mixin";
 .reviews {
+  @include section;
   position: relative;
-  width: 60%;
   margin: auto;
-  border: 1px solid black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  width: 50%;
   justify-content: space-between;
   .nameRatingContainer {
     display: flex;

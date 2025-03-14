@@ -8,10 +8,7 @@
 body {
   position: relative;
   max-width: 1440px;
-  margin: 20px auto 0 auto;
-  @media (max-width: 1440px) {
-    margin: 20px;
-  }
+  margin: auto;
 }
 h1, h2, h3{
   font-family: "Montserrat", sans-serif;
