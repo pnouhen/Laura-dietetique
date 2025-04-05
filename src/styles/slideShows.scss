@@ -1,7 +1,6 @@
 @import "./variables";
 @import "./mixin";
 .reviews {
-  @include section;
   position: relative;
   margin: auto;
   width: 50%;
@@ -20,7 +19,7 @@
         color: gray;
       }
       .active {
-        color: #f2d670;
+        color: #dcce61;
       }
     }
   }

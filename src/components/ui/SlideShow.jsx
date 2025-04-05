@@ -27,7 +27,7 @@ export default function SlideShows() {
         (ref) => ref?.getBoundingClientRect().height
       );
       const maxCommentHeight = Math.max(...heights);
-      setMaxHeight(maxCommentHeight); // Mettre à jour la hauteur maximale
+      setMaxHeight(maxCommentHeight);
     }
   }, [reviews, currentIndex]);
 
@@ -42,9 +42,7 @@ export default function SlideShows() {
               {[1, 2, 3, 4, 5].map((starIndex) => (
                 <i
                   key={starIndex}
-                  className={`fa-solid fa-star ${
-                    starIndex <= reviews[currentIndex].rating ? "active" : ""
-                  }`}
+                  className={`fa-solid fa-star ${starIndex <= reviews[currentIndex].rating ? "active" : ""}`}
                 ></i>
               ))}
             </div>
@@ -52,18 +50,17 @@ export default function SlideShows() {
           <i
             className="fa-solid fa-chevron-left"
             onClick={() =>
-              setCurrentIndex(
-                (index) => (index - 1 + reviews.length) % reviews.length
-              )
+              setCurrentIndex((index) => (index - 1 + reviews.length) % reviews.length)
             }
           ></i>
           <p
             ref={(el) => (commentRefs.current[currentIndex] = el)}
             className="comment"
             style={{ minHeight: `${maxHeight}px` }}
-          >
-            {reviews[currentIndex].comment}
-          </p>
+            dangerouslySetInnerHTML={{
+              __html: reviews[currentIndex].comment.replace(/\n/g, "<br />"),
+            }}
+          ></p>
           <i
             className="fa-solid fa-chevron-right"
             onClick={() =>

@@ -1,47 +1,43 @@
 @import "./variables";
-$imgAbout-container : 250px;
 @import "./mixin";
 
 .home {
-  background-image: url("../public/assets/img/backgroundObjectifs.jpg");
+  background-image: url(../../public/assets/img/background-home.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  @include displayColumn;
   gap: 30px;
-  img {
-    width: $imgAbout-container;
-    object-fit: cover;
-    border-top-left-radius: 100%;
-    margin-left: 20px;
-  }
-  .about {
-    display: flex;
-    background-color: transparent;
-    &___container {
-      @include section;
-      width: calc(100% - $imgAbout-container);
-      gap: 30px;
-      line-height: 25px;
-    }
-  }
-  .objectifs {
-    @include section;
-    gap: 30px;
-    article {
+  .objectif {
+    @include displayColumn;
+    gap: 40px;
+    .row{
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      ul {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        li {
-          margin-left: 20px;
-        }
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20%;
+    }
+    article {
+      @include displayColumn;
+      justify-content: center;
+      gap: 5px;
+      width: 270px;
+      i,
+      p {
+        text-align: center;
+      }
+      i {
+        font-size: 95px;
+      }
+      .fa-seedling,
+      .fa-rotate,
+      .fa-dumbbell {
+        color: $green;
+      }
+      .fa-scale-balanced,
+      .fa-heart-pulse,
+      .fa-bullseye {
+        color: $brown;
       }
     }
   }
