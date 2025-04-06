@@ -1,84 +1,46 @@
-import { useEffect, useState, useRef } from "react";
-import "../../styles/slideShows.scss";
+import { useState } from "react";
+import GenerateReviews from "../pages/services/GenerateReviews";
+import Review from "./Review";
+import Dots from "./Dots";
+import "../../styles/slideShow.scss";
 
-export default function SlideShows() {
-  const [reviews, setReviews] = useState(null);
+export default function SlideShow() {
+  // Change Reviews
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [maxHeight, setMaxHeight] = useState(0);
-
-  // Référence pour chaque élément de commentaire
-  const commentRefs = useRef([]);
-
-  useEffect(() => {
-    fetch("/data/reviews.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setReviews(data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des données :", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (reviews) {
-      // Mesurer la hauteur du commentaire le plus grand
-      const heights = commentRefs.current.map(
-        (ref) => ref?.getBoundingClientRect().height
-      );
-      const maxCommentHeight = Math.max(...heights);
-      setMaxHeight(maxCommentHeight);
-    }
-  }, [reviews, currentIndex]);
-
+  //   Generate the reviews.json
+  const [data, setData] = useState(null);
+  
   return (
-    <section className="reviews" style={{ minHeight: `${maxHeight + 200}px` }}>
-      <h2>Témoignages</h2>
-      {reviews ? (
+    <>
+      <GenerateReviews setData={setData} />
+      <h2>Témoignages :</h2>
+      {data ? (
         <>
-          <div className="nameRatingContainer">
-            <p className="name">{reviews[currentIndex].name}</p>
-            <div className="ratings">
-              {[1, 2, 3, 4, 5].map((starIndex) => (
-                <i
-                  key={starIndex}
-                  className={`fa-solid fa-star ${starIndex <= reviews[currentIndex].rating ? "active" : ""}`}
-                ></i>
-              ))}
-            </div>
-          </div>
           <i
             className="fa-solid fa-chevron-left"
             onClick={() =>
-              setCurrentIndex((index) => (index - 1 + reviews.length) % reviews.length)
+              setCurrentIndex(
+                (prevIndex) => (prevIndex - 3 + data.length) % data.length
+              )
             }
           ></i>
-          <p
-            ref={(el) => (commentRefs.current[currentIndex] = el)}
-            className="comment"
-            style={{ minHeight: `${maxHeight}px` }}
-            dangerouslySetInnerHTML={{
-              __html: reviews[currentIndex].comment.replace(/\n/g, "<br />"),
-            }}
-          ></p>
+          <div className="reviews">
+            <Review index={currentIndex}></Review>
+            <Review index={currentIndex + 1}></Review>
+            <Review index={currentIndex + 2}></Review>
+          </div>
           <i
             className="fa-solid fa-chevron-right"
             onClick={() =>
-              setCurrentIndex((index) => (index + 1) % reviews.length)
+              setCurrentIndex((prevIndex) => (prevIndex + 3) % data.length)
             }
           ></i>
-          <ul>
-            {reviews.map((item, index) => (
-              <li
-                key={index}
-                className={`${currentIndex === index ? "dotSelected" : ""}`}
-              ></li>
-            ))}
-          </ul>
+          <Dots></Dots>
         </>
       ) : (
-        <div>Chargement...</div>
+        <p>Chargement en cours</p>
       )}
-    </section>
+     
+    </>
   );
 }

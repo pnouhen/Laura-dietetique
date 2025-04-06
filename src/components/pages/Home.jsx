@@ -1,5 +1,5 @@
 import Header from "../structures/Header.jsx";
-import SlideShow from "../ui/SlideShow.jsx"
+import SlideShow from "../ui/SlideShow.jsx";
 import "../../styles/home.scss";
 
 export default function Home() {
@@ -10,8 +10,8 @@ export default function Home() {
         <section className="objectif">
           <h2>Ensemble, nous pouvons :</h2>
           <div className="row">
-            <article class="manage">
-              <i class="fa-solid fa-seedling"></i>
+            <article className="manage">
+              <i className="fa-solid fa-seedling"></i>
               <h3>
                 Gérer durablement <br /> votre poids
               </h3>
@@ -21,8 +21,8 @@ export default function Home() {
               </p>
             </article>
 
-            <article class="control">
-              <i class="fa-solid fa-scale-balanced"></i>
+            <article className="control">
+              <i className="fa-solid fa-scale-balanced"></i>
               <h3>
                 Contrôle
                 <br /> votre poids
@@ -33,8 +33,8 @@ export default function Home() {
               </p>
             </article>
 
-            <article class="adapt">
-              <i class="fa-solid fa-rotate"></i>
+            <article className="adapt">
+              <i className="fa-solid fa-rotate"></i>
               <h3>
                 Adapter votre
                 <br /> alimentation
@@ -46,8 +46,8 @@ export default function Home() {
             </article>
           </div>
           <div className="row">
-            <article class="face">
-              <i class="fa-solid fa-heart-pulse"></i>
+            <article className="face">
+              <i className="fa-solid fa-heart-pulse"></i>
               <h3>
                 Affronter les défis
                 <br /> quotidiens
@@ -58,8 +58,8 @@ export default function Home() {
               </p>
             </article>
 
-            <article class="optimize">
-              <i class="fa-solid fa-dumbbell"></i>
+            <article className="optimize">
+              <i className="fa-solid fa-dumbbell"></i>
               <h3>
                 Optimiser vos
                 <br /> performances
@@ -70,8 +70,8 @@ export default function Home() {
               </p>
             </article>
 
-            <article class="improve">
-              <i class="fa-solid fa-bullseye"></i>
+            <article className="improve">
+              <i className="fa-solid fa-bullseye"></i>
               <h3>
                 Améliorer votre
                 <br /> alimentation
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </section>
         <section>
-          <SlideShow />
+          <SlideShow/>
         </section>
       </div>
     </>
