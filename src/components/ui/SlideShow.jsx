@@ -9,11 +9,11 @@ export default function SlideShow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   //   Generate the reviews.json
   const [data, setData] = useState(null);
-  
+
   return (
-    <>
+    <section className="slideshow">
       <GenerateReviews setData={setData} />
-      <h2>Témoignages :</h2>
+      <h2>Avis :</h2>
       {data ? (
         <>
           <div className="slideShow_container">
@@ -40,6 +40,6 @@ export default function SlideShow() {
       ) : (
         <p>Chargement en cours</p>
       )}
-    </>
+    </section>
   );
 }

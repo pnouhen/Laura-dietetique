@@ -1,11 +1,16 @@
-.slideShow_container{
+@import "./mixin";
+
+.slideshow {
+  @include displayColumn;
+  gap: 30px;
+  .slideShow_container {
     display: flex;
     justify-content: center;
     gap: 30px;
     [class*="fa-chevron"] {
-        display: flex;
-        align-items: center;
-        font-size: 30px;
+      display: flex;
+      align-items: center;
+      font-size: 30px;
     }
-    
+  }
 }

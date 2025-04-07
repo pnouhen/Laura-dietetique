@@ -1,5 +1,6 @@
 import Header from "../structures/Header.jsx";
 import SlideShow from "../ui/SlideShow.jsx";
+import SubmitReview from "../ui/SubmitReview.jsx";
 import "../../styles/home.scss";
 
 export default function Home() {
@@ -83,9 +84,8 @@ export default function Home() {
             </article>
           </div>
         </section>
-        <section className="slideshow">
-          <SlideShow/>
-        </section>
+        <SlideShow />
+        <SubmitReview />
       </div>
     </>
   );

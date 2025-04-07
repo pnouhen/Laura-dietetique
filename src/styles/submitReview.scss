@@ -1,0 +1,57 @@
+@import "./mixin";
+
+.submitReview {
+  @include displayColumn;
+  align-items: center;
+  gap: 20px;
+  width: 700px;
+  margin: 0 auto;
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    label {
+      @include label;
+      margin-left: 10px;
+    }
+    .name,
+    .firstName,
+    .formReview {
+      @include displayColumn;
+      gap: 10px;
+    }
+    input {
+      @include input;
+      background-color: #d9d9d9;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .name,
+    .firstName {
+      input {
+        width: 233px;
+        height: 40px;
+      }
+    }
+    .ratings {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    .formReview {
+      width: 100%;
+      input {
+        height: 150px;
+      }
+    }
+  }
+  button {
+    @include input;
+    @include label;
+    width: 210px;
+    height: 40px;
+    background-color: rgb(133, 170, 132, 0.7);
+  }
+}
