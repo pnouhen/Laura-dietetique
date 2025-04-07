@@ -16,31 +16,30 @@ export default function SlideShow() {
       <h2>Témoignages :</h2>
       {data ? (
         <>
-          <i
-            className="fa-solid fa-chevron-left"
-            onClick={() =>
-              setCurrentIndex(
-                (prevIndex) => (prevIndex - 3 + data.length) % data.length
-              )
-            }
-          ></i>
-          <div className="reviews">
+          <div className="slideShow_container">
+            <i
+              className="fa-solid fa-chevron-left"
+              onClick={() =>
+                setCurrentIndex(
+                  (prevIndex) => (prevIndex - 3 + data.length) % data.length
+                )
+              }
+            ></i>
             <Review index={currentIndex}></Review>
             <Review index={currentIndex + 1}></Review>
             <Review index={currentIndex + 2}></Review>
+            <i
+              className="fa-solid fa-chevron-right"
+              onClick={() =>
+                setCurrentIndex((prevIndex) => (prevIndex + 3) % data.length)
+              }
+            ></i>
           </div>
-          <i
-            className="fa-solid fa-chevron-right"
-            onClick={() =>
-              setCurrentIndex((prevIndex) => (prevIndex + 3) % data.length)
-            }
-          ></i>
           <Dots></Dots>
         </>
       ) : (
         <p>Chargement en cours</p>
       )}
-     
     </>
   );
 }

@@ -1,8 +1,11 @@
-.fa-solid{
-    font-size: 30px;
-}
-.dot{
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
+.slideShow_container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    [class*="fa-chevron"] {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    
 }

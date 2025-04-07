@@ -83,7 +83,7 @@ export default function Home() {
             </article>
           </div>
         </section>
-        <section>
+        <section className="slideshow">
           <SlideShow/>
         </section>
       </div>

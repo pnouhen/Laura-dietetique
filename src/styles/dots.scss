@@ -1,0 +1,17 @@
+@import "./variables";
+
+.dots{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    li{
+        width: 20px;
+        height: 10px;
+        border: 2px solid $brown;
+        border-radius: 10px;
+    }
+    .active{
+        background-color: $brown;
+    }
+}

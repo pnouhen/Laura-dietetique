@@ -1,6 +1,17 @@
-.fa-star{
-    color: yellow;
-}
-.active{
-    color: green;
+@import "./mixin";
+
+
+.review{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    width: 30%;
+    .name{
+        font-weight: 600;
+    } 
+    .comment{
+        height: 100%
+    }
+        @include ratings;      
 }

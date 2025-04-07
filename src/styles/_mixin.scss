@@ -1,5 +1,19 @@
-@mixin displayColumn{
-      display: flex;
-      flex-direction: column;
+@import "./variables";
+
+@mixin displayColumn {
+  display: flex;
+  flex-direction: column;
 }
-  
+@mixin ratings {
+  .ratings {
+    display: flex;
+    gap: 5px;
+    .fa-star {
+      font-size: 20px;
+      color: #808080;
+    }
+    .starSelected {
+      color: $green;
+    }
+  }
+}
