@@ -4,25 +4,30 @@ import "../../styles/review.scss";
 
 export default function Reviews({ index }) {
   const [data, setData] = useState(null);
-  const commentRefs = useRef([]); // Utilisation d'un tableau de refs
+  const commentRefs = useRef([]); // Using an array of refs
   const [maxHeight, setMaxHeight] = useState(0);
 
-  // Met à jour la hauteur max automatiquement quand data ou index change
+  // Updates the max height automatically when 'data' or 'index' changes
   useEffect(() => {
-    if (data && commentRefs.current.length) {
-      // Mesurer la hauteur de chaque commentaire et récupérer la plus grande
-      const heights = commentRefs.current.map(
-        (ref) => ref?.getBoundingClientRect().height || 0
-      );
-      const maxCommentHeight = Math.max(...heights);
-      setMaxHeight(maxCommentHeight); // Mettre à jour la hauteur maximale
+    if (data) {
+      // Waiting for the DOM elements to be fully rendered
+      const timeoutId = setTimeout(() => {
+        if (commentRefs.current[index]) {
+          // Measure the height of the current comment element
+          const commentHeight = commentRefs.current[index]?.getBoundingClientRect().height || 0;
+          setMaxHeight(commentHeight); // Update the max height value
+        }
+      }, 100); // Small delay to ensure elements are rendered
+      return () => clearTimeout(timeoutId); // Cleanup the timeout on component unmount or update
     }
-  }, [data]);
+  }, [data, index]); // Run this effect when 'data' or 'index' changes
 
   return (
-    <article className="review" 
-    ref={(el) => commentRefs.current[index] = el} // Affecte la ref dynamique par index
-    style={{ minHeight: `${maxHeight - 82.5}px` }}>
+    <article
+      className="review"
+      ref={(el) => commentRefs.current[index] = el} // Assign the ref dynamically by index
+      style={{ minHeight: `${maxHeight}px` }} // Apply the adjusted max height
+    >
       <GenerateReviews setData={setData} />
 
       {data ? (
@@ -40,14 +45,12 @@ export default function Reviews({ index }) {
             ))}
           </div>
 
-          <p
-            className="comment"
-          >
+          <p className="comment">
             {data[index].comment}
           </p>
         </>
       ) : (
-        <p>Chargement en cours...</p>
+        <p>Loading...</p>
       )}
     </article>
   );

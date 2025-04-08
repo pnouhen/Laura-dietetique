@@ -1,6 +1,7 @@
 import Header from "../structures/Header.jsx";
 import SlideShow from "../ui/SlideShow.jsx";
 import SubmitReview from "../ui/SubmitReview.jsx";
+import Footer from "../structures/Footer.jsx";
 import "../../styles/home.scss";
 
 export default function Home() {
@@ -87,6 +88,7 @@ export default function Home() {
         <SlideShow />
         <SubmitReview />
       </div>
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,41 @@
+@import "./mixin";
+
+footer {
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  article {
+    display: flex;
+    justify-content: center;
+  }
+  div {
+    display: flex;
+    gap: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center
+  }
+  .contact {
+    @include displayColumn;
+    gap: 25px;
+    .contact_container {
+      @include displayColumn;
+      gap: 10px;
+      margin: auto;
+      .subTitle {
+        @include font18-600;
+      }
+    }
+  }
+  .followMe{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    h2{
+        width: 100%;
+    }
+  }
+}

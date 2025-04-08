@@ -35,7 +35,7 @@ export default function SlideShow() {
               }
             ></i>
           </div>
-          <Dots></Dots>
+          <Dots currentIndex={currentIndex} dataLength={data.length}></Dots>
         </>
       ) : (
         <p>Chargement en cours</p>
