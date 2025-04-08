@@ -1,5 +1,10 @@
 @import "./variables";
 
+@mixin section{
+  background-color: rgb(255, 255, 255, 0.85);
+    padding: 20px;
+}
+
 @mixin displayColumn {
   display: flex;
   flex-direction: column;
@@ -7,8 +12,8 @@
 @mixin ratings {
   .ratings {
     display: flex;
-    gap: 5px;
     .fa-star {
+      padding-right: 5px;
       font-size: 20px;
       color: #808080;
     }

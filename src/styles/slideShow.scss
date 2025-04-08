@@ -1,6 +1,7 @@
 @import "./mixin";
 
 .slideshow {
+  @include section;
   @include displayColumn;
   gap: 30px;
   .slideShow_container {

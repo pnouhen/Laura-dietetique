@@ -9,6 +9,7 @@
   @include displayColumn;
   gap: 30px;
   .objectif {
+    @include section;
     @include displayColumn;
     gap: 40px;
     .row{

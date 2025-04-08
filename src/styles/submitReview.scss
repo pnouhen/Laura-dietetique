@@ -1,6 +1,7 @@
 @import "./mixin";
 
 .submitReview {
+  @include section;
   @include displayColumn;
   align-items: center;
   gap: 20px;
@@ -21,7 +22,7 @@
       @include displayColumn;
       gap: 10px;
     }
-    input {
+    input, textarea {
       @include input;
       background-color: #d9d9d9;
       padding: 10px 20px;
@@ -34,15 +35,16 @@
         height: 40px;
       }
     }
-    .ratings {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 5px;
+    @include ratings;
+    .ratings{
+      margin-left: 215px;
+      p{
+        font-weight: 700;
+      }
     }
     .formReview {
       width: 100%;
-      input {
+      textarea {
         height: 150px;
       }
     }
@@ -53,5 +55,6 @@
     width: 210px;
     height: 40px;
     background-color: rgb(133, 170, 132, 0.7);
+    cursor: pointer;
   }
 }

@@ -12,7 +12,7 @@ body {
   margin: 20px auto 0 auto;
 }
 p, span, li, a {
-  font-size: 18px;
+  font-size: 16px;
   text-align: justify;
   line-height: 25px;
   @media (max-width: 1024px) {
@@ -33,10 +33,7 @@ h3{
   font-size: 20px;
   text-align: center;
 }
-section{
-  background-color: rgb(255, 255, 255, 0.85);
-    padding: 20px;
-}
+
 .hidden{
   display: none;
 }
