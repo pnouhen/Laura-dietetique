@@ -30,4 +30,7 @@
 @mixin font18-600 {
   font-size: 18px;
   font-weight: 600;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
 }

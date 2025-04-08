@@ -80,7 +80,6 @@ export default function SubmitReview() {
             <textarea id="review" ref={reviewRef}></textarea>
           </div>
         </form>
-
         <button onClick={resetReview}>Partagez</button>
       </section>
 

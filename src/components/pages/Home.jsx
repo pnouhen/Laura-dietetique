@@ -11,7 +11,7 @@ export default function Home() {
       <div className="home">
         <section className="objectif">
           <h2>Ensemble, nous pouvons :</h2>
-          <div className="row">
+          <div className="objectif_container">
             <article className="manage">
               <i className="fa-solid fa-seedling"></i>
               <h3>
@@ -46,8 +46,6 @@ export default function Home() {
                 <br /> digestifs ou mieux vieillir
               </p>
             </article>
-          </div>
-          <div className="row">
             <article className="face">
               <i className="fa-solid fa-heart-pulse"></i>
               <h3>

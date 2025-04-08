@@ -11,29 +11,33 @@ body {
   max-width: 1440px;
   margin: 20px auto 0 auto;
 }
-p, span, li, a {
-  font-size: 16px;
-  text-align: justify;
-  line-height: 25px;
-  @media (max-width: 1024px) {
-    font-size: 14px;
-  }
-  @media (max-width: 768px) {
-    font-size: 10px;
-  }
-
-}
 h2{
   width: 100%;
   font-family: 'Caprasimo';
   font-size: 24px;
   text-align: center;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 }
 h3{  
   font-size: 20px;
   text-align: center;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
 }
+p, span, li, a {
+  font-size: 16px;
+  line-height: 25px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 
-.hidden{
-  display: none;
 }

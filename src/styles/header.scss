@@ -1,12 +1,12 @@
 @import "./variables";
-$imgHeightMobile-marginTopNav: 50px;
+$imgHeightMobile-marginTopNav: 75px;
 
 header {
   display: flex;
   gap: 2vw;
-  margin: 0 0 30px 10px;
+  padding: 0 0 30px 10px;
   img {
-    height: 140px;
+    height: 150px;
     object-fit: contain;
     @media (max-width: 1024px) {
       height: 100px;
@@ -19,7 +19,7 @@ header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     .text {
       height: 100%;
       display: flex;
@@ -33,7 +33,7 @@ header {
           font-size: 24px;
         }
         @media (max-width: 768px) {
-          font-size: 16px;
+          font-size: 20px;
         }
       }
       p {
@@ -43,7 +43,7 @@ header {
           font-size: 18px;
         }
         @media (max-width: 768px) {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
@@ -93,9 +93,9 @@ header {
       @media (max-width: 768px) {
         position: absolute;
         display: block;
-        top: 0px;
+        top: 25px;
         right: 20px;
-        font-size: 14px;
+        font-size: 20px;
       }
     }
     .mobile {
@@ -120,9 +120,6 @@ header {
         gap: 10px;
         li {
           background-color: transparent;
-          a {
-            color: rgb(100, 60, 36);
-          }
         }
       }
     }

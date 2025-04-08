@@ -13,5 +13,10 @@
       align-items: center;
       font-size: 30px;
     }
+    @media (max-width: 1024px) {
+      .ReviewDesktop{
+        display: none;
+      }
+    }
   }
 }
