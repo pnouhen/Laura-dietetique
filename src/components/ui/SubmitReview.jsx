@@ -20,7 +20,7 @@ export default function SubmitReview() {
   const [missingElement, setMissingElement] = useState(null);
 
   // Input refs
-  const nameRef = useRef();
+  const lastNameRef = useRef();
   const firstnameRef = useRef();
   const reviewRef = useRef();
 
@@ -28,7 +28,7 @@ export default function SubmitReview() {
   const resetReview = () => {
     // Check if fields are filled
     if (
-      !nameRef.current.value ||
+      !lastNameRef.current.value ||
       !firstnameRef.current.value ||
       !reviewRef.current.value ||
       rating === 0
@@ -39,7 +39,7 @@ export default function SubmitReview() {
 
     // If all fields are filled, clean inputs and submit the review
     setSend(true);
-    nameRef.current.value = "";
+    lastNameRef.current.value = "";
     firstnameRef.current.value = "";
     reviewRef.current.value = "";
     setRating(0);
@@ -52,12 +52,12 @@ export default function SubmitReview() {
         <h2>Laisser un avis :</h2>
         <form action="submit">
           <div className="name">
-            <label htmlFor="name">Nom</label>
-            <input type="text" ref={nameRef} />
+            <label htmlFor="lastname">Nom</label>
+            <input type="text" id="lastname" ref={lastNameRef} />
           </div>
           <div className="firstName">
             <label htmlFor="firstname">Prénom</label>
-            <input type="text" ref={firstnameRef} />
+            <input type="text" id="firstname" ref={firstnameRef} />
           </div>
           <div className="ratings">
             {[...Array(5)].map((_, index) => (

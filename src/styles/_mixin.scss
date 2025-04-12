@@ -9,6 +9,11 @@
   display: flex;
   flex-direction: column;
 }
+@mixin backgroundImg{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 @mixin ratings {
   .ratings {
     display: flex;

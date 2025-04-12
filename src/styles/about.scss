@@ -1,0 +1,41 @@
+@import "./mixin";
+
+.about {
+  flex: 1;
+  background-image: url(/assets/img/background/background-about.webp);
+  @include backgroundImg;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  .about_container {
+    display: flex;
+    justify-content: center;
+    @media (max-width: 1024px){
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    img {
+      width: 20%;
+      border-top-left-radius: 100%;
+      object-fit: cover;
+      @media (max-width: 1024px){
+        border-radius: 20px;
+        width: 200px;
+    }
+    @media (max-width: 768px){
+        width: 150px;
+    }
+    }
+    p {
+      @include section;
+      width: 60%;
+      height: 100%;
+      border-radius: 0 20px 20px 0;
+      @media (max-width: 1024px){
+        border-radius: 0;
+        width: 100%;
+    }
+    }
+  }
+}

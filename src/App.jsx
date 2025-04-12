@@ -1,9 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home"
 import MethodRate from "./components/pages/MethodRate";
-import Contact from "./components/pages/Contact";
 import Recipes from "./components/pages/Recipes";
-import Account from "./components/pages/Account";
+import About from "./components/pages/About";
 import "./styles/general.scss"
 
 const router = createBrowserRouter([
@@ -14,15 +13,15 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/methode-et-tarif",
+    path: "/qui-suis-je",
     element: (
-        <MethodRate />
+        <About />
     ),
   },
   {
-    path: "/contact",
+    path: "/methode-et-tarif",
     element: (
-        <Contact />
+        <MethodRate />
     ),
   },
   {
@@ -30,13 +29,7 @@ const router = createBrowserRouter([
     element: (
         <Recipes />
     ),
-  },
-  {
-    path: "/mon-compte",
-    element: (
-        <Account />
-    ),
-  },
+  }
 ]);
 
 function App() {

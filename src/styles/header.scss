@@ -7,12 +7,15 @@ header {
   padding: 0 0 30px 10px;
   img {
     height: 150px;
+    width: 77px;
     object-fit: contain;
     @media (max-width: 1024px) {
       height: 100px;
+      width: 69px;
     }
     @media (max-width: 768px) {
       height: $imgHeightMobile-marginTopNav;
+      width: 62px;
     }
   }
   .header___container {
@@ -44,6 +47,7 @@ header {
         }
         @media (max-width: 768px) {
           font-size: 14px;
+          margin-right: 40px;
         }
       }
     }
@@ -74,10 +78,14 @@ header {
             font-size: 14px;
             padding: 5px 10px;
           }
+          &:hover{
+            transform: scale(1.1);
+          }
         }
         .active {
           background-color: #B89854;
         }
+        
       }
       @media (max-width: 768px) {
         position: absolute;
