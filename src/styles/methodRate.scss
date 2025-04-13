@@ -1,0 +1,49 @@
+@import "./mixin";
+
+.methodRate {
+  background-image: url(/assets/img/background/background-methodRate.webp);
+  @include backgroundImg;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 1024px) {
+    background-position: right;
+  }
+  .methodRate_container {
+    width: 60%;
+    @include section;
+    @include displayColumn;
+    gap: 20px;
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    article {
+      @include displayColumn;
+      gap: 20px;
+      h2 {
+        margin-bottom: 20px;
+      }
+      h3 {
+        text-align: left;
+        display: flex;
+        align-items: center;
+      }
+      .duration,
+      .price,
+      .coupleRate {
+        display: flex;
+        gap: 5px;
+      }
+      .description {
+        @include displayColumn;
+        gap: 5px;
+      }
+    }
+    .priceCondition {
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+}
