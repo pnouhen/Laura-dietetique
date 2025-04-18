@@ -4,48 +4,45 @@
   background-image: url(/assets/img/background/background-methodRate.webp);
   @include backgroundImg;
   background-position: right;
-  display: flex;
-  justify-content: center;
+  @include displayColumn;
+  align-items: center;
+  gap: 20px;
   padding: 20px;
   @media (max-width: 1024px) {
     background-position: right;
   }
-  .methodRate_container {
-    width: 60%;
+  article {
+    @include section;
     @include displayColumn;
     gap: 20px;
+    width: 60%;
     @media (max-width: 1024px) {
       width: 80%;
     }
     @media (max-width: 768px) {
       width: 100%;
     }
-    article {
-      @include section;
+    h2 {
+      margin-bottom: 20px;
+    }
+    h3 {
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+    .duration,
+    .price,
+    .coupleRate {
+      display: flex;
+      gap: 5px;
+    }
+    .description {
       @include displayColumn;
-      gap: 20px;
-      h2 {
-        margin-bottom: 20px;
-      }
-      h3 {
-        text-align: left;
-        display: flex;
-        align-items: center;
-      }
-      .duration,
-      .price,
-      .coupleRate {
-        display: flex;
-        gap: 5px;
-      }
-      .description {
-        @include displayColumn;
-        gap: 5px;
-      }
-      .priceCondition {
-        font-style: italic;
-        font-weight: 500;
-      }
+      gap: 5px;
+    }
+    .priceCondition {
+      font-style: italic;
+      font-weight: 500;
     }
   }
 }

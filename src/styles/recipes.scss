@@ -1,0 +1,33 @@
+@import "./mixin";
+
+.recipes {
+  height: 95vh;
+  background-image: url(/assets/img/background/background-recipes.webp);
+  @include backgroundImg;
+  @include displayColumn;
+  gap: 20px;
+  article {
+    @include section;
+    h2 {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .formRecipes_container {
+      display: grid;
+      grid-template-columns: 260px 260px 260px;
+      justify-content: space-around;
+      .formRecipes {
+        @include displayColumn;
+        gap: 5px;
+        label {
+          width: auto;
+          @include font18-600;
+        }
+        select {
+          @include input;
+          @include insideInput;
+        }
+      }
+    }
+  }
+}

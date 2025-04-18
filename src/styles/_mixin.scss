@@ -1,15 +1,15 @@
 @import "./variables";
 
-@mixin section{
+@mixin section {
   background-color: rgb(255, 255, 255, 0.85);
-    padding: 20px;
+  padding: 20px;
 }
 
 @mixin displayColumn {
   display: flex;
   flex-direction: column;
 }
-@mixin backgroundImg{
+@mixin backgroundImg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,4 +38,11 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+@mixin insideInput {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #d9d9d9;
+  resize: none;
 }

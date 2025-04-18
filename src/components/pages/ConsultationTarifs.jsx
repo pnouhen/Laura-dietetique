@@ -16,7 +16,6 @@ export default function ConsultationTarifs() {
     <>
       <Header />
       <section className="methodRate">
-        <div className="methodRate_container">
           {/* First consult */}
           <article>
             <h2>
@@ -105,7 +104,6 @@ export default function ConsultationTarifs() {
               </p>
             </div>
           </article>
-        </div>
       </section>
       <Footer />
     </>
