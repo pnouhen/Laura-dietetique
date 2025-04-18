@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import GenerateReviews from "../pages/services/GenerateReviews";
+import GenerateData from "../services/GenerateData";
 import "../../styles/review.scss";
 
 export default function Reviews({ index }) {
@@ -28,7 +28,7 @@ export default function Reviews({ index }) {
       ref={(el) => commentRefs.current[index] = el} // Assign the ref dynamically by index
       style={{ minHeight: `${maxHeight}px` }} // Apply the adjusted max height
     >
-      <GenerateReviews setData={setData} />
+      <GenerateData setData={setData} url="./data/reviews.json" />
 
       {data ? (
         <>

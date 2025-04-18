@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GenerateReviews from "../pages/services/GenerateReviews";
+import GenerateData from "../services/GenerateData";
 import Review from "./Review";
 import Dots from "./Dots";
 import "../../styles/slideShow.scss";
@@ -25,7 +25,7 @@ export default function SlideShow() {
 
   return (
     <section className="slideshow">
-      <GenerateReviews setData={setData} />
+      <GenerateData setData={setData} url="./data/reviews.json"/>
       <h2>Avis :</h2>
 
       {data ? (

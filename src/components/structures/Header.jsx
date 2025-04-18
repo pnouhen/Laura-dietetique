@@ -45,11 +45,20 @@ export default function Header() {
             </li>
             <li>
               <NavLink
-                to="/methode-et-tarif"
+                to="/consultations-et-tarif"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
-                Méthode et Tarifs
+                Consultations et Tarifs
               </NavLink>
+            </li>            
+            <li>
+              <a
+                href="https://user.clicrdv.com/Laura-Gentes"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Prendre rendez-vous
+              </a>
             </li>
             <li>
               <NavLink
@@ -60,13 +69,12 @@ export default function Header() {
               </NavLink>
             </li>
             <li>
-              <a
-                href="https://user.clicrdv.com/Laura-Gentes"
-                target="_blank"
-                rel="noopener noreferrer"
+              <NavLink
+                to="/se-connecter"
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
-                Prendre rendez-vous
-              </a>
+                Se connecter
+              </NavLink>
             </li>
           </ul>
         </nav>

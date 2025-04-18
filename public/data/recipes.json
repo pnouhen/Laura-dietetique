@@ -1,0 +1,45 @@
+[
+    {
+      "title": "Houmous maison",
+      "régime_alimentaire": "végétarien",
+      "durée": "Moins de 15 minutes",
+      "catégorie": "apéritif"
+    },
+    {
+      "title": "Salade de chèvre chaud",
+      "régime_alimentaire": "végétarien",
+      "durée": "de 15 à 30 minutes",
+      "catégorie": "entrées"
+    },
+    {
+      "title": "Soupe de potimarron",
+      "régime_alimentaire": "végétarien",
+      "durée": "de 30 à 45 minutes",
+      "catégorie": "soupes et véloutés"
+    },
+    {
+      "title": "Poulet au curry",
+      "régime_alimentaire": "",
+      "durée": "de 45 à 60 minutes",
+      "catégorie": "Plats"
+    },
+    {
+      "title": "Boeuf bourguignon",
+      "régime_alimentaire": "",
+      "durée": "Plus de 60 minutes",
+      "catégorie": "Plats"
+    },
+    {
+      "title": "Tiramisu",
+      "régime_alimentaire": "végétarien",
+      "durée": "de 30 à 45 minutes",
+      "catégorie": "dessert"
+    },
+    {
+      "title": "Sauce tomate maison",
+      "régime_alimentaire": "végétarien",
+      "durée": "de 15 à 30 minutes",
+      "catégorie": "sauces"
+    }
+  ]
+  

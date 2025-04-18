@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-export default function GenerateReviews({setData}) {
+export default function GenerateData({url, setData}) {
   useEffect(() => {
-    fetch("/data/reviews.json")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -10,6 +10,6 @@ export default function GenerateReviews({setData}) {
       .catch((error) => {
         console.error("Erreur lors de la récupération des données :", error);
       });
-  }, [setData]);
+  }, [url, setData]);
   return
 }

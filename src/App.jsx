@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home"
-import MethodRate from "./components/pages/MethodRate";
+import ConsultationTarifs from "./components/pages/ConsultationTarifs";
 import Recipes from "./components/pages/Recipes";
+import Connexion from "./components/pages/Connexion";
 import About from "./components/pages/About";
 import "./styles/general.scss"
 
@@ -19,9 +20,15 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/methode-et-tarif",
+    path: "/consultations-et-tarif",
     element: (
-        <MethodRate />
+        <ConsultationTarifs />
+    ),
+  },
+  {
+    path: "/se-connecter",
+    element: (
+        <Connexion />
     ),
   },
   {

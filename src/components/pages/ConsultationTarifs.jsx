@@ -1,9 +1,17 @@
 import Header from "../structures/Header.jsx";
 import Footer from "../structures/Footer.jsx";
 
-import "../../styles/methodRate.scss";
+import "../../styles/ConsultationTarifs.scss";
 
-export default function MethodRate() {
+export default function ConsultationTarifs() {
+  const priceCondition = (
+    <p className="priceCondition">
+      *Modes de règlement: Chèques, virements ou espèces. De plus,
+      certaines mutuelles prennent en charge les consultations
+      diététiques, renseignez vous auprès de la vôtre. Les justificatifs
+      nécessaires vous seront délivrés.
+    </p>
+  );
   return (
     <>
       <Header />
@@ -39,6 +47,7 @@ export default function MethodRate() {
               <h3>Tarif en couple</h3>
               <p>120€*</p>
             </div>
+            {priceCondition}
           </article>
           {/* Follow-up consult */}
           <article>
@@ -72,13 +81,9 @@ export default function MethodRate() {
               <h3>Tarif en couple</h3>
               <p>60€*</p>
             </div>
+            {priceCondition}
           </article>
-          <p className="priceCondition">
-            *Modes de règlement: Chèques, virements ou espèces. De plus,
-            certaines mutuelles prennent en charge les consultations
-            diététiques, renseignez vous auprès de la vôtre. Les justificatifs
-            nécessaires vous seront délivrés.
-          </p>
+          
           {/* Other consult */}
           <article>
             <h2>Consultation à distance :</h2>
