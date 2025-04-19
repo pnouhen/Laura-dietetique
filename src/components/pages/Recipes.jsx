@@ -2,16 +2,37 @@ import { useState } from "react";
 
 import Header from "../structures/Header.jsx";
 import GenerateData from "../services/GenerateData.jsx";
+import Filter from "../ui/Filter.jsx";
 
 import "../../styles/recipes.scss";
 
 export default function Recipes() {
   const [data, setData] = useState(null);
+
+  let groupeDiet = [];
+  let groupeCategories = [];
   let groupeDuration = [];
   if (data) {
-    groupeDuration = [...new Set(data.map((recipe) => recipe.durée))];
+    groupeDiet = [
+      ...new Set(
+        data
+          .filter((r) => r.regime_alimentaire)
+          .map((r) => r.regime_alimentaire)
+      ),
+    ];
+    groupeCategories = [
+      ...new Set(
+        data
+          .sort((a, b) => a.categorie.id - b.categorie.id)
+          .map((r) => r.categorie.text)
+      ),
+    ];
+    groupeDuration = [
+      ...new Set(
+        data.sort((a, b) => a.duree.id - b.duree.id).map((r) => r.duree.text)
+      ),
+    ];
   }
-
   return (
     <>
       <Header />
@@ -21,38 +42,16 @@ export default function Recipes() {
           <article className="choise">
             <h2>Choisissez votre :</h2>
             <div className="formRecipes_container">
-              <form className="formRecipes">
-                <label htmlFor="categorie">Votre régime alimentaire :</label>
-                <select id="categorie">
-                  <option value="All">Tous</option>
-                </select>
-              </form>
-              <form className="formRecipes">
-                <label htmlFor="categorie">La catégorie :</label>
-                <select id="categorie">
-                  <option value="All">Tous</option>
-                </select>
-              </form>
-              <form className="formRecipes">
-                <label htmlFor="categorie">La durée :</label>
-
-                {groupeDuration.length > 0 ? (
-                  <select id="categorie">
-                    <option value="All">Tous</option>
-                    {groupeDuration.map((duration) => (
-                      <option key={duration} value={duration}>
-                        {duration}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <p>Loading durations...</p>
-                )}
-              </form>
+              <Filter title="Le régime alimentaire :" groupe={groupeDiet} />
+              <Filter title="La catégorie :" groupe={groupeCategories} />
+              <Filter title="La durée :" groupe={groupeDuration} />
             </div>
           </article>
           <article>
             <h2>Recettes :</h2>
+            {data.map((recipe) => (
+  <h3 key={recipe.title}>{recipe.title}</h3>
+))}
           </article>
         </section>
       ) : (

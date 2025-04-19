@@ -14,20 +14,8 @@
     }
     .formRecipes_container {
       display: grid;
-      grid-template-columns: 260px 260px 260px;
+      grid-template-columns: 240px 240px 240px;
       justify-content: space-around;
-      .formRecipes {
-        @include displayColumn;
-        gap: 5px;
-        label {
-          width: auto;
-          @include font18-600;
-        }
-        select {
-          @include input;
-          @include insideInput;
-        }
-      }
     }
   }
 }

@@ -1,45 +1,42 @@
 [
-    {
-      "title": "Houmous maison",
-      "régime_alimentaire": "végétarien",
-      "durée": "Moins de 15 minutes",
-      "catégorie": "apéritif"
-    },
-    {
-      "title": "Salade de chèvre chaud",
-      "régime_alimentaire": "végétarien",
-      "durée": "de 15 à 30 minutes",
-      "catégorie": "entrées"
-    },
-    {
-      "title": "Soupe de potimarron",
-      "régime_alimentaire": "végétarien",
-      "durée": "de 30 à 45 minutes",
-      "catégorie": "soupes et véloutés"
-    },
-    {
-      "title": "Poulet au curry",
-      "régime_alimentaire": "",
-      "durée": "de 45 à 60 minutes",
-      "catégorie": "Plats"
-    },
-    {
-      "title": "Boeuf bourguignon",
-      "régime_alimentaire": "",
-      "durée": "Plus de 60 minutes",
-      "catégorie": "Plats"
-    },
-    {
-      "title": "Tiramisu",
-      "régime_alimentaire": "végétarien",
-      "durée": "de 30 à 45 minutes",
-      "catégorie": "dessert"
-    },
-    {
-      "title": "Sauce tomate maison",
-      "régime_alimentaire": "végétarien",
-      "durée": "de 15 à 30 minutes",
-      "catégorie": "sauces"
-    }
-  ]
-  
+  {
+    "title": "Salade De chèvre chaud",
+    "regime_alimentaire": "Végétarien",
+    "duree": { "id": 2, "text": "De 15 à 30 minutes" },
+    "categorie": { "id": 2, "text": "Entrées" }
+  },
+  {
+    "title": "Houmous maison",
+    "regime_alimentaire": "Végétarien",
+    "duree": { "id": 1, "text": "Moins de 15 minutes" },
+    "categorie": { "id": 1, "text": "Apéritif" }
+  },
+  {
+    "title": "Soupe De potimarron",
+    "regime_alimentaire": "Végétarien",
+    "duree": { "id": 3, "text": "De 30 à 45 minutes" },
+    "categorie": { "id": 3, "text": "Soupes et Veloutés" }
+  },
+  {
+    "title": "Poulet au curry",
+    "duree": { "id": 4, "text": "De 45 à 60 minutes" },
+    "categorie": { "id": 4, "text": "Plats" }
+  },
+  {
+    "title": "Boeuf bourguignon",
+    "duree": { "id": 5, "text": "Plus de 60 minutes" },
+    "categorie": { "id": 4, "text": "Plats" }
+  },
+  {
+    "title": "Tiramisu",
+    "regime_alimentaire": "Végétarien",
+    "duree": { "id": 3, "text": "De 30 à 45 minutes" },
+    "categorie": { "id": 5, "text": "Dessert" }
+  },
+  {
+    "title": "Sauce tomate maison",
+    "regime_alimentaire": "Végétarien",
+    "duree": { "id": 2, "text": "De 15 à 30 minutes" },
+    "categorie": { "id": 6, "text": "Sauces" }
+  }
+]

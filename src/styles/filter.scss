@@ -1,0 +1,14 @@
+@import "./mixin";
+
+.formRecipes {
+    @include displayColumn;
+    gap: 5px;
+    label {
+      width: auto;
+      @include font18-600;
+    }
+    select {
+      @include input;
+      @include insideInput;
+    }
+  }
