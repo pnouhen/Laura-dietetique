@@ -9,23 +9,24 @@ export default function SlideShow() {
   const [data, setData] = useState(null);
   const [reviewsToShow, setReviewsToShow] = useState(3); // default Desktop
 
-  // Responsive logic
+  let sortedData = [];
+  if (data) {
+    sortedData = [...data].sort((a, b) => b.id - a.id);
+  }
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
-        setReviewsToShow(1); // Tablet & Mobile
-      }
+      setReviewsToShow(window.innerWidth <= 1024 ? 1 : 3);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <section className="slideshow">
-      <GenerateData setData={setData} url="./data/reviews.json"/>
+      <GenerateData setData={setData} url="./data/reviews.json" />
       <h2>Avis :</h2>
 
       {data ? (
@@ -36,21 +37,27 @@ export default function SlideShow() {
               onClick={() =>
                 setCurrentIndex(
                   (prevIndex) =>
-                    (prevIndex - reviewsToShow + data.length) % data.length
+                    (prevIndex - reviewsToShow + sortedData.length) % sortedData.length
                 )
               }
             ></i>
 
-            {/* Render dynamically the right number of reviews */}
-            {Array.from({ length: reviewsToShow }).map((_, i) => (
-              <Review key={i} index={(currentIndex + i) % data.length} />
-            ))}
+            {Array.from({ length: reviewsToShow }).map((_, i) => {
+              const reviewIndex = (currentIndex + i) % sortedData.length;
+              return (
+                <Review
+                  key={i}
+                  review={sortedData[reviewIndex]}
+                  index={reviewIndex}
+                />
+              );
+            })}
 
             <i
               className="fa-solid fa-chevron-right"
               onClick={() =>
                 setCurrentIndex(
-                  (prevIndex) => (prevIndex + reviewsToShow) % data.length
+                  (prevIndex) => (prevIndex + reviewsToShow) % sortedData.length
                 )
               }
             ></i>
@@ -58,7 +65,7 @@ export default function SlideShow() {
 
           <Dots
             currentIndex={currentIndex}
-            dataLength={data.length}
+            dataLength={sortedData.length}
             reviewsToShow={reviewsToShow}
           />
         </>

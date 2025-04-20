@@ -52,6 +52,7 @@ export default function Recipes() {
             {data.map((recipe) => (
   <h3 key={recipe.title}>{recipe.title}</h3>
 ))}
+{/* Trier data par ordre alphabe */}
           </article>
         </section>
       ) : (
