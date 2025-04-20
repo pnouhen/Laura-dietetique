@@ -9,29 +9,31 @@ import "../../styles/recipes.scss";
 export default function Recipes() {
   const [data, setData] = useState(null);
 
+  let ordreData = [];
   let groupeDiet = [];
   let groupeCategories = [];
   let groupeDuration = [];
+
   if (data) {
+    // Tri alphabétique des titres
+    ordreData = [...data].sort((a, b) => {
+      return a.title.localeCompare(b.title, "fr", { sensitivity: "base" });
+    });
+
+    // Groupe régime alimentaire
     groupeDiet = [
       ...new Set(
-        data
+        ordreData
           .filter((r) => r.regime_alimentaire)
           .map((r) => r.regime_alimentaire)
       ),
     ];
-    groupeCategories = [
-      ...new Set(
-        data
-          .sort((a, b) => a.categorie.id - b.categorie.id)
-          .map((r) => r.categorie.text)
-      ),
-    ];
-    groupeDuration = [
-      ...new Set(
-        data.sort((a, b) => a.duree.id - b.duree.id).map((r) => r.duree.text)
-      ),
-    ];
+
+    // Groupe catégories triées
+    groupeCategories = [...new Set(ordreData.map((r) => r.categorie.text))];
+
+    // Groupe durées triées
+    groupeDuration = [...new Set(ordreData.map((r) => r.duree.text))];
   }
   return (
     <>
@@ -47,12 +49,14 @@ export default function Recipes() {
               <Filter title="La durée :" groupe={groupeDuration} />
             </div>
           </article>
-          <article>
+          <article className="recipesCards">
             <h2>Recettes :</h2>
-            {data.map((recipe) => (
-  <h3 key={recipe.title}>{recipe.title}</h3>
-))}
-{/* Trier data par ordre alphabe */}
+            {ordreData.map((recipe) => (
+              <div className="card" key={recipe.title}>
+                <h3>{recipe.title}</h3>
+                <img src={recipe.img} alt={`Photo de ${recipe.title}`} />
+              </div>
+            ))}
           </article>
         </section>
       ) : (
