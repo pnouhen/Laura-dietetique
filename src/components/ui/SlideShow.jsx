@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GenerateData from "../services/GenerateData";
 import Review from "./Review";
 import Dots from "./Dots";
@@ -8,6 +8,8 @@ export default function SlideShow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [data, setData] = useState(null);
   const [reviewsToShow, setReviewsToShow] = useState(3); // default Desktop
+  const [maxHeight, setMaxHeight] = useState(null);
+  const reviewRefs = useRef([]);
 
   let sortedData = [];
   if (data) {
@@ -24,6 +26,14 @@ export default function SlideShow() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Calcul de la hauteur max
+  useEffect(() => {
+    if (!data) return;
+    const heights = reviewRefs.current.map((ref) => ref?.scrollHeight || 0);
+    const max = Math.max(...heights);
+    setMaxHeight(max);
+  }, [data, reviewsToShow]);
+
   return (
     <section className="slideshow">
       <GenerateData setData={setData} url="./data/reviews.json" />
@@ -37,7 +47,8 @@ export default function SlideShow() {
               onClick={() =>
                 setCurrentIndex(
                   (prevIndex) =>
-                    (prevIndex - reviewsToShow + sortedData.length) % sortedData.length
+                    (prevIndex - reviewsToShow + sortedData.length) %
+                    sortedData.length
                 )
               }
             ></i>
@@ -48,7 +59,8 @@ export default function SlideShow() {
                 <Review
                   key={i}
                   review={sortedData[reviewIndex]}
-                  index={reviewIndex}
+                  ref={(el) => (reviewRefs.current[i] = el)}
+                  uniformHeight={maxHeight}
                 />
               );
             })}
@@ -57,7 +69,8 @@ export default function SlideShow() {
               className="fa-solid fa-chevron-right"
               onClick={() =>
                 setCurrentIndex(
-                  (prevIndex) => (prevIndex + reviewsToShow) % sortedData.length
+                  (prevIndex) =>
+                    (prevIndex + reviewsToShow) % sortedData.length
                 )
               }
             ></i>

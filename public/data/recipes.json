@@ -1,56 +1,58 @@
 [
   {
     "title": "Salade de chèvre chaud",
-    "regime_alimentaire": "Végétarien",
-    "duree": { "id": 1, "text": "De 15 à 30 minutes" },
+    "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 1, "text": "Entrées" },
-    "img":"/assets/img/recipes/Salade-de-chèvre-chaud.webp"
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
   },
   {
     "title": "Houmous maison",
-    "regime_alimentaire": "Végétarien",
-    "duree": { "id": 0, "text": "Moins de 15 minutes" },
+    "img": "/assets/img/recipes/Houmous-maison.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 0, "text": "Apéritif" },
-    "img":"/assets/img/recipes/Houmous-maison.webp"
+    "duree": { "id": 0, "text": "Moins de 15 minutes" }
   },
   {
     "title": "Soupe de potimarron",
-    "regime_alimentaire": "Végétarien",
-    "duree": { "id": 2, "text": "De 30 à 45 minutes" },
+    "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
-    "img":"/assets/img/recipes/Soupe-de-potimarron.webp"
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
     "title": "Poulet au curry",
-    "duree": { "id": 3, "text": "De 45 à 60 minutes" },
+    "img": "/assets/img/recipes/Poulet-au-curry.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 3, "text": "Plats" },
-    "img":"/assets/img/recipes/Poulet-au-curry.webp"
+    "duree": { "id": 3, "text": "De 45 à 60 minutes" }
   },
   {
     "title": "Boeuf bourguignon",
-    "duree": { "id": 4, "text": "Plus de 60 minutes" },
+    "img": "/assets/img/recipes/Boeuf-bourguignon.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 3, "text": "Plats" },
-    "img":"/assets/img/recipes/Boeuf-bourguignon.webp"
+    "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
     "title": "Tiramisu",
-    "regime_alimentaire": "Végétarien",
-    "duree": { "id": 2, "text": "De 30 à 45 minutes" },
+    "img": "/assets/img/recipes/Tiramisu.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 4, "text": "Dessert" },
-    "img":"/assets/img/recipes/Tiramisu.webp"
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
     "title": "Sauce tomate maison",
-    "regime_alimentaire": "Végétarien",
-    "duree": { "id": 1, "text": "De 15 à 30 minutes" },
+    "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 5, "text": "Sauces" },
-    "img":"/assets/img/recipes/Sauce-tomate-maison.webp"
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
   },
   {
     "title": "Quiche lorraine",
-    "regime_alimentaire": "Non végétarien",
-    "duree": { "id": 2, "text": "De 30 à 45 minutes" },
+    "img": "/assets/img/recipes/Quiche-lorraine.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 3, "text": "Plats" },
-    "img":"/assets/img/recipes/Quiche-lorraine.webp"
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   }
 ]

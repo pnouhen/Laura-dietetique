@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "../structures/Header.jsx";
 import GenerateData from "../services/GenerateData.jsx";
 import Filter from "../ui/Filter.jsx";
+import Footer from "../structures/Footer.jsx";
 
 import "../../styles/recipes.scss";
 
@@ -21,19 +22,34 @@ export default function Recipes() {
     });
 
     // Groupe régime alimentaire
-    groupeDiet = [
-      ...new Set(
-        ordreData
-          .filter((r) => r.regime_alimentaire)
+    groupeDiet = Array.from(
+      new Map(
+        data
           .map((r) => r.regime_alimentaire)
-      ),
-    ];
+          .filter((r) => r && r.text)
+          .map((r) => [r.text.trim(), r])
+      ).values()
+    ).sort((a, b) => a.id - b.id);
 
     // Groupe catégories triées
-    groupeCategories = [...new Set(ordreData.map((r) => r.categorie.text))];
+    groupeCategories = Array.from(
+      new Map(
+        data
+          .map((r) => r.categorie)
+          .filter((r) => r && r.text)
+          .map((r) => [r.text.trim(), r])
+      ).values()
+    ).sort((a, b) => a.id - b.id);
 
     // Groupe durées triées
-    groupeDuration = [...new Set(ordreData.map((r) => r.duree.text))];
+    groupeDuration = Array.from(
+      new Map(
+        data
+          .map((r) => r.duree)
+          .filter((r) => r && r.text)
+          .map((r) => [r.text.trim(), r])
+      ).values()
+    ).sort((a, b) => a.id - b.id);
   }
   return (
     <>
@@ -51,17 +67,18 @@ export default function Recipes() {
           </article>
           <article className="recipesCards">
             <h2>Recettes :</h2>
-            {ordreData.map((recipe) => (
+              {ordreData.map((recipe) => (
               <div className="card" key={recipe.title}>
                 <h3>{recipe.title}</h3>
                 <img src={recipe.img} alt={`Photo de ${recipe.title}`} />
               </div>
-            ))}
+            ))}          
           </article>
         </section>
       ) : (
         <p>Loading...</p>
       )}
+      <Footer />
     </>
   );
 }

@@ -1,25 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef } from "react";
 import "../../styles/review.scss";
 
-export default function Review({ review, index }) {
-  const commentRefs = useRef([]);
-  const [maxHeight, setMaxHeight] = useState(0);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const height = commentRefs.current[index]?.getBoundingClientRect().height || 0;
-      setMaxHeight(height);
-    }, 100);
-    return () => clearTimeout(timeoutId);
-  }, [review, index]);
-
-  if (!review) return <p>Loading...</p>;
+const Review = forwardRef(({ review, uniformHeight }, ref) => {
+  if (!review) return null;
 
   return (
     <article
       className="review"
-      ref={(el) => (commentRefs.current[index] = el)}
-      style={{ minHeight: `${maxHeight}px` }}
+      ref={ref}
+      style={{ minHeight: uniformHeight ? `${uniformHeight}px` : "auto" }}
     >
       <p className="name">{review.name}</p>
 
@@ -37,4 +26,6 @@ export default function Review({ review, index }) {
       <p className="comment">{review.comment}</p>
     </article>
   );
-}
+});
+
+export default Review;
