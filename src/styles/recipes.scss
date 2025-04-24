@@ -2,7 +2,10 @@
 
 .recipes {
   background-image: url(/assets/img/background/background-recipes.webp);
-  @include backgroundImg;
+  background-position: top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  min-height: 40vh;
   @include displayColumn;
   gap: 20px;
   article {
@@ -71,6 +74,13 @@
         position: absolute;
         top: 0;
       }
+    }
+    .noRecipesMessage{
+    grid-column: 1/4;
+    text-align: center;
+    @media (max-width: 768px){
+      width: 100%;
+    }
     }
   }
 }

@@ -11,6 +11,18 @@ export default function SlideShow() {
   const [maxHeight, setMaxHeight] = useState(null);
   const reviewRefs = useRef([]);
 
+// Si data == null, on gère l'affichage
+const [dataNull, setDataNull] = useState(true);
+
+// Utiliser useEffect pour détecter le changement de data
+useEffect(() => {
+  if (data === null) {
+    setDataNull(false); // Si data est null, on change l'état
+  } else {
+    setDataNull(true); // Sinon, on remet dataNull à true
+  }
+}, [data]); // Ce useEffect se déclenche chaque fois que 'data' change
+
   let sortedData = [];
   if (data) {
     sortedData = [...data].sort((a, b) => b.id - a.id);
@@ -35,7 +47,7 @@ export default function SlideShow() {
   }, [data, reviewsToShow]);
 
   return (
-    <section className="slideshow">
+    <section className={dataNull ? "slideshow" : "slideshow dataNull"}>
       <GenerateData setData={setData} url="./data/reviews.json" />
       <h2>Avis :</h2>
 
@@ -83,7 +95,7 @@ export default function SlideShow() {
           />
         </>
       ) : (
-        <p>Chargement en cours...</p>
+        <p className="loadingMessage">Chargement en cours...</p>
       )}
     </section>
   );

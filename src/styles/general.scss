@@ -45,5 +45,9 @@ p, span, li, a {
   @media (max-width: 768px) {
     font-size: 14px;
   }
-
+}
+.dataNull{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
