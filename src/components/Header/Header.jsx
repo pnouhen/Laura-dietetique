@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "../../styles/header.scss";
+import "./header.scss";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import MessageModal from "./MessageModal";
-import "../../styles/submitReview.scss";
+import MessageModal from "../MessageModal/MessageModal";
+import "./submitReview.scss";
 
 export default function SubmitReview() {
   // Change rating's color and text

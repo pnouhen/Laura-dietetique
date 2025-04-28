@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import "../../styles/review.scss";
+import "./review.scss";
 
 const Review = forwardRef(({ review, uniformHeight }, ref) => {
   if (!review) return null;

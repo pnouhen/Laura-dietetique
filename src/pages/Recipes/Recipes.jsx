@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Header from "../structures/Header.jsx";
-import GenerateData from "../services/GenerateData.jsx";
-import Filter from "../ui/Filter.jsx";
-import Footer from "../structures/Footer.jsx";
-import "../../styles/recipes.scss";
+
+import Header from "../../components/Header/Header.jsx";
+import Filter from "../../components/Filter/Filter.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import "./recipes.scss";
 
 export default function Recipes() {
   // État pour les données des recettes

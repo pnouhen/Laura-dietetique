@@ -1,4 +1,4 @@
-import "../../styles/filter.scss"
+import "./filter.scss"
 
 export default function Filter({ title, groupe, onFilterChange, type }) {
   // Fonction qui gère le changement de sélection dans le filtre

@@ -1,8 +1,8 @@
-import Header from "../structures/Header.jsx";
-import SlideShow from "../ui/SlideShow.jsx";
-import SubmitReview from "../ui/SubmitReview.jsx";
-import Footer from "../structures/Footer.jsx";
-import "../../styles/home.scss";
+import Header from "../../components/Header/Header.jsx";
+import SlideShow from "../../components/SlideShow/SlideShow.jsx";
+import SubmitReview from "../../components/SubmitReview/SubmitReview.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import "./home.scss";
 
 export default function Home() {
   return (

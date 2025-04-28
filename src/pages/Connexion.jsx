@@ -1,5 +1,5 @@
-import Footer from "../structures/Footer";
-import Header from "../structures/Header";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 export default function Connexion(){
     return(

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import GenerateData from "../services/GenerateData";
-import Review from "./Review";
-import Dots from "./Dots";
-import "../../styles/slideShow.scss";
+
+import Review from "../Review/Review";
+import Dots from "../Dots/Dots";
+import "./slideShow.scss";
 
 export default function SlideShow() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +48,6 @@ useEffect(() => {
 
   return (
     <section className={dataNull ? "slideshow" : "slideshow dataNull"}>
-      <GenerateData setData={setData} url="./data/reviews.json" />
       <h2>Avis :</h2>
 
       {data ? (

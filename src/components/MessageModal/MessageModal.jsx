@@ -1,4 +1,4 @@
-import "../../styles/messageModal.scss"
+import "./messageModal.scss"
 
 export default function MessageModal({clickPoster, poster, title, clickClose, message}){
     return(

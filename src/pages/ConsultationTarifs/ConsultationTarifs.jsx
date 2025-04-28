@@ -1,7 +1,7 @@
-import Header from "../structures/Header.jsx";
-import Footer from "../structures/Footer.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
-import "../../styles/ConsultationTarifs.scss";
+import "./consultationTarifs.scss";
 
 export default function ConsultationTarifs() {
   const priceCondition = (

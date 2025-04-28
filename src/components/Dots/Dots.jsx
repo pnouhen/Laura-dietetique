@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../../styles/dots.scss";
+import "./dots.scss";
 
 export default function Dots({ currentIndex, dataLength }) {
   // Calculate number of dots based on the number of reviews
