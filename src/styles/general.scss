@@ -50,4 +50,14 @@ p, span, li, a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+animation: opacity 2s forwards;
+  }
+  
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

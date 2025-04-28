@@ -15,9 +15,8 @@ export default function Dots({ currentIndex, dataLength }) {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  });
 
   return (
     <ul className="dots">

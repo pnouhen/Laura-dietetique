@@ -1,100 +1,68 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect } from "react";
+import { fetchData } from "../../service/FetchData";
 import Review from "../Review/Review";
 import Dots from "../Dots/Dots";
 import "./slideShow.scss";
 
 export default function SlideShow() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [data, setData] = useState(null);
-  const [reviewsToShow, setReviewsToShow] = useState(3); // default Desktop
-  const [maxHeight, setMaxHeight] = useState(null);
-  const reviewRefs = useRef([]);
-
-// Si data == null, on gère l'affichage
-const [dataNull, setDataNull] = useState(true);
-
-// Utiliser useEffect pour détecter le changement de data
-useEffect(() => {
-  if (data === null) {
-    setDataNull(false); // Si data est null, on change l'état
-  } else {
-    setDataNull(true); // Sinon, on remet dataNull à true
-  }
-}, [data]); // Ce useEffect se déclenche chaque fois que 'data' change
-
-  let sortedData = [];
-  if (data) {
-    sortedData = [...data].sort((a, b) => b.id - a.id);
-  }
-
+  const [reviews, setReviews] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(3);
+  
   useEffect(() => {
-    const handleResize = () => {
-      setReviewsToShow(window.innerWidth <= 1024 ? 1 : 3);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    fetchData("/public/data/reviews.json")
+      .then((data) =>
+        setReviews(data.sort((a, b) => new Date(b.date) - new Date(a.date)))
+      )
+      .catch((error) => console.error("Error lors du fetch:", error))
   }, []);
-
-  // Calcul de la hauteur max
+  
   useEffect(() => {
-    if (!data) return;
-    const heights = reviewRefs.current.map((ref) => ref?.scrollHeight || 0);
-    const max = Math.max(...heights);
-    setMaxHeight(max);
-  }, [data, reviewsToShow]);
-
+    const resize = () => setVisible(window.innerWidth <= 1024 ? 1 : 3);
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+  
   return (
-    <section className={dataNull ? "slideshow" : "slideshow dataNull"}>
+    <section className="slideshow">
       <h2>Avis :</h2>
-
-      {data ? (
+      { reviews.length > 0 ? (
         <>
           <div className="slideShow_container">
             <i
               className="fa-solid fa-chevron-left"
               onClick={() =>
-                setCurrentIndex(
-                  (prevIndex) =>
-                    (prevIndex - reviewsToShow + sortedData.length) %
-                    sortedData.length
-                )
+                setIndex((index - visible + reviews.length) % reviews.length)
               }
             ></i>
-
-            {Array.from({ length: reviewsToShow }).map((_, i) => {
-              const reviewIndex = (currentIndex + i) % sortedData.length;
+            
+            {Array.from({ length: visible }).map((_, i) => {
+              const current = (index + i) % reviews.length;
               return (
                 <Review
                   key={i}
-                  review={sortedData[reviewIndex]}
-                  ref={(el) => (reviewRefs.current[i] = el)}
-                  uniformHeight={maxHeight}
+                  review={reviews[current]}
                 />
               );
             })}
-
+            
             <i
               className="fa-solid fa-chevron-right"
-              onClick={() =>
-                setCurrentIndex(
-                  (prevIndex) =>
-                    (prevIndex + reviewsToShow) % sortedData.length
-                )
-              }
+              onClick={() => setIndex((index + visible) % reviews.length)}
             ></i>
           </div>
-
+          
           <Dots
-            currentIndex={currentIndex}
-            dataLength={sortedData.length}
-            reviewsToShow={reviewsToShow}
+            currentIndex={index}
+            dataLength={reviews.length}
+            reviewsToShow={visible}
           />
         </>
       ) : (
-        <p className="loadingMessage">Chargement en cours...</p>
+        <div className="error-container dataNull">
+          <p>Aucun avis disponible pour le moment.</p>
+        </div>
       )}
     </section>
   );

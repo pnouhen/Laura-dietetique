@@ -1,15 +1,8 @@
-import { forwardRef } from "react";
 import "./review.scss";
 
-const Review = forwardRef(({ review, uniformHeight }, ref) => {
-  if (!review) return null;
-
+export default function Review({ review }) {
   return (
-    <article
-      className="review"
-      ref={ref}
-      style={{ minHeight: uniformHeight ? `${uniformHeight}px` : "auto" }}
-    >
+    <article className="review">
       <p className="name">{review.name}</p>
 
       <div className="ratings">
@@ -26,6 +19,4 @@ const Review = forwardRef(({ review, uniformHeight }, ref) => {
       <p className="comment">{review.comment}</p>
     </article>
   );
-});
-
-export default Review;
+}
