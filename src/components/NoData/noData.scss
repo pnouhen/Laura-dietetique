@@ -1,0 +1,13 @@
+.noData {
+  text-align: center;
+  animation: opacity 1000ms forwards;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

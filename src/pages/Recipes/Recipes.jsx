@@ -1,130 +1,145 @@
 import { useState, useEffect } from "react";
+import { fetchData } from "../../service/FetchData.jsx";
 
 import Header from "../../components/Header/Header.jsx";
 import Filter from "../../components/Filter/Filter.jsx";
+import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import "./recipes.scss";
 
 export default function Recipes() {
-  // État pour les données des recettes
-  const [data, setData] = useState(null);
+  const [recipes, setRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
-  // Si data == null, on gère l'affichage
-  const [dataNull, setDataNull] = useState(true);
+  // États pour les filtres sélectionnés
+  const [selectedRegime, setSelectedRegime] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedDuration, setSelectedDuration] = useState(null);
 
-  // Utiliser useEffect pour détecter le changement de data
   useEffect(() => {
-    if (data === null) {
-      setDataNull(false); // Si data est null, on change l'état
-    } else {
-      setDataNull(true); // Sinon, on remet dataNull à true
+    fetchData("/public/data/recipes.json")
+      .then((data) => {
+        setRecipes(data);
+        setFilteredRecipes(data); // Initialiser avec toutes les recettes
+      })
+      .catch((error) => console.error("Error lors du fetch:", error));
+  }, []);
+
+  // Fonction utilitaire pour extraire les valeurs uniques et les trier par id
+  const getUniqueValues = (items, propName) =>
+    Array.from(
+      new Map(
+        items.map((item) => [
+          item[propName].id,
+          { id: item[propName].id, text: item[propName].text },
+        ])
+      ).values()
+    ).sort((a, b) => a.id - b.id);
+
+  // Utilisation de la fonction pour chaque propriété
+  const uniqueRegimes =
+    recipes.length > 0 ? getUniqueValues(recipes, "regime_alimentaire") : [];
+  const uniqueCategory =
+    recipes.length > 0 ? getUniqueValues(recipes, "categorie") : [];
+  const uniqueDuration =
+    recipes.length > 0 ? getUniqueValues(recipes, "duree") : [];
+
+  // Fonction pour gérer les changements de filtres
+  const handleFilterChange = (filterType, selectedId) => {
+    switch (filterType) {
+      case "regime":
+        setSelectedRegime(selectedId === selectedRegime ? null : selectedId);
+        break;
+      case "category":
+        setSelectedCategory(
+          selectedId === selectedCategory ? null : selectedId
+        );
+        break;
+      case "duration":
+        setSelectedDuration(
+          selectedId === selectedDuration ? null : selectedId
+        );
+        break;
+      default:
+        break;
     }
-  }, [data]); // Ce useEffect se déclenche chaque fois que 'data' change
-
-  // État pour savoir si les filtres sont appliqués ou non
-  const [clean, setClean] = useState(true);
-
-  // État pour garder les filtres appliqués
-  const [filters, setFilters] = useState({
-    regime: null,   // Filtre par régime alimentaire
-    categorie: null, // Filtre par catégorie
-    duree: null,    // Filtre par durée
-  });
-
-  // Fonction pour générer un groupe unique et trié par clé (ex: régime, catégorie, durée)
-const getGroup = (key) => {
-  if (!data) return []; // Vérifie si data est null avant d'essayer d'utiliser map
-
-  return Array.from(
-    new Map(
-      data
-        .map((r) => r[key])  // On récupère la clé donnée (régime, catégorie, durée)
-        .filter((v) => v?.text)  // Filtrage des éléments sans texte
-        .map((v) => [v.text.trim(), v])  // On utilise le texte comme clé pour éliminer les doublons
-    ).values()
-  ).sort((a, b) => a.id - b.id); // Trie les résultats par id
-};
-
-  // Fonction pour trier et filtrer les recettes en fonction des filtres appliqués
-  const getFilteredRecipes = () => {
-    const sorted = [...data].sort((a, b) =>
-      a.title.localeCompare(b.title, "fr") // Trie les recettes par titre
-    );
-    
-    // Si les filtres sont réinitialisés (clean === true), on retourne toutes les recettes triées
-    if (clean) return sorted;
-
-    // Si des filtres sont appliqués, on filtre les recettes selon les critères choisis
-    return sorted.filter(
-      (r) =>
-        (!filters.regime || r.regime_alimentaire?.text === filters.regime) &&
-        (!filters.categorie || r.categorie?.text === filters.categorie) &&
-        (!filters.duree || r.duree?.text === filters.duree)
-    );
   };
 
-  // Appel de la fonction pour obtenir les recettes filtrées
-  const recipes = data ? getFilteredRecipes() : [];
+  // Appliquer les filtres lorsqu'ils changent
+  useEffect(() => {
+    let result = recipes;
+
+    if (selectedRegime !== null) {
+      result = result.filter(
+        (recipe) => recipe.regime_alimentaire.id === selectedRegime
+      );
+    }
+
+    if (selectedCategory !== null) {
+      result = result.filter(
+        (recipe) => recipe.categorie.id === selectedCategory
+      );
+    }
+
+    if (selectedDuration !== null) {
+      result = result.filter((recipe) => recipe.duree.id === selectedDuration);
+    }
+
+    setFilteredRecipes(result);
+  }, [recipes, selectedRegime, selectedCategory, selectedDuration]);
 
   return (
     <>
       <Header />
-      <GenerateData setData={setData} url="./data/recipes.json" /> {/* Chargement des données */}
-      <section className={dataNull ? "recipes" : "recipes dataNull"} >
-      {data ? (
-          <>
-          <article className="choise">
-            <h2>Choisissez votre :</h2>
-            <div className="formRecipes_container">
-              {/* Application des filtres pour chaque catégorie (régime, catégorie, durée) */}
-              <Filter
-                title="Régime :"
-                groupe={getGroup("regime_alimentaire")}
-                type="regime"
-                onFilterChange={(type, value) => {
-                  setClean(false); // On applique les filtres
-                  setFilters((prev) => ({ ...prev, [type]: value })); // Mise à jour des filtres
-                }}
-              />
-              <Filter
-                title="Catégorie :"
-                groupe={getGroup("categorie")}
-                type="categorie"
-                onFilterChange={(type, value) => {
-                  setClean(false);
-                  setFilters((prev) => ({ ...prev, [type]: value }));
-                }}
-              />
-              <Filter
-                title="Durée :"
-                groupe={getGroup("duree")}
-                type="duree"
-                onFilterChange={(type, value) => {
-                  setClean(false);
-                  setFilters((prev) => ({ ...prev, [type]: value }));
-                }}
-              />
-            </div>
-          </article>
-
-          <article className="recipesCards" id="recipesCards">
-            <h2>Recettes :</h2>
-            {/* Si des recettes sont trouvées, on les affiche, sinon on affiche un message */}
-            {recipes.length > 0 ? (
-              recipes.map((r) => (
-                <div className="card" key={r.title}>
-                  <h3>{r.title}</h3>
-                  <img src={r.img} alt={`Photo de ${r.title}`} loading="lazy"/>
-                </div>
-              ))
-            ) : (
-              <p className="noRecipesMessage">Aucune recette trouvée.</p> // Message d'absence de résultats
-            )}
-          </article>
-          </>
-      ) : (
-        <p className="loadingMessage">Chargement des données...</p> // Message de chargement
-      )}
+      <section className="recipes">
+        <img className="backgroundRecipes" src="/assets/img/background/background-recipes.webp" alt="Arrière plan de la page web" />
+        <article className="choice">
+          <h2 className="titleRecipesCards">Choisissez votre :</h2>
+          <Filter
+            title="Régime :"
+            groupe={uniqueRegimes}
+            onFilterChange={(selectedId) =>
+              handleFilterChange("regime", selectedId)
+            }
+            selectedFilter={selectedRegime}
+          />
+          <Filter
+            title="Catégorie :"
+            groupe={uniqueCategory}
+            onFilterChange={(selectedId) =>
+              handleFilterChange("category", selectedId)
+            }
+            selectedFilter={selectedCategory}
+          />
+          <Filter
+            title="Durée :"
+            groupe={uniqueDuration}
+            onFilterChange={(selectedId) =>
+              handleFilterChange("duration", selectedId)
+            }
+            selectedFilter={selectedDuration}
+          />
+        </article>
+        <article className="recipesCards">
+          <h2 className="titleRecipesCards">Recettes :</h2>
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((card) => (
+              <div className="card" key={card.title}>
+                <h3>{card.title}</h3>
+                <img
+                  src={card.img}
+                  alt={`Photo de ${card.title}`}
+                  loading="lazy"
+                />
+              </div>
+            ))
+          ) : (
+            <NoData
+              text="Aucune recette ne correspond aux filtres sélectionnés"
+              textClass="titleRecipesCards"
+            />
+          )}
+        </article>
       </section>
       <Footer />
     </>
