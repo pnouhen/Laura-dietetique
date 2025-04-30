@@ -7,8 +7,8 @@ export default function About() {
   return (
     <>
       <Header />
-      <section className="about">
-        <div className="about_container">
+      <main className="about">
+        <section className="about_container">
           <img src="/assets/img/LauraPicture.webp" alt="Photo de Laura" />
         <p>
           Passionnée par l'importance de l'alimentation sur la santé, c'est
@@ -26,9 +26,9 @@ export default function About() {
           vous apporter toujours de nouvelles solutions pour atteindre vos
           objectifs personnels!
         </p>
-        </div>
+        </section>
         
-      </section>
+      </main>
       <Footer />
     </>
   );

@@ -1,0 +1,37 @@
+@import "../../styles/mixin";
+
+.cardConsultation {
+    @include section;
+    @include displayColumn;
+    gap: 20px;
+    width: 60%;
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    h3 {
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+    .duration,
+    .price,
+    .coupleRate {
+      display: flex;
+      align-self: baseline;
+      gap: 5px;
+    }
+    .description {
+      @include displayColumn;
+      gap: 5px;
+    }
+    .priceCondition {
+      font-style: italic;
+      font-weight: 500;
+    }
+  }

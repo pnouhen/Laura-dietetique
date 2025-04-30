@@ -91,9 +91,9 @@ export default function Recipes() {
   return (
     <>
       <Header />
-      <section className="recipes">
+      <main className="recipes">
         <img className="backgroundRecipes" src="/assets/img/background/background-recipes.webp" alt="Arrière plan de la page web" />
-        <article className="choice">
+        <section className="choice">
           <h2 className="titleRecipesCards">Choisissez votre :</h2>
           <Filter
             title="Régime :"
@@ -119,8 +119,8 @@ export default function Recipes() {
             }
             selectedFilter={selectedDuration}
           />
-        </article>
-        <article className="recipesCards">
+        </section>
+        <section className="recipesCards">
           <h2 className="titleRecipesCards">Recettes :</h2>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((card) => (
@@ -139,8 +139,8 @@ export default function Recipes() {
               textClass="titleRecipesCards"
             />
           )}
-        </article>
-      </section>
+        </section>
+      </main>
       <Footer />
     </>
   );

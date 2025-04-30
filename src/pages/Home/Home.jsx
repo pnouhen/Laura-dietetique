@@ -1,4 +1,5 @@
 import Header from "../../components/Header/Header.jsx";
+import CardObjectif from "../../components/CardObjectif/CardObjectif.jsx";
 import SlideShow from "../../components/SlideShow/SlideShow.jsx";
 import SubmitReview from "../../components/SubmitReview/SubmitReview.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -8,84 +9,54 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="home">
+      <main className="home">
         <section className="objectif">
           <h2>Ensemble, nous pouvons :</h2>
-          <div className="objectif_container">
-            <article className="manage">
-              <i className="fa-solid fa-seedling"></i>
-              <h3>
-                Gérer durablement <br /> votre poids
-              </h3>
-              <p>
-                contre l’obésité, le
-                <br /> surpoids et la maigreur
-              </p>
-            </article>
+          <CardObjectif
+            article="cardObjectif manage"
+            logo="fa-solid fa-seedling"
+            title="Gérer durablement<br />votre poids"
+            text="contre l’obésité, le<br />surpoids et la maigreur"
+          />
 
-            <article className="control">
-              <i className="fa-solid fa-scale-balanced"></i>
-              <h3>
-                Contrôle
-                <br /> votre poids
-              </h3>
-              <p>
-                face à des
-                <br /> changements de vie
-              </p>
-            </article>
+          <CardObjectif
+            article="cardObjectif control"
+            logo="fa-solid fa-scale-balanced"
+            title="Contrôle<br />votre poids"
+            text="face à des<br />changements de vie"
+          />
 
-            <article className="adapt">
-              <i className="fa-solid fa-rotate"></i>
-              <h3>
-                Adapter votre
-                <br /> alimentation
-              </h3>
-              <p>
-                pour éviter les problèmes
-                <br /> digestifs ou mieux vieillir
-              </p>
-            </article>
-            <article className="face">
-              <i className="fa-solid fa-heart-pulse"></i>
-              <h3>
-                Affronter les défis
-                <br /> quotidiens
-              </h3>
-              <p>
-                comme une pathologie ou
-                <br /> un déséquilibre métabolique
-              </p>
-            </article>
+          <CardObjectif
+            article="cardObjectif adapt"
+            logo="fa-solid fa-rotate"
+            title="Adapter votre<br />alimentation"
+            text="pour éviter les problèmes<br />digestifs ou mieux vieillir"
+          />
 
-            <article className="optimize">
-              <i className="fa-solid fa-dumbbell"></i>
-              <h3>
-                Optimiser vos
-                <br /> performances
-              </h3>
-              <p>
-                physiques et
-                <br /> sportives
-              </p>
-            </article>
+          <CardObjectif
+            article="cardObjectif face"
+            logo="fa-solid fa-heart-pulse"
+            title="Affronter les défis<br />quotidiens"
+            text="comme une pathologie ou<br />un déséquilibre métabolique"
+          />
 
-            <article className="improve">
-              <i className="fa-solid fa-bullseye"></i>
-              <h3>
-                Améliorer votre
-                <br /> alimentation
-              </h3>
-              <p>
-                pour prendre soin
-                <br /> de votre corps
-              </p>
-            </article>
-          </div>
+          <CardObjectif
+            article="cardObjectif optimize"
+            logo="fa-solid fa-dumbbell"
+            title="Optimiser vos<br />performances"
+            text="physiques et<br />sportives"
+          />
+
+          <CardObjectif
+            article="cardObjectif improve"
+            logo="fa-solid fa-bullseye"
+            title="Améliorer votre<br />alimentation"
+            text="pour prendre soin<br />de votre corps"
+          />
         </section>
         <SlideShow />
         <SubmitReview />
-      </div>
+      </main>
       <Footer />
     </>
   );

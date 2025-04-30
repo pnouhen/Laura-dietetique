@@ -1,0 +1,37 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.cardObjectif {
+    @include displayColumn;
+    margin: auto;
+    justify-content: center;
+    gap: 5px;
+    width: 270px;
+    i,
+    p {
+      text-align: center;
+    }
+    i {
+      font-size: 95px;
+    }
+    .fa-seedling,
+    .fa-rotate,
+    .fa-dumbbell {
+      color: $green;
+    }
+    .fa-scale-balanced,
+    .fa-heart-pulse,
+    .fa-bullseye {
+      color: $brown;
+    }
+    @media (max-width: 1024px) {
+      .fa-heart-pulse {
+        color: $green;
+      }
+    }
+    @media (max-width: 1024px) {
+      .fa-rotate {
+        color: $brown;
+      }
+    }
+  }
