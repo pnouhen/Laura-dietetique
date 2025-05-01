@@ -1,12 +1,20 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import MessageModal from "../MessageModal/MessageModal";
 import "./submitReview.scss";
 
 export default function SubmitReview() {
-  // Change rating's color and text
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const ratingsText = [
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [validationError, setValidationError] = useState(null);
+  const [charCount, setCharCount] = useState(0);
+  const MAX_CHARS = 450;
+
+  const lastNameRef = useRef();
+  const firstNameRef = useRef();
+  const reviewRef = useRef();
+
+  const RATING_TEXTS = [
     "Aucun avis",
     "Décevant",
     "Médiocre",
@@ -15,39 +23,50 @@ export default function SubmitReview() {
     "Excellent",
   ];
 
-  // Inputs and textarea
-  const [send, setSend] = useState(false);
-  const [missingElement, setMissingElement] = useState(null);
+  useEffect(() => {
+    updateCharCounter();
+  }, []);
 
-  // Input refs
-  const lastNameRef = useRef();
-  const firstnameRef = useRef();
-  const reviewRef = useRef();
+  const updateCharCounter = () => {
+    if (reviewRef.current) {
+      const length = reviewRef.current.value.length;
+      setCharCount(length);
+    }
+  };
 
-  // Handle review submission
-  const resetReview = () => {
-    // Check if fields are filled
+  const handleSubmit = () => {
     if (
       !lastNameRef.current.value ||
-      !firstnameRef.current.value ||
+      !firstNameRef.current.value ||
       !reviewRef.current.value ||
       rating === 0
     ) {
-      // If not filled, show error message
-      return setMissingElement("Veuillez remplir tous les éléments");
+      setValidationError("Veuillez remplir tous les éléments");
+      return;
     }
+    setIsSubmitted(true);
+    resetForm();
+  };
 
-    // If all fields are filled, clean inputs and submit the review
-    setSend(true);
+  const resetForm = () => {
     lastNameRef.current.value = "";
-    firstnameRef.current.value = "";
+    firstNameRef.current.value = "";
     reviewRef.current.value = "";
     setRating(0);
-    setMissingElement(null); // Reset error message
+    setCharCount(0);
+    setValidationError(null);
   };
+
+  const closeModal = (type) => {
+    if (type === "success") setIsSubmitted(false);
+    if (type === "validation") setValidationError(null);
+  };
+
+  const remainingChars = MAX_CHARS - charCount;
 
   return (
     <>
+    {/* Faire des composants et voir pour mettre des function */}
       <section className="submitReview">
         <h2>Laisser un avis :</h2>
         <form action="submit">
@@ -57,48 +76,57 @@ export default function SubmitReview() {
           </div>
           <div className="firstName">
             <label htmlFor="firstname">Prénom</label>
-            <input type="text" id="firstname" ref={firstnameRef} />
+            <input type="text" id="firstname" ref={firstNameRef} />
           </div>
           <div className="ratings">
-            {[...Array(5)].map((_, index) => (
+            {[...Array(5)].map((_, i) => (
               <i
-                key={index}
+                key={i}
                 className={
-                  index < (hoverRating || rating)
-                    ? "fa-solid fa-star  starSelected"
+                  i < (hoverRating || rating)
+                    ? "fa-solid fa-star starSelected"
                     : "fa-solid fa-star"
                 }
-                onClick={() => setRating(index + 1)}
-                onMouseEnter={() => setHoverRating(index + 1)}
+                onClick={() => setRating(i + 1)}
+                onMouseEnter={() => setHoverRating(i + 1)}
                 onMouseLeave={() => setHoverRating(0)}
               ></i>
             ))}
-            <p>{ratingsText[hoverRating || rating]}</p>
+            <p>{RATING_TEXTS[hoverRating || rating]}</p>
           </div>
           <div className="formReview">
             <label htmlFor="review">Votre avis</label>
-            <textarea id="review" ref={reviewRef}></textarea>
+            <span className="review-counter">
+              Caractères restant : {remainingChars}
+            </span>
+            <textarea
+              id="review"
+              ref={reviewRef}
+              onChange={updateCharCounter}
+              maxLength={MAX_CHARS}
+            />           
           </div>
         </form>
-        <button onClick={resetReview}>Partagez</button>
+        <button onClick={handleSubmit}>Partagez</button>
       </section>
 
-      {send && (
+      {isSubmitted && (
         <MessageModal
-          poster={"message"}
-          title={"Avis déposé"}
-          clickPoster={() => setSend(false)}
-          clickClose={() => setSend(false)}
-          message={"Merci d'avoir partagé votre avis"}
+          poster="message"
+          title="Avis déposé"
+          clickPoster={() => closeModal("success")}
+          clickClose={() => closeModal("success")}
+          message="Merci d'avoir partagé votre avis"
         />
       )}
-      {missingElement && (
+
+      {validationError && (
         <MessageModal
-          poster={"message"}
-          title={"Elément(s) manquant(s)"}
-          clickPoster={() => setMissingElement(null)}
-          clickClose={() => setMissingElement(null)}
-          message={missingElement}
+          poster="message"
+          title="Elément(s) manquant(s)"
+          clickPoster={() => closeModal("validation")}
+          clickClose={() => closeModal("validation")}
+          message={validationError}
         />
       )}
     </>

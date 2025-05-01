@@ -46,6 +46,12 @@ p, span, li, a {
     font-size: 14px;
   }
 }
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
 .dataNull{
   display: flex;
   justify-content: center;

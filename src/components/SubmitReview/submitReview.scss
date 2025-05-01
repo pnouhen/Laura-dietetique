@@ -48,8 +48,24 @@
     }
     .formReview {
       width: 100%;
+      position: relative;
       textarea {
-        height: 150px;
+        height: 300px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-top: 45px;
+            }
+      .review-counter {
+        position: absolute;
+        font-size: 12px;
+        @include insideInput;
+        background-color: transparent;
+        font-style: italic;        
+        top: 28px;
+        right: 0;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
       }
     }
   }
