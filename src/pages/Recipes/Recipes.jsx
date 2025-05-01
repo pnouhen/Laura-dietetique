@@ -8,24 +8,25 @@ import Footer from "../../components/Footer/Footer.jsx";
 import "./recipes.scss";
 
 export default function Recipes() {
-  const [recipes, setRecipes] = useState([]);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);          // State to store all recipes
+  const [filteredRecipes, setFilteredRecipes] = useState([]);  // State for filtered recipes
 
-  // États pour les filtres sélectionnés
-  const [selectedRegime, setSelectedRegime] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedDuration, setSelectedDuration] = useState(null);
+  // States for selected filters
+  const [selectedRegime, setSelectedRegime] = useState(null);    // Selected dietary regime
+  const [selectedCategory, setSelectedCategory] = useState(null); // Selected category
+  const [selectedDuration, setSelectedDuration] = useState(null); // Selected duration
 
+  // Fetch recipe data when the component mounts
   useEffect(() => {
     fetchData("/public/data/recipes.json")
       .then((data) => {
-        setRecipes(data);
-        setFilteredRecipes(data); // Initialiser avec toutes les recettes
+        setRecipes(data);                     // Set all recipes
+        setFilteredRecipes(data);             // Initialize filtered recipes with all recipes
       })
-      .catch((error) => console.error("Error lors du fetch:", error));
+      .catch((error) => console.error("Error during fetch:", error));
   }, []);
 
-  // Fonction utilitaire pour extraire les valeurs uniques et les trier par id
+  // Utility function to get unique values from a property and sort by id
   const getUniqueValues = (items, propName) =>
     Array.from(
       new Map(
@@ -36,7 +37,7 @@ export default function Recipes() {
       ).values()
     ).sort((a, b) => a.id - b.id);
 
-  // Utilisation de la fonction pour chaque propriété
+  // Get unique regimes, categories, and durations
   const uniqueRegimes =
     recipes.length > 0 ? getUniqueValues(recipes, "regime_alimentaire") : [];
   const uniqueCategory =
@@ -44,7 +45,7 @@ export default function Recipes() {
   const uniqueDuration =
     recipes.length > 0 ? getUniqueValues(recipes, "duree") : [];
 
-  // Fonction pour gérer les changements de filtres
+  // Function to handle filter changes
   const handleFilterChange = (filterType, selectedId) => {
     switch (filterType) {
       case "regime":
@@ -65,26 +66,30 @@ export default function Recipes() {
     }
   };
 
-  // Appliquer les filtres lorsqu'ils changent
+  // Apply filters when any of the selected filters change
   useEffect(() => {
     let result = recipes;
 
+    // Apply dietary regime filter
     if (selectedRegime !== null) {
       result = result.filter(
         (recipe) => recipe.regime_alimentaire.id === selectedRegime
       );
     }
 
+    // Apply category filter
     if (selectedCategory !== null) {
       result = result.filter(
         (recipe) => recipe.categorie.id === selectedCategory
       );
     }
 
+    // Apply duration filter
     if (selectedDuration !== null) {
       result = result.filter((recipe) => recipe.duree.id === selectedDuration);
     }
 
+    // Update filtered recipes state
     setFilteredRecipes(result);
   }, [recipes, selectedRegime, selectedCategory, selectedDuration]);
 
@@ -92,11 +97,12 @@ export default function Recipes() {
     <>
       <Header />
       <main className="recipes">
-        <img className="backgroundRecipes" src="/assets/img/background/background-recipes.webp" alt="Arrière plan de la page web" />
+        <img className="backgroundRecipes" src="/assets/img/background/background-recipes.webp" alt="Page background" />
         <section className="choice">
-          <h2 className="titleRecipesCards">Choisissez votre :</h2>
+          <h2 className="titleRecipesCards">Choose your:</h2>
+          {/* Filter components */}
           <Filter
-            title="Régime :"
+            title="Dietary Regime:"
             groupe={uniqueRegimes}
             onFilterChange={(selectedId) =>
               handleFilterChange("regime", selectedId)
@@ -104,7 +110,7 @@ export default function Recipes() {
             selectedFilter={selectedRegime}
           />
           <Filter
-            title="Catégorie :"
+            title="Category:"
             groupe={uniqueCategory}
             onFilterChange={(selectedId) =>
               handleFilterChange("category", selectedId)
@@ -112,7 +118,7 @@ export default function Recipes() {
             selectedFilter={selectedCategory}
           />
           <Filter
-            title="Durée :"
+            title="Duration:"
             groupe={uniqueDuration}
             onFilterChange={(selectedId) =>
               handleFilterChange("duration", selectedId)
@@ -121,21 +127,22 @@ export default function Recipes() {
           />
         </section>
         <section className="recipesCards">
-          <h2 className="titleRecipesCards">Recettes :</h2>
+          <h2 className="titleRecipesCards">Recipes:</h2>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((card) => (
               <div className="card" key={card.title}>
                 <h3>{card.title}</h3>
                 <img
                   src={card.img}
-                  alt={`Photo de ${card.title}`}
+                  alt={`Image of ${card.title}`}
                   loading="lazy"
                 />
               </div>
             ))
           ) : (
+            // Display a message if no recipes match the filters
             <NoData
-              text="Aucune recette ne correspond aux filtres sélectionnés"
+              text="No recipes match the selected filters"
               textClass="titleRecipesCards"
             />
           )}
