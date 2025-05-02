@@ -15,5 +15,7 @@
   .comment {
     height: 100%;
   }
-  @include ratings;
+  .ratingsReview{
+   @include ratings; 
+  }
 }

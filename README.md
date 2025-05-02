@@ -10,5 +10,4 @@ Footer :
 
 
  A faire : 
- Accueil -> gérer la taille du témoignage
  recettes -> gérer le multipages en 1,2 ... 10

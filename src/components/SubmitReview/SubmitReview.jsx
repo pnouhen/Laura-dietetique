@@ -1,53 +1,58 @@
 import { useState, useRef, useEffect } from "react";
+import Label from "../Label/Label";
+import StarRating from "../StarRating/StarRating";
+import FromReview from "../FormReview/FormReview";
+import Button from "../Button/Button";
 import MessageModal from "../MessageModal/MessageModal";
+
 import "./submitReview.scss";
 
 export default function SubmitReview() {
+  // --- State management ---
   const [rating, setRating] = useState(0);
-  const [hoverRating, setHoverRating] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [validationError, setValidationError] = useState(null);
   const [charCount, setCharCount] = useState(0);
+
   const MAX_CHARS = 450;
 
+  // --- Form refs ---
   const lastNameRef = useRef();
   const firstNameRef = useRef();
   const reviewRef = useRef();
 
-  const RATING_TEXTS = [
-    "Aucun avis",
-    "Décevant",
-    "Médiocre",
-    "Moyen",
-    "Bien",
-    "Excellent",
-  ];
-
+  // --- Init character count on mount ---
   useEffect(() => {
     updateCharCounter();
   }, []);
 
+  // --- Update character counter ---
   const updateCharCounter = () => {
     if (reviewRef.current) {
-      const length = reviewRef.current.value.length;
-      setCharCount(length);
+      setCharCount(reviewRef.current.value.length);
     }
   };
 
-  const handleSubmit = () => {
-    if (
+  // --- Handle form submission ---
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const isEmpty =
       !lastNameRef.current.value ||
       !firstNameRef.current.value ||
       !reviewRef.current.value ||
-      rating === 0
-    ) {
+      rating === 0;
+
+    if (isEmpty) {
       setValidationError("Veuillez remplir tous les éléments");
       return;
     }
+
     setIsSubmitted(true);
     resetForm();
   };
 
+  // --- Reset form fields and state ---
   const resetForm = () => {
     lastNameRef.current.value = "";
     firstNameRef.current.value = "";
@@ -57,59 +62,58 @@ export default function SubmitReview() {
     setValidationError(null);
   };
 
+  // --- Close modal handlers ---
   const closeModal = (type) => {
     if (type === "success") setIsSubmitted(false);
     if (type === "validation") setValidationError(null);
   };
 
+  // --- Calculate remaining characters ---
   const remainingChars = MAX_CHARS - charCount;
 
   return (
     <>
-    {/* Faire des composants et voir pour mettre des function */}
       <section className="submitReview">
         <h2>Laisser un avis :</h2>
-        <form action="submit">
-          <div className="name">
-            <label htmlFor="lastname">Nom</label>
-            <input type="text" id="lastname" ref={lastNameRef} />
-          </div>
-          <div className="firstName">
-            <label htmlFor="firstname">Prénom</label>
-            <input type="text" id="firstname" ref={firstNameRef} />
-          </div>
-          <div className="ratings">
-            {[...Array(5)].map((_, i) => (
-              <i
-                key={i}
-                className={
-                  i < (hoverRating || rating)
-                    ? "fa-solid fa-star starSelected"
-                    : "fa-solid fa-star"
-                }
-                onClick={() => setRating(i + 1)}
-                onMouseEnter={() => setHoverRating(i + 1)}
-                onMouseLeave={() => setHoverRating(0)}
-              ></i>
-            ))}
-            <p>{RATING_TEXTS[hoverRating || rating]}</p>
-          </div>
-          <div className="formReview">
-            <label htmlFor="review">Votre avis</label>
-            <span className="review-counter">
-              Caractères restant : {remainingChars}
-            </span>
-            <textarea
-              id="review"
-              ref={reviewRef}
-              onChange={updateCharCounter}
-              maxLength={MAX_CHARS}
-            />           
-          </div>
+
+        {/* Review Form */}
+        <form onSubmit={handleSubmit}>
+          <Label
+            className="name"
+            htmlFor="lastName"
+            label="Nom"
+            type="text"
+            id="lastName"
+            ref={lastNameRef}
+          />
+          <Label
+            className="firstName"
+            htmlFor="firstName"
+            label="Prénom"
+            type="text"
+            id="firstName"
+            ref={firstNameRef}
+          />
+
+          <StarRating rating={rating} setRating={setRating} />
+
+          <FromReview
+            divFormReview="formReview"
+            htmlFor="review"
+            classNameSpan="review-counter"
+            remainingChars={remainingChars}
+            id="review"
+            ref={reviewRef}
+            onChange={updateCharCounter}
+            maxLength={MAX_CHARS}
+          />
+
+          {/* Submit button (inside form for proper submission) */}
+          <Button type="submit" />
         </form>
-        <button onClick={handleSubmit}>Partagez</button>
       </section>
 
+      {/* Success modal */}
       {isSubmitted && (
         <MessageModal
           poster="message"
@@ -120,6 +124,7 @@ export default function SubmitReview() {
         />
       )}
 
+      {/* Validation error modal */}
       {validationError && (
         <MessageModal
           poster="message"

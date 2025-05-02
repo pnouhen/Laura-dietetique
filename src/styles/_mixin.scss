@@ -15,7 +15,6 @@
   background-repeat: no-repeat;
 }
 @mixin ratings {
-  .ratings {
     display: flex;
     .fa-star {
       padding-right: 5px;
@@ -25,7 +24,6 @@
     .starSelected {
       color: $green;
     }
-  }
 }
 @mixin input {
   border-radius: 10px;

@@ -60,7 +60,7 @@ export default function SlideShow() {
 
   return (
     <section className="slideshow">
-      <h2>Reviews:</h2>
+      <h2>Les avis :</h2>
       {reviews.length > 0 ? (
         <>
           <div className="slideShow_container">

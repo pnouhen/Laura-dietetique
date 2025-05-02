@@ -1,0 +1,10 @@
+@import "../../styles/mixin";
+
+label {
+    @include font18-600;
+  }
+
+  input{
+    @include input;
+      @include insideInput;
+  }

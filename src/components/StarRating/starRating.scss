@@ -1,0 +1,23 @@
+@import "../../styles/mixin";
+
+.starRatings {
+    @include ratings;
+    margin-left: 215px;
+    @media (max-width: 768px) {
+      margin-left: 0px;
+    }
+    p {
+      font-weight: 700;
+    }
+  }
+  .ratings {
+    display: flex;
+    .fa-star {
+      padding-right: 5px;
+      font-size: 20px;
+      color: #808080;
+    }
+    .starSelected {
+      color: $green;
+    }
+  }

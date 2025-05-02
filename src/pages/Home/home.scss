@@ -21,6 +21,9 @@
     }
     h2{
       grid-column: 1 / 4;
+      @media (max-width: 1024px) {
+        grid-column: 1 / 3;
+      }
     }
   }
 }
