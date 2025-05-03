@@ -16,6 +16,7 @@
 }
 @mixin ratings {
     display: flex;
+    height: 25px;
     .fa-star {
       padding-right: 5px;
       font-size: 20px;

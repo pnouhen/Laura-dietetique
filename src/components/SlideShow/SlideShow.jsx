@@ -1,64 +1,99 @@
-import { useState, useEffect } from "react";
-import { fetchData } from "../../service/FetchData";
+import { useState, useEffect, useRef } from "react";
+import { fetchData } from "../../services/fetchData";
+import { useDetectWidth } from "../../services/useDetectWidth";
 import Review from "../Review/Review";
 import Dots from "../Dots/Dots";
-import "./slideShow.scss";
+
+import "./slideShow.scss"
 
 export default function SlideShow() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
-
-  // Fetch and sort reviews by date (newest first)
+  const [containerHeight, setContainerHeight] = useState(0);
+  const slideShowRef = useRef(null);
+  
   useEffect(() => {
     fetchData("/public/data/reviews.json")
       .then((data) =>
         setReviews(data.sort((a, b) => new Date(b.date) - new Date(a.date)))
       )
-      .catch((error) => console.error("Error while fetching:", error));
+      .catch((err) => console.error("Error fetching reviews:", err));
   }, []);
 
-  // Handler for navigation
-  const handleNavigation = (newIndex) => {
-    setIndex(newIndex);
-  };
+  const isDesktop = useDetectWidth();
+  const visibleReviews = isDesktop ? 3 : 1;
+
+  // Calculate and set the maximum height needed for the container
+  useEffect(() => {
+    if (reviews.length > 0 && slideShowRef.current) {
+      // Give the DOM time to render the reviews first
+      const timer = setTimeout(() => {
+        const reviewElements = slideShowRef.current.querySelectorAll('.review');
+        let maxHeight = 0;
+        
+        reviewElements.forEach(el => {
+          // Get the height with all content expanded
+          const reviewCopy = el.cloneNode(true);
+          reviewCopy.style.position = 'absolute';
+          reviewCopy.style.visibility = 'hidden';
+          reviewCopy.style.height = 'auto';
+          
+          // Make sure any "comment" elements inside are expanded
+          const commentElement = reviewCopy.querySelector('.comment');
+          if (commentElement) {
+            commentElement.classList.add('active');
+          }
+          
+          document.body.appendChild(reviewCopy);
+          const fullHeight = reviewCopy.offsetHeight;
+          document.body.removeChild(reviewCopy);
+          
+          maxHeight = Math.max(maxHeight, fullHeight);
+        });
+        
+        // Add some padding to ensure we have enough space
+        setContainerHeight(maxHeight + 20);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [reviews, isDesktop]);
+
+  const handlePrev = () =>
+    setIndex((index - visibleReviews + reviews.length) % reviews.length);
+  const handleNext = () => setIndex((index + visibleReviews) % reviews.length);
 
   return (
-    <section className="slideshow">
+    <section className="slideshow" ref={slideShowRef}>
       <h2>Les avis :</h2>
+
       {reviews.length > 0 ? (
         <>
-          <div className="slideShow_container">
-            {/* Left arrow */}
-            <i
-              className="fa-solid fa-chevron-left"
-              onClick={() =>
-                handleNavigation((index - 3 + reviews.length) % reviews.length)
-              }
-            ></i>
+          <div 
+            className="slideShow_container"
+            style={{ minHeight: containerHeight > 0 ? `${containerHeight}px` : 'auto' }}
+          >
+            <i className="fa-solid fa-chevron-left" onClick={handlePrev}></i>
 
-            {/* Render up to 3 reviews */}
-            {[0, 1, 2].map((i) => {
-              const review = reviews[index + i];
-              return review ? <Review key={i} review={review} /> : null;
+            {Array.from({ length: visibleReviews }).map((_, i) => {
+              const reviewIndex = (index + i) % reviews.length;
+              const review = reviews[reviewIndex];
+              return review ? <Review key={reviewIndex} review={review} /> : null;
             })}
 
-            {/* Right arrow */}
-            <i
-              className="fa-solid fa-chevron-right"
-              onClick={() => handleNavigation((index + 3) % reviews.length)}
-            ></i>
+            <i className="fa-solid fa-chevron-right" onClick={handleNext}></i>
           </div>
-          {/* Dots navigation */}
+
           <Dots
             currentIndex={index}
             dataLength={reviews.length}
-            reviewsToShow={1}
-            onDotClick={(newIndex) => handleNavigation(newIndex)}
+            reviewsToShow={visibleReviews}
+            onDotClick={setIndex}
           />
         </>
       ) : (
         <div className="error-container dataNull">
-          <p>No reviews available at the moment.</p>
+          <p>No reviews available.</p>
         </div>
       )}
     </section>

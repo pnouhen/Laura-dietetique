@@ -4,6 +4,7 @@
 .home {
   background-image: url(/assets/img/background/background-home.webp);
   @include backgroundImg;
+  background-attachment: fixed;
   @include displayColumn;
   gap: 30px;
   .objectif {

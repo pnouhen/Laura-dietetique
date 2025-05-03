@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./starRating.scss";
 
-export default function StarRating({ rating, setRating }) {
+export default function StarRating({ rating = 0, setRating = null, showLabel = true }) {
   const [hoverRating, setHoverRating] = useState(0);
+  const editable = typeof setRating === "function";
 
-  // Text labels for each rating level
   const RATING_TEXTS = [
     "Aucun avis",
     "Décevant",
@@ -14,25 +14,21 @@ export default function StarRating({ rating, setRating }) {
     "Excellent",
   ];
 
+  const current = hoverRating || rating;
+
   return (
     <div className="starRatings">
-      {/* Render 5 stars */}
       {[...Array(5)].map((_, i) => (
         <i
           key={i}
-          className={
-            i < (hoverRating || rating)
-              ? "fa-solid fa-star starSelected"
-              : "fa-solid fa-star"
-          }
-          onClick={() => setRating(i + 1)}         // Set selected rating
-          onMouseEnter={() => setHoverRating(i + 1)} // Highlight on hover
-          onMouseLeave={() => setHoverRating(0)}     // Reset on mouse leave
+          className={`fa-solid fa-star ${i < current ? "starSelected" : ""}`}
+          onClick={editable ? () => setRating(i + 1) : undefined}
+          onMouseEnter={editable ? () => setHoverRating(i + 1) : undefined}
+          onMouseLeave={editable ? () => setHoverRating(0) : undefined}
+          style={{ cursor: editable ? "pointer" : "default" }}
         ></i>
       ))}
-
-      {/* Display label under stars */}
-      <p>{RATING_TEXTS[hoverRating || rating]}</p>
+      {showLabel && <p>{RATING_TEXTS[current]}</p>}
     </div>
   );
 }

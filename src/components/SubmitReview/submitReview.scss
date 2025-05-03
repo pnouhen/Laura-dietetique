@@ -27,5 +27,12 @@
         height: 40px;
       }
     }
+    .starRatings{
+      
+      margin-left: 233px;
+      @media (max-width: 768px) {
+        margin-left: 0;
+      }
+    }
   }
 }

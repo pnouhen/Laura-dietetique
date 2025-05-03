@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchData } from "../../service/FetchData.jsx";
+import { fetchData } from "../../services/fetchData.jsx";
 
 import Header from "../../components/Header/Header.jsx";
 import Filter from "../../components/Filter/Filter.jsx";

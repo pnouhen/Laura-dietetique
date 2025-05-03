@@ -1,21 +1,28 @@
 @import "../../styles/mixin";
 
 .review {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: flex-start;
   gap: 30px;
   width: 100%;
   @media (max-width: 1024px) {
-    width: 100%;
+    width: calc(100% - 70px);
   }
   .name {
     @include font18-600;
   }
   .comment {
+    height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 40px;
+  }
+  .active{
     height: 100%;
   }
-  .ratingsReview{
-   @include ratings; 
-  }
 }
+
+
