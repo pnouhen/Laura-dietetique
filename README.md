@@ -10,4 +10,5 @@ Footer :
 
 
  A faire : 
+ Carrousel : height doit s'adapter a l'ensemble des comments
  recettes -> gérer le multipages en 1,2 ... 10

@@ -3,16 +3,27 @@
 .slideshow {
   @include section;
   @include displayColumn;
-  gap: 30px;
+  gap: 20px;
   .slideShow_container {
-    display: flex;
+    position: relative;
+    display: grid;
+    grid-template-columns:calc(33% - 33px) calc(33% - 33px) calc(33% - 33px);
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     [class*="fa-chevron"] {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
       display: flex;
       align-items: center;
       font-size: 30px;
+    }
+    .fa-chevron-left{
+      left: 0;
+    }
+    .fa-chevron-right{
+      right: 0;
     }
     @media (max-width: 1024px) {
       .ReviewDesktop{
