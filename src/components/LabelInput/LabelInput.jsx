@@ -1,6 +1,6 @@
-import "./label.scss"
+import "./labelInput.scss"
 
-export default function Label({className, htmlFor, label, type, id, ref}){
+export default function LabelInput({className, htmlFor, label, type, id, ref}){
     return(
         <div className={className}>
             <label htmlFor={htmlFor}>{label}</label>

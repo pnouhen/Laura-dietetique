@@ -118,7 +118,7 @@ header {
       &.active {
         opacity: 1;
         visibility: visible;
-        z-index: 2;
+        z-index: 20;
         transition: visibility 200ms ease, opacity 200ms ease; 
       }
     

@@ -1,24 +1,38 @@
 [
   {
-    "title": "Salade de chèvre chaud",
-    "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
-    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
-    "categorie": { "id": 1, "text": "Entrées" },
-    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
-  },
-  {
-    "title": "Houmous maison",
-    "img": "/assets/img/recipes/Houmous-maison.webp",
-    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
+    "title": "Brochettes de poulet épicées",
+    "img": "/assets/img/recipes/Brochettes-de-poulet-epicees.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 0, "text": "Apéritif" },
     "duree": { "id": 0, "text": "Moins de 15 minutes" }
   },
   {
-    "title": "Soupe de potimarron",
-    "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
-    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
-    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "title": "Mini quiches au saumon",
+    "img": "/assets/img/recipes/Mini-quiches-au-saumon.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 0, "text": "Apéritif" },
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+  },
+  {
+    "title": "Quiche lorraine",
+    "img": "/assets/img/recipes/Quiche-lorraine.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 3, "text": "Plats" },
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
+  },
+  {
+    "title": "Cromesquis de volaille",
+    "img": "/assets/img/recipes/Cromesquis-de-volaille.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 0, "text": "Apéritif" },
+    "duree": { "id": 3, "text": "De 45 à 60 minutes" }
+  },
+  {
+    "title": "Rillettes de canard maison",
+    "img": "/assets/img/recipes/Rillettes-de-canard-maison.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 0, "text": "Apéritif" },
+    "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
     "title": "Poulet au curry",
@@ -35,6 +49,27 @@
     "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
+    "title": "Houmous maison",
+    "img": "/assets/img/recipes/Houmous-maison.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
+    "categorie": { "id": 0, "text": "Apéritif" },
+    "duree": { "id": 0, "text": "Moins de 15 minutes" }
+  },
+  {
+    "title": "Salade de chèvre chaud",
+    "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+  },
+  {
+    "title": "Soupe de potimarron",
+    "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
+    "regime_alimentaire": { "id": 1, "text": "Végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
+  },
+  {
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
@@ -47,12 +82,5 @@
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
     "categorie": { "id": 5, "text": "Sauces" },
     "duree": { "id": 1, "text": "De 15 à 30 minutes" }
-  },
-  {
-    "title": "Quiche lorraine",
-    "img": "/assets/img/recipes/Quiche-lorraine.webp",
-    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
-    "categorie": { "id": 3, "text": "Plats" },
-    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   }
 ]

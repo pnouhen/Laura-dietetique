@@ -13,18 +13,19 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 @mixin ratings {
-    display: flex;
-    height: 25px;
-    .fa-star {
-      padding-right: 5px;
-      font-size: 20px;
-      color: #808080;
-    }
-    .starSelected {
-      color: $green;
-    }
+  display: flex;
+  height: 25px;
+  .fa-star {
+    padding-right: 5px;
+    font-size: 20px;
+    color: #808080;
+  }
+  .starSelected {
+    color: $green;
+  }
 }
 @mixin input {
   border-radius: 10px;
@@ -39,13 +40,18 @@
     font-size: 16px;
   }
 }
-
+@mixin labelInput {
+  @include displayColumn;
+  gap: 10px;
+}
 @mixin insideInput {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #d9d9d9;
   resize: none;
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
+}
+
+@mixin align-items5px {
+  display: flex;
+  gap: 5px;
 }

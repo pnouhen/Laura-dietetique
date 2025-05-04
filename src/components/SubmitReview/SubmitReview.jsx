@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import Label from "../Label/Label";
+import LabelInput from "../LabelInput/LabelInput";
 import StarRating from "../StarRating/StarRating";
 import FromReview from "../FormReview/FormReview";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
@@ -78,7 +78,7 @@ export default function SubmitReview() {
 
         {/* Review Form */}
         <form onSubmit={handleSubmit}>
-          <Label
+          <LabelInput
             className="name"
             htmlFor="lastName"
             label="Nom"
@@ -86,7 +86,7 @@ export default function SubmitReview() {
             id="lastName"
             ref={lastNameRef}
           />
-          <Label
+          <LabelInput
             className="firstName"
             htmlFor="firstName"
             label="Prénom"

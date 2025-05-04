@@ -22,9 +22,8 @@
     .duration,
     .price,
     .coupleRate {
-      display: flex;
+      @include align-items5px;
       align-self: baseline;
-      gap: 5px;
     }
     .description {
       @include displayColumn;

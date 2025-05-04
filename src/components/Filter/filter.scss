@@ -1,8 +1,7 @@
 @import "../../styles/mixin";
 
 .formRecipes {
-    @include displayColumn;
-    gap: 5px;
+    @include labelInput;
     label {
       width: auto;
       @include font18-600;
