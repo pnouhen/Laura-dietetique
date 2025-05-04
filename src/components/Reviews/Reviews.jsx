@@ -6,7 +6,7 @@ import CardReview from "../CardReview/CardReview.jsx";
 import Dots from "../Dots/Dots.jsx";
 import NoData from "../NoData/NoData.jsx";
 
-import "./review.scss";
+import "./reviews.scss";
 
 export default function Review() {
   const [reviews, setReviews] = useState([]);
@@ -24,6 +24,14 @@ export default function Review() {
 
   const isDesktop = useDetectWidth();
   const visibleReviews = isDesktop ? 3 : 1;
+
+  // Make sure index is valid when switching between desktop/mobile
+  useEffect(() => {
+    // Ensure index is always a multiple of visibleReviews on desktop
+    if (isDesktop && index % visibleReviews !== 0) {
+      setIndex(Math.floor(index / visibleReviews) * visibleReviews);
+    }
+  }, [isDesktop, visibleReviews, index]);
 
   // Calculate and set the maximum height needed for the container
   useEffect(() => {
@@ -61,6 +69,13 @@ export default function Review() {
     }
   }, [reviews, isDesktop]);
 
+  // Handle proper pagination
+  const handleDotClick = (newIndex) => {
+    // Make sure we don't exceed the limits
+    const maxStartIndex = Math.max(0, reviews.length - visibleReviews);
+    setIndex(Math.min(newIndex, maxStartIndex));
+  };
+
   return (
     <section className="slideshow" ref={slideShowRef}>
       <h2>Les avis :</h2>
@@ -80,10 +95,10 @@ export default function Review() {
               data={reviews}
             />
             {Array.from({ length: visibleReviews }).map((_, i) => {
-              const reviewIndex = (index + i) % reviews.length;
-              const review = reviews[reviewIndex];
-              return review ? (
-                <CardReview key={reviewIndex} review={review} />
+              const reviewIndex = index + i;
+              // Only render if we have a review at this index
+              return reviewIndex < reviews.length ? (
+                <CardReview key={reviewIndex} review={reviews[reviewIndex]} />
               ) : null;
             })}
           </div>
@@ -91,7 +106,7 @@ export default function Review() {
             currentIndex={index}
             dataLength={reviews.length}
             reviewsToShow={visibleReviews}
-            onDotClick={setIndex}
+            onDotClick={handleDotClick}
           />
         </>
       ) : (

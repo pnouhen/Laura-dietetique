@@ -1,7 +1,7 @@
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
 import CardObjectif from "../../components/CardObjectif/CardObjectif.jsx";
-import Review from "../../components/Review/Review.jsx";
+import Reviews from "../../components/Reviews/Reviews.jsx";
 import SubmitReview from "../../components/SubmitReview/SubmitReview.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import "./home.scss";
@@ -56,7 +56,7 @@ export default function Home() {
             text="pour prendre soin<br />de votre corps"
           />
         </section>
-        <Review />
+        <Reviews />
         <SubmitReview />
       </main>
       <Footer />
