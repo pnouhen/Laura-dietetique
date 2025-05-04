@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 
 import Header from "../../components/Header/Header.jsx";
+import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
 import Filter from "../../components/Filter/Filter.jsx";
+import Pagination from "../../components/Pagination/Pagination.jsx";
 import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -16,14 +18,15 @@ export default function Recipes() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDuration, setSelectedDuration] = useState(null);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const recipesPerPage = 9;
+  const [index, setIndex] = useState(0);
+  const visibleRecipes = 9;
 
   useEffect(() => {
     fetchData("/public/data/recipes.json")
       .then((data) => {
-        setRecipes(data.sort((a, b) => a.title.localeCompare(b.title)));
-        setFilteredRecipes(data);
+        const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
+        setRecipes(sorted);
+        setFilteredRecipes(sorted);
       })
       .catch((error) => console.error("Error during fetch:", error));
   }, []);
@@ -42,25 +45,21 @@ export default function Recipes() {
     }
 
     setFilteredRecipes(result);
+    setIndex(0);
   }, [recipes, selectedRegime, selectedCategory, selectedDuration]);
 
-  const indexOfLastRecipe = currentPage * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
+  const pageCount = Math.ceil(filteredRecipes.length / visibleRecipes);
+  const currentPage = Math.floor(index / visibleRecipes) + 1;
 
   return (
     <>
       <Header />
       <main className="recipes">
+        <BackgroundImg url="/assets/img/background/background-recipes.webp" />
         <section className="choice">
-          <h2 className="titleRecipesCards">Choose your:</h2>
-
+          <h2 className="titleRecipesCards">Choisissez votre :</h2>
           <Filter
-            label="Regime alimentaire :"
+            label="Régime alimentaire :"
             htmlFor="DietaryRegime"
             data={recipes}
             propName="regime_alimentaire"
@@ -84,36 +83,32 @@ export default function Recipes() {
 
         <section className="recipesCards">
           <h2 className="titleRecipesCards">Recettes :</h2>
-          {currentRecipes.length > 0 ? (
+          {filteredRecipes.length > 0 ? (
             <>
-              {currentRecipes.map((card) => (
-                <CardRecipe
-                  key={card.title}
-                  title={card.title}
-                  src={card.img}
-                />
-              ))}
-                
-                <div className="pagination">
-                  {currentPage > 1 && (
-                  <div className="pagination-prev" onClick={() => paginate(currentPage - 1)}>
-                    <i className="fa-solid fa-chevron-left"></i>
-                    <p>Préc.</p>
-                  </div>
-                )}
-                <p className="counter">{`${currentPage} / ${totalPages}`}</p>
-                {currentPage < totalPages && (
-                  <div className="pagination-next" onClick={() => paginate(currentPage + 1)}>
-                    <p>Suiv.</p>
-                    <i className="fa-solid fa-chevron-right"></i>
-                  </div>
-                )}
-                </div>
-                
+              {filteredRecipes
+                .slice(index, index + visibleRecipes)
+                .map((card) => (
+                  <CardRecipe
+                    key={card.id}
+                    id={card.id}
+                    title={card.title}
+                    src={card.img}
+                  />
+                ))}
+              <Pagination
+                index={index}
+                setIndex={setIndex}
+                visible={visibleRecipes}
+                data={filteredRecipes}
+                textPrev="Préc."
+                textNext="Suiv."
+                counter={`${currentPage} / ${pageCount}`}
+                hideButtonsWhenExtreme={true}
+              />
             </>
           ) : (
             <NoData
-              text="No recipes match the selected filters"
+              text="Pas de recettes disponibles"
               textClass="titleRecipesCards"
             />
           )}

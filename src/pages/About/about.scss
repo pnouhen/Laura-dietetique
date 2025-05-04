@@ -1,9 +1,8 @@
 @import "../../styles/mixin";
 
 .about {
+  position: relative;
   flex: 1;
-  background-image: url(/assets/img/background/background-about.webp);
-  @include backgroundImg;
   height: 100%;
   display: flex;
   align-items: center;

@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header.jsx";
+import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
 import CardObjectif from "../../components/CardObjectif/CardObjectif.jsx";
-import SlideShow from "../../components/SlideShow/SlideShow.jsx";
+import Review from "../../components/Review/Review.jsx";
 import SubmitReview from "../../components/SubmitReview/SubmitReview.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import "./home.scss";
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <Header />
       <main className="home">
+        <BackgroundImg url="/assets/img/background/background-home.webp" />
         <section className="objectif">
           <h2>Ensemble, nous pouvons :</h2>
           <CardObjectif
@@ -54,7 +56,7 @@ export default function Home() {
             text="pour prendre soin<br />de votre corps"
           />
         </section>
-        <SlideShow />
+        <Review />
         <SubmitReview />
       </main>
       <Footer />

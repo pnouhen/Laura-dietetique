@@ -8,12 +8,7 @@
 @mixin displayColumn {
   display: flex;
   flex-direction: column;
-}
-@mixin backgroundImg {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  justify-content: space-between;
 }
 @mixin ratings {
   display: flex;
@@ -54,4 +49,12 @@
 @mixin align-items5px {
   display: flex;
   gap: 5px;
+}
+
+@mixin recipesCards-pagination {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, calc(33% - 20px));
+  justify-content: center;
+  gap: 30px;
 }

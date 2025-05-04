@@ -1,5 +1,6 @@
 [
   {
+    "id": "brochettes-de-poulet-epicees",
     "title": "Brochettes de poulet épicées",
     "img": "/assets/img/recipes/Brochettes-de-poulet-epicees.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -7,6 +8,7 @@
     "duree": { "id": 0, "text": "Moins de 15 minutes" }
   },
   {
+    "id": "mini-quiches-au-saumon",
     "title": "Mini quiches au saumon",
     "img": "/assets/img/recipes/Mini-quiches-au-saumon.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -14,6 +16,7 @@
     "duree": { "id": 1, "text": "De 15 à 30 minutes" }
   },
   {
+    "id": "quiche-lorraine",
     "title": "Quiche lorraine",
     "img": "/assets/img/recipes/Quiche-lorraine.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -21,6 +24,7 @@
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
+    "id": "cromesquis-de-volaille",
     "title": "Cromesquis de volaille",
     "img": "/assets/img/recipes/Cromesquis-de-volaille.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -28,6 +32,7 @@
     "duree": { "id": 3, "text": "De 45 à 60 minutes" }
   },
   {
+    "id": "rillettes-de-canard-maison",
     "title": "Rillettes de canard maison",
     "img": "/assets/img/recipes/Rillettes-de-canard-maison.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -35,6 +40,7 @@
     "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
+    "id": "poulet-au-curry",
     "title": "Poulet au curry",
     "img": "/assets/img/recipes/Poulet-au-curry.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -42,6 +48,7 @@
     "duree": { "id": 3, "text": "De 45 à 60 minutes" }
   },
   {
+    "id": "boeuf-bourguignon",
     "title": "Boeuf bourguignon",
     "img": "/assets/img/recipes/Boeuf-bourguignon.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
@@ -49,6 +56,7 @@
     "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
+    "id": "houmous-maison",
     "title": "Houmous maison",
     "img": "/assets/img/recipes/Houmous-maison.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
@@ -56,6 +64,7 @@
     "duree": { "id": 0, "text": "Moins de 15 minutes" }
   },
   {
+    "id": "salade-de-chevre-chaud",
     "title": "Salade de chèvre chaud",
     "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
@@ -63,6 +72,7 @@
     "duree": { "id": 1, "text": "De 15 à 30 minutes" }
   },
   {
+    "id": "soupe-de-potimarron",
     "title": "Soupe de potimarron",
     "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
@@ -70,6 +80,7 @@
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
+    "id": "tiramisu",
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
@@ -77,6 +88,7 @@
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
+    "id": "sauce-tomate-maison",
     "title": "Sauce tomate maison",
     "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },

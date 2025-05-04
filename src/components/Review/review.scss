@@ -1,28 +1,41 @@
 @import "../../styles/mixin";
 
-.review {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
-  gap: 30px;
-  width: 100%;
-  @media (max-width: 1024px) {
-    width: calc(100% - 70px);
-  }
-  .name {
-    @include font18-600;
-  }
-  .comment {
-    height: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 40px;
-  }
-  .active{
-    height: 100%;
+.slideshow {
+  @include section;
+  @include displayColumn;
+  gap: 20px;
+  .slideShow_container {
+    position: relative;
+    display: grid;
+    grid-template-columns:calc(33% - 33px) calc(33% - 33px) calc(33% - 33px);
+    justify-content: center;
+    gap: 20px;
+    @media (max-width: 1024px){
+      display: flex;
+    }
+    .pagination{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      [class*="fa-chevron"] {
+      cursor: pointer;
+      font-size: 30px;
+    }
+    .fa-chevron-left{
+      left: 0;
+    }
+    .fa-chevron-right{
+      right: 0;
+    }
+    }
+    
+    @media (max-width: 1024px) {
+      .ReviewDesktop{
+        display: none;
+      }
+    }
   }
 }
-
-

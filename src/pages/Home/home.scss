@@ -2,8 +2,7 @@
 @import "../../styles/mixin";
 
 .home {
-  background-image: url(/assets/img/background/background-home.webp);
-  @include backgroundImg;
+  position: relative;
   @include displayColumn;
   gap: 30px;
   .objectif {

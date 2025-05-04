@@ -1,10 +1,11 @@
 import "./cardRecipe.scss";
 
-export default function CardRecipe({ key, title, src }) {
+export default function CardRecipe({ title, src }) {
   return (
-    <div className="cardRecipe" key={key}>
+    <div className="cardRecipe">
       <h3>{title}</h3>
       <img src={src} alt={`Image of ${title}`} loading="lazy" />
     </div>
   );
 }
+

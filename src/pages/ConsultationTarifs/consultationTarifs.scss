@@ -1,9 +1,10 @@
 @import "../../styles/mixin";
 
 .methodRate {
-  background-image: url(/assets/img/background/background-methodRate.webp);
-  @include backgroundImg;
-  background-position: right;
+  img{
+    object-position: right;
+    height: 78%;
+  }
   @include displayColumn;
   align-items: center;
   gap: 20px;

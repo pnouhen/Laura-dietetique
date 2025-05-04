@@ -2,15 +2,23 @@ import { useState } from "react";
 import NoData from "../NoData/NoData";
 import "./filter.scss";
 
-export default function Filter({ label, htmlFor, data = [], propName, onChange }) {
+export default function Filter({
+  label,
+  htmlFor,
+  data = [],
+  propName,
+  onChange,
+}) {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const options = Array.from(
     new Map(
-      data.map((item) => [
-        item[propName].id,
-        { id: item[propName].id, text: item[propName].text },
-      ])
+      data
+        .filter((item) => item[propName] && item[propName].id !== undefined && item[propName].text)
+        .map((item) => [
+          item[propName].id,
+          { id: item[propName].id, text: item[propName].text },
+        ])
     ).values()
   ).sort((a, b) => a.id - b.id);
 
@@ -19,28 +27,31 @@ export default function Filter({ label, htmlFor, data = [], propName, onChange }
     setSelectedValue(val);
     onChange(val);
   };
-
   return (
     <form className="formRecipes">
       {options.length > 0 ? (
-        <>
-        <label htmlFor={htmlFor}>
-          {label}
-        </label>
-        <select
-        id={htmlFor}
-        value={selectedValue === null ? "All" : selectedValue}
-        onChange={handleChange}
-      >
-        <option value="All">Tous</option>
-        {options.map((o) => (
-          <option key={o.id} value={o.id}>
-            {o.text}
-          </option>
-        ))}
-      </select>
-        </>
-        
+        options.length === 1 ? (
+          <>
+            <label htmlFor={htmlFor}>{label}</label>
+            <input type="text" value="Tous" readOnly />
+          </>
+        ) : (
+          <>
+            <label htmlFor={htmlFor}>{label}</label>
+            <select
+              id={htmlFor}
+              value={selectedValue === null ? "All" : selectedValue}
+              onChange={handleChange}
+            >
+              <option value="All">Tous</option>
+              {options.map((o) => (
+                <option key={o.id} value={o.id}>
+                  {o.text}
+                </option>
+              ))}
+            </select>
+          </>
+        )
       ) : (
         <NoData text="Données non disponibles..." />
       )}
