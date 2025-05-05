@@ -6,7 +6,7 @@ export default function BackgroundImg({url}){
           src={url}
           alt="Arrière plan de la page"
           className="backgroundImg"
-          loading="lazy"
+          loading="eager"
         />
     )
 }

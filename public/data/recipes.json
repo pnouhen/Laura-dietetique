@@ -8,21 +8,21 @@
     "duree": { "id": 0, "text": "Moins de 15 minutes" }
   },
   {
-    "id": "mini-quiches-au-saumon",
-    "title": "Mini quiches au saumon",
-    "img": "/assets/img/recipes/Mini-quiches-au-saumon.webp",
+    "id": "mini-quiches-au-poulet",
+    "title": "Mini quiches au poulet",
+    "img": "/assets/img/recipes/Mini-quiches-au-poulet.webp",
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 0, "text": "Apéritif" },
-    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
-  },
-  {
-    "id": "quiche-lorraine",
-    "title": "Quiche lorraine",
-    "img": "/assets/img/recipes/Quiche-lorraine.webp",
-    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
-    "categorie": { "id": 3, "text": "Plats" },
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
+  {
+    "id": "cromesquis-de-poulet",
+    "title": "Cromesquis de poulet",
+    "img": "/assets/img/recipes/Cromesquis-de-poulet.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 0, "text": "Apéritif" },
+    "duree": { "id": 3, "text": "De 45 à 60 minutes" }
+  },  
   {
     "id": "cromesquis-de-volaille",
     "title": "Cromesquis de volaille",
@@ -38,6 +38,110 @@
     "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
     "categorie": { "id": 0, "text": "Apéritif" },
     "duree": { "id": 4, "text": "Plus de 60 minutes" }
+  },
+  {
+    "id": "oeufs-mimosa",
+    "title": "Œufs mimosa",
+    "img": "/assets/img/recipes/Oeufs-mimosa.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 0, "text": "Moins de 15 minutes" }
+  },
+  {
+    "id": "rouleaux-de-printemps-au-poulet",
+    "title": "Rouleaux de printemps au poulet",
+    "img": "/assets/img/recipes/Rouleaux-de-printemps-au-poulet.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+  },
+  {
+    "id": "terrine-de-volaille-legere",
+    "title": "Terrine de volaille légère",
+    "img": "/assets/img/recipes/Terrine-de-volaille-legere.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
+  },
+  {
+    "id": "ballotine-de-dinde-aux-legumes",
+    "title": "Ballotine de dinde aux légumes",
+    "img": "/assets/img/recipes/Ballotine-de-dinde-aux-legumes.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 3, "text": "De 45 à 60 minutes" }
+  },
+  {
+    "id": "foie-de-volaille-en-salade-tiède",
+    "title": "Foie de volaille en salade tiède",
+    "img": "/assets/img/recipes/Foie-de-volaille-en-salade-tiede.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duree": { "id": 4, "text": "Plus de 60 minutes" }
+  },
+  {
+    "id": "veloute-de-poulet-et-curry",
+    "title": "Velouté de poulet et curry",
+    "img": "/assets/img/recipes/Veloute-de-poulet-et-curry.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 0, "text": "Moins de 15 minutes" }
+  },
+  {
+    "id": "soupe-de-boeuf-a-l-ancienne",
+    "title": "Soupe de bœuf à l'ancienne",
+    "img": "/assets/img/recipes/Soupe-de-boeuf-a-l-ancienne.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+  },
+  {
+    "id": "veloute-de-dinde-et-potiron",
+    "title": "Velouté de dinde et potiron",
+    "img": "/assets/img/recipes/Veloute-de-dinde-et-potiron.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
+  },
+  {
+    "id": "soupe-de-boeuf-et-legumes",
+    "title": "Soupe de bœuf et légumes",
+    "img": "/assets/img/recipes/Soupe-de-boeuf-et-legumes.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 3, "text": "De 45 à 60 minutes" }
+  },
+  {
+    "id": "bisque-de-boeuf-et-epices",
+    "title": "Bisque de bœuf et épices",
+    "img": "/assets/img/recipes/Bisque-de-boeuf-et-epices.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
+    "duree": { "id": 4, "text": "Plus de 60 minutes" }
+  },
+  {
+    "id": "steak-de-boeuf-grille",
+    "title": "Steak de bœuf grillé",
+    "img": "/assets/img/recipes/Steak-de-boeuf-grille.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 3, "text": "Plats" },
+    "duree": { "id": 0, "text": "Moins de 15 minutes" }
+  },
+  {
+    "id": "poulet-au-lait-de-coco",
+    "title": "Poulet au lait de coco",
+    "img": "/assets/img/recipes/Poulet-au-lait-de-coco.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 3, "text": "Plats" },
+    "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+  },    
+  {
+    "id": "quiche-lorraine",
+    "title": "Quiche lorraine",
+    "img": "/assets/img/recipes/Quiche-lorraine.webp",
+    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+    "categorie": { "id": 3, "text": "Plats" },
+    "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
     "id": "poulet-au-curry",
@@ -56,6 +160,46 @@
     "duree": { "id": 4, "text": "Plus de 60 minutes" }
   },
   {
+      "id": "sauce-beurre-blanc",
+      "title": "Sauce beurre blanc",
+      "img": "/assets/img/recipes/Sauce-beurre-blanc.webp",
+      "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+      "categorie": { "id": 5, "text": "Sauces" },
+      "duree": { "id": 0, "text": "Moins de 15 minutes" }
+    },
+    {
+      "id": "sauce-béarnaise",
+      "title": "Sauce béarnaise",
+      "img": "/assets/img/recipes/Sauce-bearnaise.webp",
+      "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+      "categorie": { "id": 5, "text": "Sauces" },
+      "duree": { "id": 1, "text": "De 15 à 30 minutes" }
+    },
+    {
+      "id": "sauce-espagnole",
+      "title": "Sauce espagnole",
+      "img": "/assets/img/recipes/Sauce-espagnole.webp",
+      "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+      "categorie": { "id": 5, "text": "Sauces" },
+      "duree": { "id": 2, "text": "De 30 à 45 minutes" }
+    },
+    {
+      "id": "sauce-madera",
+      "title": "Sauce madère",
+      "img": "/assets/img/recipes/Sauce-madere.webp",
+      "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+      "categorie": { "id": 5, "text": "Sauces" },
+      "duree": { "id": 3, "text": "De 45 à 60 minutes" }
+    },
+    {
+      "id": "sauce-périgourdine",
+      "title": "Sauce périgourdine",
+      "img": "/assets/img/recipes/Sauce-perigourdine.webp",
+      "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
+      "categorie": { "id": 5, "text": "Sauces" },
+      "duree": { "id": 4, "text": "Plus de 60 minutes" }
+    },
+    {
     "id": "houmous-maison",
     "title": "Houmous maison",
     "img": "/assets/img/recipes/Houmous-maison.webp",
@@ -84,7 +228,7 @@
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
     "regime_alimentaire": { "id": 1, "text": "Végétarien" },
-    "categorie": { "id": 4, "text": "Dessert" },
+    "categorie": { "id": 4, "text": "Desserts" },
     "duree": { "id": 2, "text": "De 30 à 45 minutes" }
   },
   {
