@@ -12,7 +12,7 @@ export default function Review() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
-  const slideShowRef = useRef(null);
+  const reviewsRef = useRef(null);
 
   useEffect(() => {
     fetchData("/public/data/reviews.json")
@@ -35,10 +35,10 @@ export default function Review() {
 
   // Calculate and set the maximum height needed for the container
   useEffect(() => {
-    if (reviews.length > 0 && slideShowRef.current) {
+    if (reviews.length > 0 && reviewsRef.current) {
       // Give the DOM time to render the reviews first
       const timer = setTimeout(() => {
-        const reviewElements = slideShowRef.current.querySelectorAll(".review");
+        const reviewElements = reviewsRef.current.querySelectorAll(".review");
         let maxHeight = 0;
 
         reviewElements.forEach((el) => {
@@ -77,13 +77,13 @@ export default function Review() {
   };
 
   return (
-    <section className="slideshow" ref={slideShowRef}>
+    <section className="reviews" ref={reviewsRef}>
       <h2>Les avis :</h2>
 
       {reviews.length > 0 ? (
         <>
           <div
-            className="slideShow_container"
+            className="reviews_container"
             style={{
               minHeight: containerHeight > 0 ? `${containerHeight}px` : "auto",
             }}

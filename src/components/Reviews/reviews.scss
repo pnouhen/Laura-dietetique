@@ -1,10 +1,10 @@
 @import "../../styles/mixin";
 
-.slideshow {
+.reviews {
   @include section;
   @include displayColumn;
   gap: 20px;
-  .slideShow_container {
+  .reviews_container {
     position: relative;
     display: grid;
     grid-template-columns:calc(33% - 33px) calc(33% - 33px) calc(33% - 33px);

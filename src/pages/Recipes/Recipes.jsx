@@ -14,7 +14,6 @@ export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
 
-  const [selectedRegime, setSelectedRegime] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDuration, setSelectedDuration] = useState(null);
 
@@ -34,9 +33,6 @@ export default function Recipes() {
   useEffect(() => {
     let result = recipes;
 
-    if (selectedRegime !== null) {
-      result = result.filter((r) => r.regime_alimentaire.id === selectedRegime);
-    }
     if (selectedCategory !== null) {
       result = result.filter((r) => r.categorie.id === selectedCategory);
     }
@@ -46,7 +42,7 @@ export default function Recipes() {
 
     setFilteredRecipes(result);
     setIndex(0);
-  }, [recipes, selectedRegime, selectedCategory, selectedDuration]);
+  }, [recipes, selectedCategory, selectedDuration]);
 
   const pageCount = Math.ceil(filteredRecipes.length / visibleRecipes);
   const currentPage = Math.floor(index / visibleRecipes) + 1;
@@ -58,13 +54,6 @@ export default function Recipes() {
         <BackgroundImg url="/assets/img/background/background-recipes.webp" />
         <section className="choice">
           <h2 className="titleRecipesCards">Choisissez votre :</h2>
-          <Filter
-            label="Régime alimentaire :"
-            htmlFor="DietaryRegime"
-            data={recipes}
-            propName="regime_alimentaire"
-            onChange={(val) => setSelectedRegime(val)}
-          />
           <Filter
             label="Catégorie :"
             htmlFor="Category"
@@ -91,8 +80,10 @@ export default function Recipes() {
                   <CardRecipe
                     key={card.id}
                     id={card.id}
-                    title={card.title}
+                    classNameRegime={card.vegetarian === "true" ? "active" : ""}
+                    textRegime={card.vegetarian === "true" ? "Végétarien" : ""}
                     src={card.img}
+                    title={card.title}                    
                   />
                 ))}
               <Pagination
