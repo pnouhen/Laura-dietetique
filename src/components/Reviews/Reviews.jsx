@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
-import Pagination from "../Pagination/Pagination.jsx";
 import CardReview from "../CardReview/CardReview.jsx";
 import Dots from "../Dots/Dots.jsx";
 import NoData from "../NoData/NoData.jsx";
 
 import "./reviews.scss";
+
+// Voir responsive + changement du nombre de carte
 
 export default function Review() {
   const [reviews, setReviews] = useState([]);
@@ -22,7 +23,7 @@ export default function Review() {
       .catch((err) => console.error("Error fetching reviews:", err));
   }, []);
 
-  const isDesktop = useDetectWidth();
+  const isDesktop = useDetectWidth(1024);
   const visibleReviews = isDesktop ? 3 : 1;
 
   // Make sure index is valid when switching between desktop/mobile
@@ -76,6 +77,11 @@ export default function Review() {
     setIndex(Math.min(newIndex, maxStartIndex));
   };
 
+  // Pagination
+  const handlePrev = () =>
+    setIndex((index - visibleReviews + reviews.length) % reviews.length);
+  const handleNext = () => setIndex((index + visibleReviews) % reviews.length);
+
   return (
     <section className="reviews" ref={reviewsRef}>
       <h2>Les avis :</h2>
@@ -88,12 +94,7 @@ export default function Review() {
               minHeight: containerHeight > 0 ? `${containerHeight}px` : "auto",
             }}
           >
-            <Pagination
-              setIndex={setIndex}
-              index={index}
-              visible={visibleReviews}
-              data={reviews}
-            />
+            <i className="fa-solid fa-chevron-left" onClick={handlePrev}></i>
             {Array.from({ length: visibleReviews }).map((_, i) => {
               const reviewIndex = index + i;
               // Only render if we have a review at this index
@@ -101,6 +102,7 @@ export default function Review() {
                 <CardReview key={reviewIndex} review={reviews[reviewIndex]} />
               ) : null;
             })}
+            <i className="fa-solid fa-chevron-right" onClick={handleNext}></i>
           </div>
           <Dots
             currentIndex={index}
@@ -110,10 +112,7 @@ export default function Review() {
           />
         </>
       ) : (
-        <NoData
-          text="Pas d'avis disponibles"
-          textClass="titleRecipesCards"
-        />
+        <NoData text="Pas d'avis disponibles" textClass="titleRecipesCards" />
       )}
     </section>
   );

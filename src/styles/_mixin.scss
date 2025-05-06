@@ -57,3 +57,22 @@
   grid-template-columns: repeat(3, calc(33% - 20px));
   gap: 30px;
 }
+@mixin button {
+  @include input;
+    @include font18-600;
+    width: 210px;
+    padding: 10px 0;
+    background-color: rgb(133, 170, 132, 0.7);
+    cursor: pointer;
+}
+@mixin useBadgeInfo {
+  position: absolute;
+      z-index: 1;
+      padding: 5px 10px;
+      background-color: $green;
+      font-weight: 600;
+}
+@mixin buttonBase {
+  border: 0;
+  background: transparent;
+}

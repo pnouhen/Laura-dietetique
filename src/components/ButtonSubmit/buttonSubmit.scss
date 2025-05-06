@@ -1,11 +1,6 @@
 @import "../../styles/mixin";
 
 .buttonSubmit {
-    @include input;
-    @include font18-600;
-    width: 210px;
-    height: 40px;
+    @include button;
     margin: auto;
-    background-color: rgb(133, 170, 132, 0.7);
-    cursor: pointer;
   }

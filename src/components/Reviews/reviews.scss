@@ -13,23 +13,19 @@
     @media (max-width: 1024px){
       display: flex;
     }
-    .pagination{
-      position: absolute;
+      [class*="fa-chevron"] {
+        position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      [class*="fa-chevron"] {
-      cursor: pointer;
+        cursor: pointer;
       font-size: 30px;
     }
-    .fa-chevron-left{
+     .fa-chevron-left{
       left: 0;
     }
     .fa-chevron-right{
       right: 0;
-    }
+    }     
     }
     
     @media (max-width: 1024px) {
@@ -38,4 +34,3 @@
       }
     }
   }
-}

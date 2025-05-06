@@ -3,8 +3,7 @@ import { fetchData } from "../../services/fetchData.jsx";
 
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
-import Filter from "../../components/Filter/Filter.jsx";
-import Pagination from "../../components/Pagination/Pagination.jsx";
+import ButtonRecipe from "../../components/ButtonRecipe/ButtonRecipe.jsx";
 import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -12,41 +11,50 @@ import "./recipes.scss";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
-
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedDuration, setSelectedDuration] = useState(null);
-
-  const [index, setIndex] = useState(0);
-  const visibleRecipes = 9;
+  const [buttonRecipe, setbuttonRecipe] = useState([]);
+  const [activeButton, setActiveButton] = useState(null); // Aucun bouton sélectionné initialement
+  const [index, setIndex] = useState(0); // Indice de la page
+  const visible = 6;
 
   useEffect(() => {
     fetchData("/public/data/recipes.json")
       .then((data) => {
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setRecipes(sorted);
-        setFilteredRecipes(sorted);
+
+        const categories = sorted.map((recipe) => recipe.categorie);
+        const uniqueCategories = Array.from(
+          new Map(categories.map((cat) => [cat.id, cat])).values()
+        ).sort((a, b) => a.id - b.id);
+
+        setbuttonRecipe(uniqueCategories);
       })
       .catch((error) => console.error("Error during fetch:", error));
   }, []);
 
-  useEffect(() => {
-    let result = recipes;
+  const handleButtonClick = (id) => {
+    setActiveButton(id); // Met à jour le bouton actif
+    setIndex(0); // Réinitialise l'index de la pagination lors du changement de catégorie
+  };
 
-    if (selectedCategory !== null) {
-      result = result.filter((r) => r.categorie.id === selectedCategory);
-    }
-    if (selectedDuration !== null) {
-      result = result.filter((r) => r.duree.id === selectedDuration);
-    }
+  // Filtrage des recettes selon la catégorie sélectionnée
+  const filteredRecipes =
+    activeButton === null
+      ? recipes
+      : recipes.filter((recipe) => recipe.categorie.id === activeButton);
 
-    setFilteredRecipes(result);
-    setIndex(0);
-  }, [recipes, selectedCategory, selectedDuration]);
+  // Découper les recettes en pages
+  const paginatedRecipes = filteredRecipes.slice(index, index + visible);
 
-  const pageCount = Math.ceil(filteredRecipes.length / visibleRecipes);
-  const currentPage = Math.floor(index / visibleRecipes) + 1;
+  // Pagination
+  const handlePrev = () => setIndex(index - visible);
+  const handleNext = () => setIndex(index + visible);
 
+  const isFirstPage = index === 0;
+  const isLastPage = index + visible >= recipes.length;
+
+  const totalPages = Math.ceil(recipes.length / visible);
+  const currentPage = Math.floor(index / visible) + 1;
   return (
     <>
       <Header />
@@ -54,53 +62,74 @@ export default function Recipes() {
         <BackgroundImg url="/assets/img/background/background-recipes.webp" />
         <section className="choice">
           <h2 className="titleRecipesCards">Choisissez votre :</h2>
-          <Filter
-            label="Catégorie :"
-            htmlFor="Category"
-            data={recipes}
-            propName="categorie"
-            onChange={(val) => setSelectedCategory(val)}
-          />
-          <Filter
-            label="Durée :"
-            htmlFor="Duration"
-            data={recipes}
-            propName="duree"
-            onChange={(val) => setSelectedDuration(val)}
-          />
+          {recipes.length > 0 ? (
+            <div className="choice_container">
+              <ButtonRecipe
+                text="Tous"
+                isActive={activeButton === null}
+                onClick={() => handleButtonClick(null)}
+              />
+              {buttonRecipe.map(({ id, text }) => (
+                <ButtonRecipe
+                  key={id}
+                  id={id}
+                  text={text}
+                  isActive={activeButton === id}
+                  onClick={() => handleButtonClick(id)}
+                />
+              ))}
+            </div>
+          ) : (
+            <NoData
+              text="Désolé, nous rencontrons un problème technique."
+              textClass=""
+            />
+          )}
         </section>
 
         <section className="recipesCards">
           <h2 className="titleRecipesCards">Recettes :</h2>
-          {filteredRecipes.length > 0 ? (
+          {paginatedRecipes.length > 0 ? (
             <>
-              {filteredRecipes
-                .slice(index, index + visibleRecipes)
-                .map((card) => (
+              {paginatedRecipes.map(
+                ({ id, duration, vegetarian, title, img }) => (
                   <CardRecipe
-                    key={card.id}
-                    id={card.id}
-                    classNameRegime={card.vegetarian === "true" ? "active" : ""}
-                    textRegime={card.vegetarian === "true" ? "Végétarien" : ""}
-                    src={card.img}
-                    title={card.title}                    
+                    key={id}
+                    id={id}
+                    duration={duration}
+                    classNameRegime={
+                      vegetarian === "true" ? "regimeActive" : ""
+                    }
+                    textRegime={vegetarian === "true" ? "Végétarien" : ""}
+                    title={title}
+                    src={img}
                   />
-                ))}
-              <Pagination
-                index={index}
-                setIndex={setIndex}
-                visible={visibleRecipes}
-                data={filteredRecipes}
-                textPrev="Préc."
-                textNext="Suiv."
-                counter={`${currentPage} / ${pageCount}`}
-                hideButtonsWhenExtreme={true}
-              />
+                )
+              )}
+              <div className="pagination">
+                {!isFirstPage && (
+                  <button className="pagination-prev" onClick={handlePrev}>
+                    <i className="fa-solid fa-chevron-left"></i>
+                    <p>Précédant</p>
+                  </button>
+                )}
+
+                <p className="counter">
+                  Page {currentPage} sur {totalPages}
+                </p>
+
+                {!isLastPage && (
+                  <button className="pagination-next" onClick={handleNext}>
+                    <p>Suivant</p>
+                    <i className="fa-solid fa-chevron-right"></i>
+                  </button>
+                )}
+              </div>
             </>
           ) : (
             <NoData
-              text="Pas de recettes disponibles"
-              textClass="titleRecipesCards"
+              text="Nous n'avons pas de recettes disponibles"
+              textClass="noRecipesMessage"
             />
           )}
         </section>

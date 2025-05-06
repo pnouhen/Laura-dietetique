@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useDetectWidth() {
+export function useDetectWidth(responsivePX) {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export function useDetectWidth() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  const isDesktop = width > 1024;
+  const isDesktop = width > responsivePX;
 
   return isDesktop;
 }
