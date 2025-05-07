@@ -34,6 +34,9 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 }
 @mixin labelInput {
   @include displayColumn;
@@ -51,7 +54,7 @@
   gap: 5px;
 }
 
-@mixin recipesCards-pagination {
+@mixin grid3Colums {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, calc(33% - 20px));

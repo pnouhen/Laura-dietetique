@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
+import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
@@ -14,7 +15,9 @@ export default function Recipes() {
   const [buttonRecipe, setbuttonRecipe] = useState([]);
   const [activeButton, setActiveButton] = useState(null); // Aucun bouton sélectionné initialement
   const [index, setIndex] = useState(0); // Indice de la page
-  const visible = 6;
+
+  const isMobile = useDetectWidth(768)
+  const visibleCardsecipe = isMobile ? 6 : 2;
 
   useEffect(() => {
     fetchData("/public/data/recipes.json")
@@ -44,17 +47,17 @@ export default function Recipes() {
       : recipes.filter((recipe) => recipe.categorie.id === activeButton);
 
   // Découper les recettes en pages
-  const paginatedRecipes = filteredRecipes.slice(index, index + visible);
+  const paginatedRecipes = filteredRecipes.slice(index, index + visibleCardsecipe);
 
   // Pagination
-  const handlePrev = () => setIndex(index - visible);
-  const handleNext = () => setIndex(index + visible);
+  const handlePrev = () => setIndex(index - visibleCardsecipe);
+  const handleNext = () => setIndex(index + visibleCardsecipe);
 
   const isFirstPage = index === 0;
-  const isLastPage = index + visible >= recipes.length;
+  const isLastPage = index + visibleCardsecipe >= filteredRecipes.length;
 
-  const totalPages = Math.ceil(recipes.length / visible);
-  const currentPage = Math.floor(index / visible) + 1;
+  const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
+  const currentPage = Math.floor(index / visibleCardsecipe) + 1;
   return (
     <>
       <Header />

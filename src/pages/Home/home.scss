@@ -7,9 +7,7 @@
   gap: 30px;
   .objectif {
     @include section;
-      display: grid;
-      grid-template-columns: calc(33% - 30px) calc(33% - 30px) calc(33% - 30px);
-      justify-content: center;
+    @include grid3Colums;
       gap: 30px;
       @media (max-width: 1024px) {
         grid-template-columns: calc(51% - 30px) calc(51% - 30px);

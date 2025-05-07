@@ -1,18 +1,11 @@
 [
   {
-    "id": "brochettes-de-poulet-epicees",
-    "title": "Brochettes de poulet épicées",
-    "img": "/assets/img/recipes/Brochettes-de-poulet-epicees.webp",
-    "vegetarian": "",
+    "id": "houmous-maison",
+    "title": "Houmous maison",
+    "img": "/assets/img/recipes/Houmous-maison.webp",
+    "vegetarian": "true",
     "categorie": { "id": 0, "text": "Apéritif" },
     "duration": "Moins de 15 minutes"
-  },{
-    "id": "feuilletes-au-jambon",
-    "title": "Feuilletés au jambon",
-    "img": "/assets/img/recipes/Feuilletes-au-jambon.webp",
-    "regime_alimentaire": { "id": 0, "text": "Non végétarien" },
-    "categorie": { "id": 0, "text": "Apéritif" },
-    "duration": "De 15 à 30 minutes"
   },
   {
     "id": "mini-quiches-au-poulet",
@@ -31,20 +24,20 @@
     "duration": "De 45 à 60 minutes"
   },
   {
-    "id": "rillettes-de-canard-maison",
-    "title": "Rillettes de canard maison",
-    "img": "/assets/img/recipes/Rillettes-de-canard-maison.webp",
-    "vegetarian": "",
-    "categorie": { "id": 0, "text": "Apéritif" },
-    "duration": "Plus de 60 minutes"
-  },
-  {
     "id": "oeufs-mimosa",
     "title": "Œufs mimosa",
     "img": "/assets/img/recipes/Oeufs-mimosa.webp",
-    "vegetarian": "",
+    "vegetarian": "true",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "Moins de 15 minutes"
+  },
+  {
+    "id": "salade-de-chevre-chaud",
+    "title": "Salade de chèvre chaud",
+    "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
+    "vegetarian": "true",
+    "categorie": { "id": 1, "text": "Entrées" },
+    "duration": "De 15 à 30 minutes"
   },
   {
     "id": "rouleaux-de-printemps-au-poulet",
@@ -79,14 +72,6 @@
     "duration": "Plus de 60 minutes"
   },
   {
-    "id": "veloute-de-poulet-et-curry",
-    "title": "Velouté de poulet et curry",
-    "img": "/assets/img/recipes/Veloute-de-poulet-et-curry.webp",
-    "vegetarian": "",
-    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
-    "duration": "Moins de 15 minutes"
-  },
-  {
     "id": "soupe-de-boeuf-a-l-ancienne",
     "title": "Soupe de bœuf à l'ancienne",
     "img": "/assets/img/recipes/Soupe-de-boeuf-a-l-ancienne.webp",
@@ -95,36 +80,20 @@
     "duration": "De 15 à 30 minutes"
   },
   {
-    "id": "veloute-de-dinde-et-potiron",
-    "title": "Velouté de dinde et potiron",
-    "img": "/assets/img/recipes/Veloute-de-dinde-et-potiron.webp",
-    "vegetarian": "",
+    "id": "soupe-de-potimarron",
+    "title": "Soupe de potimarron",
+    "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
+    "vegetarian": "true",
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "De 30 à 45 minutes"
   },
-  {
-    "id": "soupe-de-boeuf-et-legumes",
-    "title": "Soupe de bœuf et légumes",
-    "img": "/assets/img/recipes/Soupe-de-boeuf-et-legumes.webp",
-    "vegetarian": "",
-    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
-    "duration": "De 45 à 60 minutes"
-  },
-  {
+   {
     "id": "bisque-de-boeuf-et-epices",
     "title": "Bisque de bœuf et épices",
     "img": "/assets/img/recipes/Bisque-de-boeuf-et-epices.webp",
     "vegetarian": "",
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "Plus de 60 minutes"
-  },
-  {
-    "id": "steak-de-boeuf-grille",
-    "title": "Steak de bœuf grillé",
-    "img": "/assets/img/recipes/Steak-de-boeuf-grille.webp",
-    "vegetarian": "",
-    "categorie": { "id": 3, "text": "Plats" },
-    "duration": "Moins de 15 minutes"
   },
   {
     "id": "poulet-au-lait-de-coco",
@@ -167,20 +136,12 @@
     "duration": "Moins de 15 minutes"
   },
   {
-    "id": "sauce-béarnaise",
-    "title": "Sauce béarnaise",
-    "img": "/assets/img/recipes/Sauce-bearnaise.webp",
-    "vegetarian": "",
+    "id": "sauce-tomate-maison",
+    "title": "Sauce tomate maison",
+    "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
+    "vegetarian": "true",
     "categorie": { "id": 5, "text": "Sauces" },
     "duration": "De 15 à 30 minutes"
-  },
-  {
-    "id": "sauce-espagnole",
-    "title": "Sauce espagnole",
-    "img": "/assets/img/recipes/Sauce-espagnole.webp",
-    "vegetarian": "",
-    "categorie": { "id": 5, "text": "Sauces" },
-    "duration": "De 30 à 45 minutes"
   },
   {
     "id": "sauce-madera",
@@ -191,47 +152,11 @@
     "duration": "De 45 à 60 minutes"
   },
   {
-    "id": "houmous-maison",
-    "title": "Houmous maison",
-    "img": "/assets/img/recipes/Houmous-maison.webp",
-    "vegetarian": "true",
-    "categorie": { "id": 0, "text": "Apéritif" },
-    "duration": "Moins de 15 minutes"
-  },
-
-  {
-    "id": "salade-de-chevre-chaud",
-    "title": "Salade de chèvre chaud",
-    "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
-    "vegetarian": "true",
-    "categorie": { "id": 1, "text": "Entrées" },
-    "duration": "De 15 à 30 minutes"
-  },
-
-  {
-    "id": "soupe-de-potimarron",
-    "title": "Soupe de potimarron",
-    "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
-    "vegetarian": "true",
-    "categorie": { "id": 2, "text": "Soupes et Veloutés" },
-    "duration": "De 30 à 45 minutes"
-  },
-
-  {
     "id": "tiramisu",
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
     "vegetarian": "true",
     "categorie": { "id": 4, "text": "Desserts" },
     "duration": "De 30 à 45 minutes"
-  },
-
-  {
-    "id": "sauce-tomate-maison",
-    "title": "Sauce tomate maison",
-    "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
-    "vegetarian": true,
-    "categorie": { "id": 5, "text": "Sauces" },
-    "duration": "De 15 à 30 minutes"
   }
 ]

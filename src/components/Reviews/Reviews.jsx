@@ -24,15 +24,15 @@ export default function Review() {
   }, []);
 
   const isDesktop = useDetectWidth(1024);
-  const visibleReviews = isDesktop ? 3 : 1;
+  const visibleCardReview = isDesktop ? 3 : 1;
 
   // Make sure index is valid when switching between desktop/mobile
   useEffect(() => {
-    // Ensure index is always a multiple of visibleReviews on desktop
-    if (isDesktop && index % visibleReviews !== 0) {
-      setIndex(Math.floor(index / visibleReviews) * visibleReviews);
+    // Ensure index is always a multiple of visibleCardReview on desktop
+    if (isDesktop && index % visibleCardReview !== 0) {
+      setIndex(Math.floor(index / visibleCardReview) * visibleCardReview);
     }
-  }, [isDesktop, visibleReviews, index]);
+  }, [isDesktop, visibleCardReview, index]);
 
   // Calculate and set the maximum height needed for the container
   useEffect(() => {
@@ -73,14 +73,14 @@ export default function Review() {
   // Handle proper pagination
   const handleDotClick = (newIndex) => {
     // Make sure we don't exceed the limits
-    const maxStartIndex = Math.max(0, reviews.length - visibleReviews);
+    const maxStartIndex = Math.max(0, reviews.length - visibleCardReview);
     setIndex(Math.min(newIndex, maxStartIndex));
   };
 
   // Pagination
   const handlePrev = () =>
-    setIndex((index - visibleReviews + reviews.length) % reviews.length);
-  const handleNext = () => setIndex((index + visibleReviews) % reviews.length);
+    setIndex((index - visibleCardReview + reviews.length) % reviews.length);
+  const handleNext = () => setIndex((index + visibleCardReview) % reviews.length);
 
   return (
     <section className="reviews" ref={reviewsRef}>
@@ -95,7 +95,7 @@ export default function Review() {
             }}
           >
             <i className="fa-solid fa-chevron-left" onClick={handlePrev}></i>
-            {Array.from({ length: visibleReviews }).map((_, i) => {
+            {Array.from({ length: visibleCardReview }).map((_, i) => {
               const reviewIndex = index + i;
               // Only render if we have a review at this index
               return reviewIndex < reviews.length ? (
@@ -107,7 +107,7 @@ export default function Review() {
           <Dots
             currentIndex={index}
             dataLength={reviews.length}
-            reviewsToShow={visibleReviews}
+            reviewsToShow={visibleCardReview}
             onDotClick={handleDotClick}
           />
         </>

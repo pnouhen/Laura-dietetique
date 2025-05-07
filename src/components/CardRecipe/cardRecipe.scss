@@ -8,6 +8,9 @@
     width: 200px;
     height: 200px;
   }
+  @media (max-width: 525px) {
+    width: 100%;
+  }
 }
 
 .cardRecipe {
@@ -15,6 +18,10 @@
   position: relative;
   margin: auto;
   color: black;
+  @media (max-width: 525px) {
+    grid-column: 1;
+    margin-bottom: 20px;
+  }
   .duration{
     @include useBadgeInfo;
     top: 0;
