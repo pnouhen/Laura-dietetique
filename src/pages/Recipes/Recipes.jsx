@@ -20,7 +20,7 @@ export default function Recipes() {
   const visibleCardsecipe = isMobile ? 6 : 2;
 
   useEffect(() => {
-    fetchData("/public/data/recipes.json")
+    fetchData("/data/recipes.json")
       .then((data) => {
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setRecipes(sorted);
@@ -101,9 +101,9 @@ export default function Recipes() {
                     id={id}
                     duration={duration}
                     classNameRegime={
-                      vegetarian === "true" ? "regimeActive" : ""
+                      vegetarian === true ? "regimeActive" : ""
                     }
-                    textRegime={vegetarian === "true" ? "Végétarien" : ""}
+                    textRegime={vegetarian === true ? "Végétarien" : ""}
                     title={title}
                     src={img}
                   />

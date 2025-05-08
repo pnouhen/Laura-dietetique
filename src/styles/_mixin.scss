@@ -1,4 +1,4 @@
-@import "./variables";
+@use "./variables" as *;
 
 @mixin section {
   background-color: rgb(255, 255, 255, 0.85);
@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 @mixin ratings {
   display: flex;
   height: 25px;
@@ -22,26 +23,32 @@
     color: $green;
   }
 }
+
 @mixin input {
   border-radius: 10px;
   border: 0;
   box-shadow: 1px 1px 7px 3px rgb(0, 0, 0, 0.7);
 }
+
 @mixin font18-600 {
   font-size: 18px;
   font-weight: 600;
   margin-left: 10px;
+  
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+  
   @media (max-width: 768px) {
     font-size: 14px;
   }
 }
+
 @mixin labelInput {
   @include displayColumn;
   gap: 10px;
 }
+
 @mixin insideInput {
   padding: 10px 20px;
   font-size: 16px;
@@ -60,21 +67,24 @@
   grid-template-columns: repeat(3, calc(33% - 20px));
   gap: 30px;
 }
+
 @mixin button {
+  width: 210px;
+  padding: 10px 0;
+  background-color: rgb(133, 170, 132, 0.7);
+  cursor: pointer;
   @include input;
-    @include font18-600;
-    width: 210px;
-    padding: 10px 0;
-    background-color: rgb(133, 170, 132, 0.7);
-    cursor: pointer;
+  @include font18-600;
 }
+
 @mixin useBadgeInfo {
   position: absolute;
-      z-index: 1;
-      padding: 5px 10px;
-      background-color: $green;
-      font-weight: 600;
+  z-index: 1;
+  padding: 5px 10px;
+  background-color: $green;
+  font-weight: 600;
 }
+
 @mixin buttonBase {
   border: 0;
   background: transparent;

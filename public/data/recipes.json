@@ -3,7 +3,7 @@
     "id": "houmous-maison",
     "title": "Houmous maison",
     "img": "/assets/img/recipes/Houmous-maison.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 0, "text": "Apéritif" },
     "duration": "Moins de 15 minutes"
   },
@@ -27,7 +27,7 @@
     "id": "oeufs-mimosa",
     "title": "Œufs mimosa",
     "img": "/assets/img/recipes/Oeufs-mimosa.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "Moins de 15 minutes"
   },
@@ -35,7 +35,7 @@
     "id": "salade-de-chevre-chaud",
     "title": "Salade de chèvre chaud",
     "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "De 15 à 30 minutes"
   },
@@ -83,11 +83,11 @@
     "id": "soupe-de-potimarron",
     "title": "Soupe de potimarron",
     "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "De 30 à 45 minutes"
   },
-   {
+  {
     "id": "bisque-de-boeuf-et-epices",
     "title": "Bisque de bœuf et épices",
     "img": "/assets/img/recipes/Bisque-de-boeuf-et-epices.webp",
@@ -128,6 +128,22 @@
     "duration": "Plus de 60 minutes"
   },
   {
+    "id": "saumon-aux-epinards",
+    "title": "Saumon aux épinards",
+    "img": "/assets/img/recipes/Saumon-aux-epinards.webp",
+    "vegetarian": true,
+    "categorie": { "id": 3, "text": "Plats" },
+    "duration": "De 15 à 30 minutes"
+  },
+  {
+    "id": "buddha-bowl-quinoa",
+    "title": "Buddha bowl au quinoa",
+    "img": "/assets/img/recipes/Buddha-bowl-quinoa.webp",
+    "vegetarian": true,
+    "categorie": { "id": 3, "text": "Plats" },
+    "duration": "De 30 à 45 minutes"
+  },
+  {
     "id": "sauce-beurre-blanc",
     "title": "Sauce beurre blanc",
     "img": "/assets/img/recipes/Sauce-beurre-blanc.webp",
@@ -139,7 +155,7 @@
     "id": "sauce-tomate-maison",
     "title": "Sauce tomate maison",
     "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 5, "text": "Sauces" },
     "duration": "De 15 à 30 minutes"
   },
@@ -152,10 +168,50 @@
     "duration": "De 45 à 60 minutes"
   },
   {
+    "id": "tarte-aux-pommes",
+    "title": "Tarte aux pommes",
+    "img": "/assets/img/recipes/Tarte-aux-pommes.webp",
+    "vegetarian": true,
+    "categorie": { "id": 4, "text": "Desserts" },
+    "duration": "De 30 à 45 minutes"
+  },
+  {
+    "id": "mousse-au-chocolat",
+    "title": "Mousse au chocolat",
+    "img": "/assets/img/recipes/Mousse-au-chocolat.webp",
+    "vegetarian": true,
+    "categorie": { "id": 4, "text": "Desserts" },
+    "duration": "Moins de 15 minutes"
+  },
+  {
+    "id": "clafoutis-aux-cerises",
+    "title": "Clafoutis aux cerises",
+    "img": "/assets/img/recipes/Clafoutis-aux-cerises.webp",
+    "vegetarian": true,
+    "categorie": { "id": 4, "text": "Desserts" },
+    "duration": "De 45 à 60 minutes"
+  },
+  {
+    "id": "panna-cotta-vanille",
+    "title": "Panna cotta à la vanille",
+    "img": "/assets/img/recipes/Panna-cotta-vanille.webp",
+    "vegetarian": true,
+    "categorie": { "id": 4, "text": "Desserts" },
+    "duration": "De 15 à 30 minutes"
+  },
+  {
+    "id": "compote-pomme-poire",
+    "title": "Compote pomme-poire",
+    "img": "/assets/img/recipes/Compote-pomme-poire.webp",
+    "vegetarian": true,
+    "categorie": { "id": 4, "text": "Desserts" },
+    "duration": "Moins de 15 minutes"
+  },
+  {
     "id": "tiramisu",
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
-    "vegetarian": "true",
+    "vegetarian": true,
     "categorie": { "id": 4, "text": "Desserts" },
     "duration": "De 30 à 45 minutes"
   }

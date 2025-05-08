@@ -16,7 +16,7 @@ export default function Review() {
   const reviewsRef = useRef(null);
 
   useEffect(() => {
-    fetchData("/public/data/reviews.json")
+    fetchData("/data/reviews.json")
       .then((data) =>
         setReviews(data.sort((a, b) => new Date(b.date) - new Date(a.date)))
       )

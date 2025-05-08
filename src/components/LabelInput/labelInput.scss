@@ -1,4 +1,4 @@
-@import "../../styles/mixin";
+@use "../../styles/mixin" as *;
 
 label {
     @include font18-600;

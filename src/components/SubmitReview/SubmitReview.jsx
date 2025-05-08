@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import LabelInput from "../LabelInput/LabelInput";
 import StarRating from "../StarRating/StarRating";
-import FromReview from "../FormReview/FormReview";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import MessageModal from "../MessageModal/MessageModal";
 
@@ -78,6 +77,7 @@ export default function SubmitReview() {
 
         {/* Review Form */}
         <form onSubmit={handleSubmit}>
+          <div className="NameFirstName">
           <LabelInput
             className="name"
             htmlFor="lastName"
@@ -94,19 +94,22 @@ export default function SubmitReview() {
             id="firstName"
             ref={firstNameRef}
           />
+          </div>
 
           <StarRating rating={rating} setRating={setRating} />
 
-          <FromReview
-            divFormReview="formReview"
-            htmlFor="review"
-            classNameSpan="review-counter"
-            remainingChars={remainingChars}
-            id="review"
-            ref={reviewRef}
-            onChange={updateCharCounter}
-            maxLength={MAX_CHARS}
-          />
+          <div className="formReview">
+            <label htmlFor="review">Votre avis</label>
+            <span className="review-counter">
+              Caractères restant : {remainingChars}
+            </span>
+            <textarea
+              id="review"
+              ref={reviewRef}
+              onChange={updateCharCounter}
+              maxLength={MAX_CHARS}
+            />
+          </div>
 
           {/* Submit button (inside form for proper submission) */}
           <ButtonSubmit type="submit" />
