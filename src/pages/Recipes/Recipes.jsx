@@ -3,7 +3,7 @@ import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 
 import Header from "../../components/Header/Header.jsx";
-import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
+import BackgroundImgRecipes from "../../components/BackgroundImgRecipes/BackgroundImgRecipes.jsx";
 import ButtonRecipe from "../../components/ButtonRecipe/ButtonRecipe.jsx";
 import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
@@ -16,7 +16,7 @@ export default function Recipes() {
   const [activeButton, setActiveButton] = useState(null); // Aucun bouton sélectionné initialement
   const [index, setIndex] = useState(0); // Indice de la page
 
-  const isMobile = useDetectWidth(768)
+  const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
 
   useEffect(() => {
@@ -47,7 +47,10 @@ export default function Recipes() {
       : recipes.filter((recipe) => recipe.categorie.id === activeButton);
 
   // Découper les recettes en pages
-  const paginatedRecipes = filteredRecipes.slice(index, index + visibleCardsecipe);
+  const paginatedRecipes = filteredRecipes.slice(
+    index,
+    index + visibleCardsecipe
+  );
 
   // Pagination
   const handlePrev = () => setIndex(index - visibleCardsecipe);
@@ -62,7 +65,7 @@ export default function Recipes() {
     <>
       <Header />
       <main className="recipes">
-        <BackgroundImg url="/assets/img/background/background-recipes.webp" />
+        <BackgroundImgRecipes />
         <section className="choice">
           <h2 className="titleRecipesCards">Choisissez votre :</h2>
           {recipes.length > 0 ? (
@@ -100,9 +103,7 @@ export default function Recipes() {
                     key={id}
                     id={id}
                     duration={duration}
-                    classNameRegime={
-                      vegetarian === true ? "regimeActive" : ""
-                    }
+                    classNameRegime={vegetarian === true ? "regimeActive" : ""}
                     textRegime={vegetarian === true ? "Végétarien" : ""}
                     title={title}
                     src={img}

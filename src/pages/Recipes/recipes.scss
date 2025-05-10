@@ -4,9 +4,6 @@
   position: relative;
   @include displayColumn;
   gap: 20px;
-  img {
-    object-fit: cover;
-  }
   .choice {
     @include section;
     @media (max-width: 768px) {
