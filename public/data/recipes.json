@@ -61,7 +61,44 @@
     "img": "/assets/img/recipes/Ballotine-de-dinde-aux-legumes.webp",
     "vegetarian": "",
     "categorie": { "id": 1, "text": "Entrées" },
-    "duration": "De 45 à 60 minutes"
+    "duration": "De 45 à 60 minutes",
+    "ingredients": [
+      {
+        "name": "de farine",
+        "quantity": 300,
+        "dosage": "g"
+      },
+      {
+        "name": "oeufs",
+        "quantity": 2,
+        "dosage": ""
+      },
+      {
+        "name": "d'eau gazeuse",
+        "quantity": 100,
+        "dosage": "mL"
+      },
+      {
+        "name": "d'huile de noix",
+        "quantity": 1,
+        "dosage": "cuil. à soupe"
+      }
+    ],
+    "ustensils":[
+      "ustensil 1",
+      "ustensil 2",
+      "ustensil 3"
+    ],
+    "steps": [
+    "Préchauffez le four à 180°C.",
+    "Dans un grand bol, mélangez la farine, le sucre et la levure.",
+    "Ajoutez les œufs un à un, puis versez l'eau gazeuse pour obtenir une pâte homogène.",
+    "Incorporez l'huile de noix et remuez jusqu'à ce que la pâte soit lisse.",
+    "Versez la pâte dans un moule à gâteau beurré et fariné.",
+    "Enfournez pendant 25 à 30 minutes ou jusqu'à ce qu'un couteau en ressorte propre.",
+    "Laissez refroidir avant de démouler et de servir.",
+    "Pour une touche finale, saupoudrez de sucre glace avant de servir."
+  ]
   },
   {
     "id": "foie-de-volaille-en-salade-tiède",

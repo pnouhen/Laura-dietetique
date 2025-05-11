@@ -1,0 +1,8 @@
+@use "../../styles/mixin" as *;
+
+.recipesDetails{
+    @include section;
+    .imgRecipe{
+        width: 270px;
+    }
+}
