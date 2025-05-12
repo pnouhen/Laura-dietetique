@@ -1,61 +1,35 @@
 @use "../../styles/mixin" as *;
 
-@mixin cardRecipe {
-  width: 300px;
-  height: 300px;
-  border-radius: 20px;
-  
-  @media (max-width: 1024px) {
-    width: 200px;
-    height: 200px;
-  }
-  
-  @media (max-width: 525px) {
-    width: 100%;
-  }
-}
-
 .cardRecipe {
   position: relative;
   margin: auto;
   color: black;
   @include cardRecipe;
-  
-  @media (max-width: 525px) {
-    grid-column: 1;
-    margin-bottom: 20px;
-  }
-  
+  margin: auto;
   .duration {
+    position: absolute;
+    width: auto;
+    z-index: 1;
     @include useBadgeInfo;
     top: 0;
     left: 0;
     border-bottom-right-radius: 20px;
+  }
+  .regimeActive {
+    @include useBadgeInfo;
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
   }
-  
-  h3 {
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    box-sizing: border-box;
+  p{
+    color: #D6D6D6;
   }
-
   img {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    opacity: 0.4;
     @include cardRecipe;
+    position: absolute;
   }
+  
 }
+
+// A tester : button jaune + marron et recettes badge : vert foncé + blanc

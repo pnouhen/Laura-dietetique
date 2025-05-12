@@ -1,8 +1,8 @@
+import "./buttonSimul.scss"
 
-
-export default function ButtonSimul(onClick, text){
+export default function ButtonSimul({onClick, text}){
     return(
-        <button onClick={onClick}>
+        <button className="buttonSimul" onClick={onClick}>
               {text}
             </button>
     )

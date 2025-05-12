@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
+import { NavLink } from "react-router-dom";
 
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImgRecipes from "../../components/BackgroundImgRecipes/BackgroundImgRecipes.jsx";
@@ -92,24 +93,30 @@ export default function Recipes() {
             />
           )}
         </section>
-
         <section className="recipesCards">
           <h2 className="titleRecipesCards">Recettes :</h2>
           {paginatedRecipes.length > 0 ? (
             <>
-              {paginatedRecipes.map(
-                ({ id, duration, vegetarian, title, img }) => (
-                  <CardRecipe
-                    key={id}
-                    id={id}
-                    duration={duration}
-                    classNameRegime={vegetarian === true ? "regimeActive" : ""}
-                    textRegime={vegetarian === true ? "Végétarien" : ""}
-                    title={title}
-                    src={img}
-                  />
-                )
-              )}
+              <ul>
+                {paginatedRecipes.map(
+                  ({ id, duration, vegetarian, title, img }) => (
+                    <li>
+                      <NavLink to={`/recettes/${id}`} key={id}>
+                        <CardRecipe
+                          duration={duration}
+                          classNameRegime={
+                            vegetarian === true ? "regimeActive" : ""
+                          }
+                          textRegime={vegetarian === true ? "Végétarien" : ""}
+                          title={title}
+                          src={img}
+                        />
+                      </NavLink>
+                    </li>
+                  )
+                )}
+              </ul>
+
               <div className="pagination">
                 {!isFirstPage && (
                   <button className="pagination-prev" onClick={handlePrev}>

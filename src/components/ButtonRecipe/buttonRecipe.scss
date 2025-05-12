@@ -3,7 +3,8 @@
 .buttonRecipe {
   transition: all 0.2s ease;
   @include button;
-  
+  background-color: #ecd052;
+
   @media (max-width: 1024px){
     width: 20%;
     padding: 10px;
@@ -18,6 +19,6 @@
 
   &.buttonRecipeActive {
     font-weight: 800;
-    background-color: rgba(133, 170, 132, 1);
+    box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
   }
 }
