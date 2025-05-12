@@ -6,6 +6,7 @@ footer {
   grid-template-columns: 50% 50%;
   @media (max-width: 768px) {
     @include displayColumn;
+      justify-content: space-between;
     gap: 30px;
   }
   article {
@@ -24,9 +25,12 @@ footer {
   }
   .contact {
     @include displayColumn;
+      justify-content: space-between;
     gap: 25px;
     .contact_container {
       @include displayColumn;
+        justify-content: space-between;
+
       gap: 10px;
       margin: auto;
       .subTitle {

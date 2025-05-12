@@ -1,5 +1,6 @@
 @use "../../styles/mixin" as *;
 
 .buttonSubmit {
+    width: 210px;
   @include button;
 }

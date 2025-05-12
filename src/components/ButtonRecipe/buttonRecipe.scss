@@ -3,6 +3,7 @@
 .buttonRecipe {
   transition: all 0.2s ease;
   @include button;
+    width: 210px;
   background-color: #ecd052;
 
   @media (max-width: 1024px){

@@ -15,6 +15,7 @@ body {
 }
 #root{
   @include displayColumn;
+    justify-content: space-between;
   min-height: 100vh;
 }
 h2{
@@ -39,7 +40,7 @@ h3{
     font-size: 14px;
   }
 }
-p, li, a, input {
+p, li, li::before, a, input {
   font-size: 16px;
   line-height: 25px;
   @media (max-width: 1024px) {

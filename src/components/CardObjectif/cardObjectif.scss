@@ -3,6 +3,7 @@
 
 .cardObjectif {
     @include displayColumn;
+      justify-content: space-between;
     margin: auto;
     justify-content: center;
     gap: 5px;

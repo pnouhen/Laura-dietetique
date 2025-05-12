@@ -3,6 +3,7 @@
 .cardConsultation {
     @include section;
     @include displayColumn;
+      justify-content: space-between;
     gap: 20px;
     width: 60%;
     @media (max-width: 1024px) {
@@ -22,11 +23,12 @@
     .duration,
     .price,
     .coupleRate {
-      @include align-items5px;
+      @include displayFlex5px;
       align-self: baseline;
     }
     .description {
       @include displayColumn;
+        justify-content: space-between;
       gap: 5px;
     }
     .priceCondition {

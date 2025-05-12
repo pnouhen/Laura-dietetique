@@ -3,6 +3,7 @@
 .reviews {
   @include section;
   @include displayColumn;
+    justify-content: space-between;
   gap: 20px;
   .reviews_container {
     position: relative;

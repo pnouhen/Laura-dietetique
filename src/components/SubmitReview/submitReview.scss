@@ -2,7 +2,8 @@
 
 .submitReview {
   @include section;
-  @include displayColumn;
+  // @include displayColumn;
+    justify-content: space-between;
   align-items: center;
   gap: 20px;
   width: 700px;
@@ -44,6 +45,7 @@
       width: 100%;
       position: relative;
       @include displayColumn;
+  justify-content: space-between;
       gap: 10px;
       textarea {
         @include input;

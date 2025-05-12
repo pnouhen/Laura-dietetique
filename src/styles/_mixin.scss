@@ -8,7 +8,6 @@
 @mixin displayColumn {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 @mixin ratings {
@@ -34,11 +33,11 @@
   font-size: 18px;
   font-weight: 600;
   margin-left: 10px;
-  
+
   @media (max-width: 1024px) {
     font-size: 16px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 14px;
   }
@@ -46,6 +45,7 @@
 
 @mixin labelInput {
   @include displayColumn;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -62,7 +62,7 @@
   }
 }
 
-@mixin align-items5px {
+@mixin displayFlex5px {
   display: flex;
   gap: 5px;
 }
@@ -75,8 +75,7 @@
 }
 
 @mixin button {
-  width: 210px;
-  padding: 10px 0;
+  padding: 10px;
   background-color: rgb(133, 170, 132, 0.7);
   cursor: pointer;
   @include input;
@@ -87,12 +86,12 @@
   position: absolute;
   z-index: 1;
   padding: 5px 10px;
-  background-color: #30672E;
+  background-color: #30672e;
   font-weight: 600;
 }
 @mixin cardRecipe {
   width: 300px;
-  height: 300px;  
+  height: 300px;
   @media (max-width: 1024px) {
     width: 200px;
     height: 200px;

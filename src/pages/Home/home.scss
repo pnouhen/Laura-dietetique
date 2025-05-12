@@ -4,19 +4,21 @@
 .home {
   position: relative;
   @include displayColumn;
+  justify-content: space-between;
   gap: 30px;
   .objectif {
     @include section;
     @include grid3Colums;
-      gap: 30px;
-      @media (max-width: 1024px) {
-        grid-template-columns: calc(51% - 30px) calc(51% - 30px);
-      }
-      @media (max-width: 768px) {
-        @include displayColumn;
-        gap: 30px;
+    gap: 30px;
+    @media (max-width: 1024px) {
+      grid-template-columns: calc(51% - 30px) calc(51% - 30px);
     }
-    h2{
+    @media (max-width: 768px) {
+      @include displayColumn;
+        justify-content: space-between;
+      gap: 30px;
+    }
+    h2 {
       grid-column: 1 / 4;
       @media (max-width: 1024px) {
         grid-column: 1 / 3;

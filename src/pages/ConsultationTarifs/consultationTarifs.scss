@@ -6,6 +6,8 @@
     height: 78%;
   }
   @include displayColumn;
+    justify-content: space-between;
+
   align-items: center;
   gap: 20px;
   padding: 20px;

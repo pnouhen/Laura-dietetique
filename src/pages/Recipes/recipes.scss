@@ -3,11 +3,14 @@
 .recipes {
   position: relative;
   @include displayColumn;
+    justify-content: space-between;
   gap: 20px;
   .choice {
     @include section;
     @media (max-width: 768px) {
       @include displayColumn;
+        justify-content: space-between;
+
       gap: 20px;
     }
     h2 {
@@ -29,6 +32,7 @@
   .recipesCards {
     @include section;
     @include displayColumn;
+      justify-content: space-between;
     gap: 20px;
     .titleRecipesCards {
       margin: 0;
@@ -94,7 +98,7 @@
         grid-column: 3;
       }
       button {
-        @include align-items5px;
+        @include displayFlex5px;
         @include buttonBase;
         justify-content: center;
         align-items: center;
