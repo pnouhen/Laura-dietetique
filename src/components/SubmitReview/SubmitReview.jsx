@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import LabelInput from "../LabelInput/LabelInput";
 import StarRating from "../StarRating/StarRating";
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
+import Button from "../Button/Button";
 import MessageModal from "../MessageModal/MessageModal";
 
 import "./submitReview.scss";
@@ -112,7 +112,7 @@ export default function SubmitReview() {
           </div>
 
           {/* Submit button (inside form for proper submission) */}
-          <ButtonSubmit type="submit" />
+          <Button className="buttonSubmit" type="submit" text="Partagez" />
         </form>
       </section>
 

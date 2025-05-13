@@ -10,7 +10,6 @@
     @media (max-width: 768px) {
       @include displayColumn;
       justify-content: space-between;
-
       gap: 20px;
     }
     h2 {
@@ -26,6 +25,26 @@
       margin: auto;
       @media (max-width: 768px) {
         gap: 20px;
+      }
+      .buttonRecipe {
+        transition: all 0.2s ease;
+        width: 210px;
+        background-color: #efd666;
+        @media (max-width: 1024px) {
+          width: 20%;
+          padding: 10px;
+          height: 60px;
+        }
+
+        @media (max-width: 768px) {
+          width: 82px;
+          padding: 10px;
+          height: 70px;
+        }
+      }
+      .buttonRecipeActive {
+        font-weight: 800;
+        box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
       }
     }
   }
@@ -79,7 +98,7 @@
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.6);
-        border-radius: 20px; 
+        border-radius: 20px;
         z-index: 1;
       }
     }

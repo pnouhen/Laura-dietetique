@@ -74,14 +74,6 @@
   gap: 30px;
 }
 
-@mixin button {
-  padding: 10px;
-  background-color: rgb(133, 170, 132, 0.7);
-  cursor: pointer;
-  @include input;
-  @include font18-600;
-}
-
 @mixin useBadgeInfo {
   position: absolute;
   z-index: 1;

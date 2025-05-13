@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImgRecipes from "../../components/BackgroundImgRecipes/BackgroundImgRecipes.jsx";
-import ButtonRecipe from "../../components/ButtonRecipe/ButtonRecipe.jsx";
+import Button from "../../components/Button/Button.jsx";
 import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -13,13 +13,13 @@ import "./recipes.scss";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
-  const [buttonRecipe, setbuttonRecipe] = useState([]);
+  const [buttons, setButtons] = useState([]);
   const [activeButton, setActiveButton] = useState(null); // Aucun bouton sélectionné initialement
   const [index, setIndex] = useState(0); // Indice de la page
 
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
-
+  console.log(activeButton);
   useEffect(() => {
     fetchData("/data/recipes.json")
       .then((data) => {
@@ -31,7 +31,7 @@ export default function Recipes() {
           new Map(categories.map((cat) => [cat.id, cat])).values()
         ).sort((a, b) => a.id - b.id);
 
-        setbuttonRecipe(uniqueCategories);
+        setButtons(uniqueCategories);
       })
       .catch((error) => console.error("Error during fetch:", error));
   }, []);
@@ -71,17 +71,22 @@ export default function Recipes() {
           <h2 className="titleRecipesCards">Choisissez votre :</h2>
           {recipes.length > 0 ? (
             <div className="choice_container">
-              <ButtonRecipe
+              <Button
                 text="Tous"
-                isActive={activeButton === null}
+                className={`buttonRecipe ${
+                  activeButton === null ? "buttonRecipeActive" : ""
+                }`}
                 onClick={() => handleButtonClick(null)}
               />
-              {buttonRecipe.map(({ id, text }) => (
-                <ButtonRecipe
+
+              {buttons.map(({ id, text }) => (
+                <Button
                   key={id}
                   id={id}
                   text={text}
-                  isActive={activeButton === id}
+                  className={`buttonRecipe ${
+                    activeButton === id ? "buttonRecipeActive" : ""
+                  }`}
                   onClick={() => handleButtonClick(id)}
                 />
               ))}

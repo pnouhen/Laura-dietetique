@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Services
 import { fetchData } from "../../services/fetchData.jsx";
@@ -14,6 +14,7 @@ import RecipeDetailsIngredients from "../../components/RecipeDetailsIngredients/
 import RecipeDetailsUstensils from "../../components/RecipeDetailsUstensils/RecipeDetailsUstensils.jsx";
 import RecipeDetailsSteps from "../../components/RecipeDetailsSteps/RecipeDetailsSteps.jsx";
 import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
+import Button from "../../components/Button/Button.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
@@ -115,9 +116,11 @@ export default function RecipesDetails() {
 
         {/* Bouton de téléchargement PDF */}
         {purchasedRecipe && (
-          <button className="downloadRecipe" onClick={handleDownload}>
-            Télécharger au format PDF
-          </button>
+          <Button
+            text="Télécharger au format PDF"
+            className={"downloadRecipe"}
+            onClick={handleDownload}
+          />
         )}
       </main>
       <Footer />

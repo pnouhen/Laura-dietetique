@@ -1,0 +1,8 @@
+@use "../../styles/mixin" as *;
+
+.buttonComposent {
+  padding: 10px;
+  cursor: pointer;
+  @include input;
+  @include font18-600;
+}
