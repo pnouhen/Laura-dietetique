@@ -1,0 +1,42 @@
+@use "../../styles/mixin" as *;
+
+.steps {
+  padding: 0 20px;
+  @include displayColumn;
+  gap: 30px;
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+  ul {
+    @include displayColumn;
+    gap: 20px;
+    counter-reset: item;
+    li::before {
+      content: counter(item);
+      counter-increment: item;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #30672e;
+      color: #d6d6d6;
+    }
+    li {
+      list-style: none;
+      align-items: center;
+      @include displayFlex5px;
+    }
+  }
+  .connexionRecipeDetails {
+    height: 100%;
+    @include displayColumn;
+    align-items: center;
+    gap: 10px;
+  }
+  a {
+    color: black;
+    font-weight: 600;
+  }
+}
