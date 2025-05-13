@@ -3,7 +3,7 @@
 .submitReview {
   @include section;
   // @include displayColumn;
-    justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   width: 700px;
@@ -17,22 +17,22 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    .NameFirstName{
+    .NameFirstName {
       width: 100%;
       display: flex;
-    justify-content: space-between;
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 20px;
-    }
-    .name,
-    .firstName {
-      @include labelInput;
-      input {
-        width: 233px;
-        height: 40px;
+      justify-content: space-between;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
       }
-    }
+      .name,
+      .firstName {
+        @include labelInput;
+        input {
+          width: 233px;
+          height: 40px;
+        }
+      }
     }
     .starRatings {
       width: 100%;
@@ -44,16 +44,16 @@
     .formReview {
       width: 100%;
       position: relative;
+      justify-content: space-between;
       @include displayColumn;
-  justify-content: space-between;
+
       gap: 10px;
       textarea {
-        @include input;
-        @include insideInput;
         height: 300px;
         overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
         padding-top: 30px;
+        @include input;
+        @include insideInput;
       }
       .review-counter {
         position: absolute;

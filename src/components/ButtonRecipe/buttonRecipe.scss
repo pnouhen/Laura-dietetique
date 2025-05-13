@@ -2,17 +2,17 @@
 
 .buttonRecipe {
   transition: all 0.2s ease;
-  @include button;
-    width: 210px;
+  width: 210px;
   background-color: #ecd052;
+  @include button;
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     width: 20%;
     padding: 10px;
     height: 60px;
   }
-  
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     width: 82px;
     padding: 10px;
     height: 70px;

@@ -4,32 +4,32 @@
   position: relative;
   margin: auto;
   color: black;
-  @include cardRecipe;
   margin: auto;
+@include cardRecipe;
+
   .duration {
     position: absolute;
     width: auto;
-    z-index: 1;
-    @include useBadgeInfo;
+    z-index: 2;
     top: 0;
     left: 0;
     border-bottom-right-radius: 20px;
-  }
-  .regimeActive {
     @include useBadgeInfo;
+  }
+
+  .regimeActive {    
     bottom: 0;
     right: 0;
-    border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
+    @include useBadgeInfo;
   }
+
   p{
     color: #D6D6D6;
   }
-  img {
-    @include cardRecipe;
-    position: absolute;
-  }
-  
-}
 
-// A tester : button jaune + marron et recettes badge : vert foncé + blanc
+  img {    
+    position: absolute;
+    @include cardRecipe;
+  }
+}
