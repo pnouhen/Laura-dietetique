@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
-import { NavLink } from "react-router-dom";
 
 import Header from "../../components/Header/Header.jsx";
-import BackgroundImgRecipes from "../../components/BackgroundImgRecipes/BackgroundImgRecipes.jsx";
-import Button from "../../components/Button/Button.jsx";
-import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
-import NoData from "../../components/NoData/NoData.jsx";
+import RecipeBackground from "../../components/Recipe-Background/RecipeBackground.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import RecipeCategoryFilter from "../../components/Recipe-CategoryFiltrer/Recipe-CategoryFiltrer.jsx";
+import RecipeList from "../../components/Recipe-List/RecipeList.jsx";
+
 import "./recipes.scss";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
   const [buttons, setButtons] = useState([]);
-  const [activeButton, setActiveButton] = useState(null); // Aucun bouton sélectionné initialement
-  const [index, setIndex] = useState(0); // Indice de la page
+  const [activeButton, setActiveButton] = useState(null);
+  const [index, setIndex] = useState(0);
 
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
@@ -37,8 +36,8 @@ export default function Recipes() {
   }, []);
 
   const handleButtonClick = (id) => {
-    setActiveButton(id); // Met à jour le bouton actif
-    setIndex(0); // Réinitialise l'index de la pagination lors du changement de catégorie
+    setActiveButton(id);
+    setIndex(0);
   };
 
   // Filtrage des recettes selon la catégorie sélectionnée
@@ -62,93 +61,27 @@ export default function Recipes() {
 
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
+  
   return (
     <>
       <Header />
       <main className="recipes">
-        <BackgroundImgRecipes />
-        <section className="choice">
-          <h2 className="titleRecipesCards">Choisissez votre :</h2>
-          {recipes.length > 0 ? (
-            <div className="choice_container">
-              <Button
-                text="Tous"
-                className={`buttonRecipe ${
-                  activeButton === null ? "buttonRecipeActive" : ""
-                }`}
-                onClick={() => handleButtonClick(null)}
-              />
-
-              {buttons.map(({ id, text }) => (
-                <Button
-                  key={id}
-                  id={id}
-                  text={text}
-                  className={`buttonRecipe ${
-                    activeButton === id ? "buttonRecipeActive" : ""
-                  }`}
-                  onClick={() => handleButtonClick(id)}
-                />
-              ))}
-            </div>
-          ) : (
-            <NoData
-              text="Désolé, nous rencontrons un problème technique."
-              textClass=""
-            />
-          )}
-        </section>
-        <section className="recipesCards">
-          <h2 className="titleRecipesCards">Recettes :</h2>
-          {paginatedRecipes.length > 0 ? (
-            <>
-              <ul>
-                {paginatedRecipes.map(
-                  ({ id, duration, vegetarian, title, img }) => (
-                    <li>
-                      <NavLink to={`/recettes/${id}`} key={id}>
-                        <CardRecipe
-                          duration={duration}
-                          classNameRegime={
-                            vegetarian === true ? "regimeActive" : ""
-                          }
-                          textRegime={vegetarian === true ? "Végétarien" : ""}
-                          title={title}
-                          src={img}
-                        />
-                      </NavLink>
-                    </li>
-                  )
-                )}
-              </ul>
-
-              <div className="pagination">
-                {!isFirstPage && (
-                  <button className="pagination-prev" onClick={handlePrev}>
-                    <i className="fa-solid fa-chevron-left"></i>
-                    <p>Précédant</p>
-                  </button>
-                )}
-
-                <p className="counter">
-                  Page {currentPage} sur {totalPages}
-                </p>
-
-                {!isLastPage && (
-                  <button className="pagination-next" onClick={handleNext}>
-                    <p>Suivant</p>
-                    <i className="fa-solid fa-chevron-right"></i>
-                  </button>
-                )}
-              </div>
-            </>
-          ) : (
-            <NoData
-              text="Nous n'avons pas de recettes disponibles"
-              textClass="noRecipesMessage"
-            />
-          )}
-        </section>
+        <RecipeBackground />
+        <RecipeCategoryFilter 
+          buttons={buttons} 
+          activeButton={activeButton} 
+          handleButtonClick={handleButtonClick} 
+          recipes={recipes}
+        />
+        <RecipeList
+          paginatedRecipes={paginatedRecipes}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          isFirstPage={isFirstPage}
+          isLastPage={isLastPage}
+          handlePrev={handlePrev}
+          handleNext={handleNext}
+        />
       </main>
       <Footer />
     </>

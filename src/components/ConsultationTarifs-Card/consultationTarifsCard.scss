@@ -1,6 +1,6 @@
 @use "../../styles/mixin" as *;
 
-.cardConsultation {
+.consultationTarifsCard {
     @include section;
     @include displayColumn;
       justify-content: space-between;

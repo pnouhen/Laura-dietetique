@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/consultations-et-tarif",
+    path: "/consultations-et-tarifs",
     element: (
         <ConsultationTarifs />
     ),

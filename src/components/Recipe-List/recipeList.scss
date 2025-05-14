@@ -1,0 +1,64 @@
+@use "../../styles/mixin" as *;
+
+.recipesList {
+    @include section;
+    @include displayColumn;
+    justify-content: space-between;
+    gap: 20px;
+    .titlerecipesList {
+      margin: 0;
+      @media (max-width: 525px) {
+        margin-bottom: 20px;
+      }
+    }
+    ul {
+      list-style: none;
+      @include grid3Colums;
+      grid-template-rows: 1fr 1fr;
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, calc(50% - 40px));
+        grid-template-rows: auto 1fr auto;
+      }
+      @media (max-width: 525px) {
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr;
+      }
+      .cardRecipe {
+        .duration {
+          border-top-left-radius: 20px;
+        }
+        .regimeActive {
+          border-bottom-right-radius: 20px;
+        }
+        img {
+          border-radius: 20px;
+        }
+        h3 {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .cardRecipe::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+        z-index: 1;
+      }
+    }
+    .noRecipesMessage {
+      grid-column: 1/4;
+      text-align: center;
+      @media (max-width: 768px) {
+        grid-column: 1/3;
+      }
+    }
+  }

@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import { isFormEmpty, resetFormFields } from "../../services/formUtils";
 
 import LabelInput from "../LabelInput/LabelInput";
-import StarRating from "../StarRating/StarRating";
+import HomeStarRating from "../Home-StarRating/HomeStarRating";
 import Button from "../Button/Button";
 
-import "./submitReview.scss";
+import "./homeSubmitReview.scss";
 
-export default function SubmitReview({ onSuccess, onValidationError }) {
+export default function HomeSubmitReview({ onSuccess, onValidationError }) {
   const [charCount, setCharCount] = useState(0);
   const MAX_CHARS = 450;
 
@@ -73,7 +73,7 @@ export default function SubmitReview({ onSuccess, onValidationError }) {
           />
         </div>
 
-        <StarRating rating={rating} setRating={setRating} />
+        <HomeStarRating rating={rating} setRating={setRating} />
 
         <div className="formReview">
           <label htmlFor="review">Votre avis</label>

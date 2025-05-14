@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
-import CardConsultation from "../../components/CardConsultation/CardConsultation.jsx";
+import ConsultationTarifsCard from "../../components/ConsultationTarifs-Card/ConsultationTarifsCard.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
 import "./consultationTarifs.scss";
@@ -20,7 +20,7 @@ export default function ConsultationTarifs() {
       <main className="methodRate">
         <BackgroundImg url="/assets/img/background/background-methodRate.webp" />
         {/* Premier bilan */}
-        <CardConsultation
+        <ConsultationTarifsCard
           title="Premier bilan nutritionnel avec analyse de composition corporelle:"
           duration="une heure"
           description={`Le premier bilan me permettra de
@@ -36,7 +36,7 @@ export default function ConsultationTarifs() {
         />
 
         {/* Consultation de suivi */}
-        <CardConsultation
+        <ConsultationTarifsCard
           title="Consultation de suivi :"
           duration="30 minutes"
           description={`Pour vous assurer de bons résultats, je recommande des RDV tous
@@ -56,7 +56,7 @@ export default function ConsultationTarifs() {
         />
 
         {/* Consultation à distance */}
-        <CardConsultation
+        <ConsultationTarifsCard
           title="Consultation à distance :"
           duration=""
           description={`Pour pouvoir répondre au plus grand nombre et m'adapter à vos

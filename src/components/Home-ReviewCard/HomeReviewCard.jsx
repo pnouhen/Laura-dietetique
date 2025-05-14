@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import StarRating from "../StarRating/StarRating";
-import ButtonMore from "../ButtonMore/ButtonMore";
+import HomeStarRating from "../Home-StarRating/HomeStarRating";
+import HomeReviewCardButtonMore from "../Home-ReviewCard-ButtonMore/HomeReviewCardButtonMore";
 
-import "./cardsreview.scss"
+import "./homeReviewCard.scss"
 
 export default function CardsReview({ review }) {
   const [clickButtonMore, setClickButtonMore] = useState(false);
@@ -23,7 +23,7 @@ export default function CardsReview({ review }) {
       <p className="name">{review.name}</p>
 
       {/* Render star ratings */}
-      <StarRating rating={Number(review.rating)} showLabel={false} />
+      <HomeStarRating rating={Number(review.rating)} showLabel={false} />
       {/* Container with fixed height for the comment */}
       <div className="comment-container">
         <p
@@ -34,7 +34,7 @@ export default function CardsReview({ review }) {
         </p>
 
         {showButton && (
-          <ButtonMore
+          <HomeReviewCardButtonMore
             text={clickButtonMore ? "Réduire" : "Afficher plus"}
             onClick={() => setClickButtonMore(!clickButtonMore)}
           />

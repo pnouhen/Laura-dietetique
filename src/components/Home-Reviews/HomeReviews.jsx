@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
-import CardReview from "../CardReview/CardReview.jsx";
-import Dots from "../Dots/Dots.jsx";
+import HomeReviewCard from "../Home-ReviewCard/HomeReviewCard.jsx";
+import HomeReviewDots from "../Home-Review-Dots/HomeReviewDots.jsx";
 import NoData from "../NoData/NoData.jsx";
 
-import "./reviews.scss";
+import "./homeReviews.scss";
 
 // Voir responsive + changement du nombre de carte
 
-export default function Review() {
+export default function HomeReviews() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -99,12 +99,12 @@ export default function Review() {
               const reviewIndex = index + i;
               // Only render if we have a review at this index
               return reviewIndex < reviews.length ? (
-                <CardReview key={reviewIndex} review={reviews[reviewIndex]} />
+                <HomeReviewCard key={reviewIndex} review={reviews[reviewIndex]} />
               ) : null;
             })}
             <i className="fa-solid fa-chevron-right" onClick={handleNext}></i>
           </div>
-          <Dots
+          <HomeReviewDots
             currentIndex={index}
             dataLength={reviews.length}
             reviewsToShow={visibleCardReview}

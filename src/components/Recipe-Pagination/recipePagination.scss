@@ -1,0 +1,42 @@
+@use "../../styles/mixin" as *;
+
+.pagination {
+      grid-column: 1 / 4;
+      grid-row: 4;
+      width: 100%;
+      @include grid3Colums;
+      @media (max-width: 768px) {
+        grid-column: 1/3;
+      }
+      .pagination-prev {
+        grid-column: 1;
+      }
+      .counter {
+        grid-column: 2;
+        text-align: center;
+      }
+      .pagination-next {
+        grid-column: 3;
+      }
+      button {
+        @include displayFlex5px;
+        @include buttonBase;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .fa-solid {
+          display: flex;
+          align-content: center;
+          font-size: 16px;
+          @media (max-width: 768px) {
+            font-size: 14px;
+          }
+          p {
+            text-align: center;
+            @media (max-width: 768px) {
+              line-height: 0;
+            }
+          }
+        }
+      }
+    }

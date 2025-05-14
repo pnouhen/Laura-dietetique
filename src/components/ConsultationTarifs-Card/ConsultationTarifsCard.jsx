@@ -1,6 +1,6 @@
-import "./cardConsultation.scss"
+import "./consultationTarifsCard.scss"
 
-export default function CardConsultation({
+export default function ConsultationTarifsCard({
   title,
   duration,
   description,
@@ -9,7 +9,7 @@ export default function CardConsultation({
   priceCondition,
 }) {
   return (
-    <section className="cardConsultation">
+    <section className="consultationTarifsCard">
       <h2>{title}</h2>
       <div className="duration">
         <h3>{duration == "" ? "" : "Durée :"}</h3>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./dots.scss";
+import "./homeReviewDots.scss";
 
-export default function Dots({ currentIndex, dataLength }) {
+export default function HomeReviewDots({ currentIndex, dataLength }) {
   // Calculate number of dots based on the number of reviews
   const [slideBy, setSlideBy] = useState(3);
   const [numberOfDots, setNumberOfDots] = useState(Math.ceil(dataLength / slideBy));

@@ -1,8 +1,8 @@
 
 
-import "./cardRecipe.scss";
+import "./recipeCard.scss";
 
-export default function CardRecipe({
+export default function RecipeCard({
   duration,
   classNameRegime,
   textRegime,

@@ -8,12 +8,12 @@ import { downloadPDF } from "../../services/downloadPDF.jsx";
 // Components
 import Header from "../../components/Header/Header.jsx";
 import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
-import BackgroundImgRecipes from "../../components/BackgroundImgRecipes/BackgroundImgRecipes.jsx";
+import RecipeBackground from "../../components/Recipe-Background/RecipeBackground.jsx";
 import RecipeDetailsSelectPeople from "../../components/RecipeDetails-SelectPeople/RecipeDetailsSelectPeople.jsx";
 import RecipeDetailsIngredients from "../../components/RecipeDetails-Ingredients/RecipeDetailsIngredients.jsx";
 import RecipeDetailsUstensils from "../../components/RecipeDetails-Ustensils/RecipeDetailsUstensils.jsx";
 import RecipeDetailsSteps from "../../components/RecipeDetails-Steps/RecipeDetailsSteps.jsx";
-import CardRecipe from "../../components/CardRecipe/CardRecipe.jsx";
+import RecipeCard from "../../components/Recipe-Card/RecipeCard.jsx";
 import Button from "../../components/Button/Button.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
@@ -73,7 +73,7 @@ export default function RecipesDetails() {
           text={purchasedRecipe ? "Vendre" : "Achat"}
         />
 
-        <BackgroundImgRecipes />
+        <RecipeBackground />
 
         {/* Conteneur principal de la recette */}
         <div id="recipesDetails_container" className="recipesDetails_container">
@@ -83,7 +83,7 @@ export default function RecipesDetails() {
           {/* Détails de la recette */}
           <div className="details">
             {/* Carte de la recette */}
-            <CardRecipe
+            <RecipeCard
               duration={recipeDetails.duration}
               classNameRegime={recipeDetails.vegetarian ? "regimeActive" : ""}
               textRegime={recipeDetails.vegetarian ? "Végétarien" : ""}

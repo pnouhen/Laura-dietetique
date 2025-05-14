@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+
+import HeaderNavItem from "../Header-NavItem/HearderNavItem";
+import HeaderIconMobile from "../Header-IconMobile/HeaderIconMobile";
+
 import "./header.scss";
 
 export default function Header() {
@@ -12,47 +15,22 @@ export default function Header() {
           <h1>Laura diététique</h1>
           <p>A l'écoute pour des conseils de qualité et personnalisés</p>
         </div>
-        {/* Icone qui ouvre/ferme le menu en mobile */}
-        <i
-          className={`fa-solid ${open ? "" : "fa-bars"}`}
-          onClick={() => {
-            setOpen(!open);
-          }}
-        ></i>
+        <HeaderIconMobile
+            open={open}
+            setOpen={setOpen}
+            iconClosed="fa-bars"
+          />
         <nav className={open ? "mobile active" : ""}>
-        <i
-          className={`fa-solid ${open ? "fa-xmark" : ""}`}
-          onClick={() => {
-            setOpen(!open);
-          }}
-        ></i>
+          {/* Icone qui ouvre/ferme le menu en mobile */}
+          
+          <HeaderIconMobile open={open} setOpen={setOpen} iconOpen="fa-xmark" />
           <ul>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Accueil
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/qui-suis-je"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Qui suis-je ?
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/consultations-et-tarif"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Consultations et Tarifs
-              </NavLink>
-            </li>            
+            <HeaderNavItem to="" text="Accueil" />
+            <HeaderNavItem to="qui-suis-je" text=" Qui suis-je ?" />
+            <HeaderNavItem to="consultations-et-tarifs" text="Consultations et Tarifs" />
             <li>
               <a
+                className="appointment"
                 href="https://user.clicrdv.com/Laura-Gentes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,22 +38,8 @@ export default function Header() {
                 Prendre rendez-vous
               </a>
             </li>
-            <li>
-              <NavLink
-                to="/recettes"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Recettes
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/se-connecter"
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Se connecter
-              </NavLink>
-            </li>
+            <HeaderNavItem to="recettes" text="Recettes" />
+            <HeaderNavItem to="se-connecter" text="Se connecter" />
           </ul>
         </nav>
       </div>

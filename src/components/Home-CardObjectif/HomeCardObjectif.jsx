@@ -1,8 +1,8 @@
-import "./cardObjectif.scss";
+import "./homeCardObjectif.scss";
 
-export default function CardObjectif({ article, logo, title, text }) {
+export default function HomeCardObjectif({ article, logo, title, text }) {
   return (
-    <article className={article}>
+    <article className={`objectifCard ${article}`}>
       <i className={logo}></i>
       <h3
         dangerouslySetInnerHTML={{
