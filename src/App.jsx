@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home"
 import ConsultationTarifs from "./pages/ConsultationTarifs/ConsultationTarifs";
 import Recipes from "./pages/Recipes/Recipes";
 import RecipesDetails from "./pages/RecipesDetails/RecipesDetails"
-import Connexion from "./pages/Connexion/Connexion";
+import AuthPage from "./pages/AuthPage/AuthPage";
 import About from "./pages/About/About";
 import "./styles/general.scss"
 
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/se-connecter",
     element: (
-        <Connexion />
+        <AuthPage />
     ),
   }  
 ]);

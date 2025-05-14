@@ -19,7 +19,7 @@ export default function Recipes() {
 
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
-  console.log(activeButton);
+
   useEffect(() => {
     fetchData("/data/recipes.json")
       .then((data) => {

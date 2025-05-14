@@ -90,7 +90,7 @@ const [isSubmitted, setIsSubmitted] = useState(false);
       <MessageModal
         action={!!validationError}
         poster="message"
-        title="Elément(s) manquant(s)"
+        title="Erreur de validation"
         clickPoster={() => closeModal("validation")}
         clickClose={() => closeModal("validation")}
         message={validationError}

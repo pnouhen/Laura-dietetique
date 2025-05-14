@@ -1,6 +1,6 @@
 @use "../../styles/mixin" as *;
 
-.connexion {
+.authPage {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -9,8 +9,8 @@
   @media (max-width: 1024px) {
     gap: 30px;
   }
-  .formInscription,
-  .formConnexion {
+  .authPage-ConnexionForm,
+  .authPage-SignInForm {
     width: 450px;
     border-radius: 20px;
     align-items: center;
