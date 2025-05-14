@@ -2,7 +2,7 @@ import "./labelInput.scss"
 
 export default function LabelInput({className, htmlFor, label, type, id, ref}){
     return(
-        <div className={className}>
+        <div className={`labelInput ${className}`}>
             <label htmlFor={htmlFor}>{label}</label>
             <input type={type} id={id} ref={ref} />
           </div>

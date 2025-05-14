@@ -1,5 +1,9 @@
 @use "../../styles/mixin" as *;
 
+.labelInput{
+  @include displayColumn;
+  justify-content: space-between;
+  gap: 10px;
 label {
     @include font18-600;
   }
@@ -8,3 +12,4 @@ label {
     @include input;
       @include insideInput;
   }
+}
