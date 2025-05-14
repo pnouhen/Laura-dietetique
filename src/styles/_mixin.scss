@@ -96,6 +96,25 @@
   gap: 30px;
 }
 
+@mixin recipeButton {
+  transition: all 0.2s ease;
+  width: 210px;
+  background-color: #efd666;
+  @media (max-width: 1024px) {
+    width: 20%;
+    padding: 10px;
+    height: 60px;
+  }
+  .buttonActive {
+    font-weight: 800;
+    box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
+  }
+}
+@mixin recipeButtonActive {
+  font-weight: 800;
+  box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
+}
+
 @mixin useBadgeInfo {
   position: absolute;
   z-index: 1;

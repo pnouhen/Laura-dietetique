@@ -3,19 +3,23 @@ import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 
 import Header from "../../components/Header/Header.jsx";
-import RecipeBackground from "../../components/Recipe-Background/RecipeBackground.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
+import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
+import RecipeMenuEditor from "../../components/Recipe-MenuEditor/RecipeMenuEditor.jsx";
 import RecipeCategoryFilter from "../../components/Recipe-CategoryFiltrer/Recipe-CategoryFiltrer.jsx";
 import RecipeList from "../../components/Recipe-List/RecipeList.jsx";
+import RecipeBackground from "../../components/Recipe-Background/RecipeBackground.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 import "./recipes.scss";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
+  const [admin, setAdmin] = useState(false);
+  const [mode, setMode] = useState(null); // 'view', 'delete', 'edit'
   const [buttons, setButtons] = useState([]);
   const [activeButton, setActiveButton] = useState(null);
   const [index, setIndex] = useState(0);
-
+  console.log(mode)
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
 
@@ -61,20 +65,39 @@ export default function Recipes() {
 
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
-  
   return (
     <>
       <Header />
       <main className="recipes">
-        <RecipeBackground />
-        <RecipeCategoryFilter 
-          buttons={buttons} 
-          activeButton={activeButton} 
-          handleButtonClick={handleButtonClick} 
-          recipes={recipes}
+        <ButtonSimul
+          className="admin"
+          text={admin ? "User" : "Admin"}
+          onClick={() => {
+            setAdmin(!admin);
+            setMode(null);
+          }}
         />
+        <RecipeBackground />
+        {admin ? (
+          <RecipeMenuEditor
+            mode={mode}
+            onAddClick={() => setMode("view")}
+            onDeleteClick={() => setMode("delete")}
+            onEditClick={() => setMode("edit")}
+          />
+        ) : (
+          <RecipeCategoryFilter
+            buttons={buttons}
+            activeButton={activeButton}
+            handleButtonClick={handleButtonClick}
+            recipes={recipes}
+          />
+        )}
+
         <RecipeList
           paginatedRecipes={paginatedRecipes}
+          admin={admin}
+          mode={mode}
           currentPage={currentPage}
           totalPages={totalPages}
           isFirstPage={isFirstPage}

@@ -16,7 +16,14 @@
     border-bottom-right-radius: 20px;
     @include useBadgeInfo;
   }
-
+  .fa-solid{
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 5px;
+    font-size: 20px;
+  }
+ 
   .regimeActive {    
     bottom: 0;
     right: 0;

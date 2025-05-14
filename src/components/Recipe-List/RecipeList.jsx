@@ -6,7 +6,9 @@ import RecipePagination from "../Recipe-Pagination/RecipePagination.jsx"
 import "./recipeList.scss";
 
 export default function RecipeList({ 
-  paginatedRecipes, 
+  paginatedRecipes,
+  admin,
+  mode, 
   currentPage, 
   totalPages, 
   isFirstPage, 
@@ -29,6 +31,8 @@ export default function RecipeList({
                     textRegime={vegetarian === true ? "Végétarien" : ""}
                     title={title}
                     src={img}
+                    admin={admin}
+                    mode={mode}
                   />
                 </NavLink>
               </li>

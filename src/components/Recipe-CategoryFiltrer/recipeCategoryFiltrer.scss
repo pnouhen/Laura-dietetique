@@ -1,45 +1,35 @@
 @use "../../styles/mixin" as *;
 
 .choice {
-    @include section;
+  @include section;
+  @media (max-width: 768px) {
+    @include displayColumn;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  h2 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .choice_container {
+    max-width: 1210px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: auto;
     @media (max-width: 768px) {
-      @include displayColumn;
-      justify-content: space-between;
       gap: 20px;
     }
-    h2 {
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    .choice_container {
-      max-width: 1210px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin: auto;
+    .buttonRecipe {
+      @include recipeButton;
       @media (max-width: 768px) {
-        gap: 20px;
+        width: 82px;
+        height: 70px;
       }
-      .buttonRecipe {
-        transition: all 0.2s ease;
-        width: 210px;
-        background-color: #efd666;
-        @media (max-width: 1024px) {
-          width: 20%;
-          padding: 10px;
-          height: 60px;
-        }
-
-        @media (max-width: 768px) {
-          width: 82px;
-          padding: 10px;
-          height: 70px;
-        }
-      }
-      .buttonRecipeActive {
-        font-weight: 800;
-        box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
-      }
+    }
+    .buttonRecipeActive {
+      @include recipeButtonActive;
     }
   }
+}

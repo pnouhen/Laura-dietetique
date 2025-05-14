@@ -1,0 +1,22 @@
+@use "../../styles//mixin" as *;
+
+.menuEditor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  @include section;
+  h2 {
+    width: 100%;
+  }
+  .menuEditorButton {
+    @include recipeButton;
+    @media (max-width: 768px) {
+        width: auto;
+        height: 70px;
+      }
+  }
+  .menuEditorButtonActive {
+    @include recipeButtonActive;
+  }
+}
