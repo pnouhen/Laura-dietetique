@@ -1,12 +1,26 @@
+import { useState } from "react";
+
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
 import CardObjectif from "../../components/CardObjectif/CardObjectif.jsx";
 import Reviews from "../../components/Reviews/Reviews.jsx";
 import SubmitReview from "../../components/SubmitReview/SubmitReview.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import MessageModal from "../../components/MessageModal/MessageModal.jsx"
+
 import "./home.scss";
 
 export default function Home() {
+
+  // ModalMessage is here for the background color
+const [isSubmitted, setIsSubmitted] = useState(false);
+  const [validationError, setValidationError] = useState(null);
+
+  const closeModal = (type) => {
+    if (type === "success") setIsSubmitted(false);
+    if (type === "validation") setValidationError(null);
+  };
+
   return (
     <>
       <Header />
@@ -57,9 +71,30 @@ export default function Home() {
           />
         </section>
         <Reviews />
-        <SubmitReview />
+        <SubmitReview
+          onSuccess={() => setIsSubmitted(true)}
+          onValidationError={(msg) => setValidationError(msg)}
+        />
       </main>
       <Footer />
+       {/* Modals ici, en-dehors de <main> */}
+      <MessageModal
+        action={isSubmitted}
+        poster="message"
+        title="Avis déposé"
+        clickPoster={() => closeModal("success")}
+        clickClose={() => closeModal("success")}
+        message="Merci d'avoir partagé votre avis"
+      />
+
+      <MessageModal
+        action={!!validationError}
+        poster="message"
+        title="Elément(s) manquant(s)"
+        clickPoster={() => closeModal("validation")}
+        clickClose={() => closeModal("validation")}
+        message={validationError}
+      />
     </>
   );
 }

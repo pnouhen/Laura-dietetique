@@ -4,6 +4,7 @@ footer {
   padding: 30px 20px;
   display: grid;
   grid-template-columns: 50% 50%;
+  background-color: white;
   @media (max-width: 768px) {
     @include displayColumn;
       justify-content: space-between;

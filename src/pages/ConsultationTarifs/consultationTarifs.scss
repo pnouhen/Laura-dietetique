@@ -1,9 +1,9 @@
 @use "../../styles/mixin" as *;
 
 .methodRate {
+  position: relative;
   img{
     object-position: right;
-    height: 78%;
   }
   @include displayColumn;
     justify-content: space-between;
