@@ -1,9 +1,9 @@
 import "./buttonSimul.scss"
 
-export default function ButtonSimul({onClick, text}){
+export default function ButtonSimul({className, onClick, text}){
     return(
-        <button className="buttonSimul" onClick={onClick}>
-              {text}
-            </button>
+         <button className={`buttonSimul ${className}`} onClick={onClick}>
+      {text}
+    </button>
     )
 }

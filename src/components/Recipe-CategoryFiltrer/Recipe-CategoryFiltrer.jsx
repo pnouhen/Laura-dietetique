@@ -6,7 +6,7 @@ import "./recipeCategoryFiltrer.scss";
 export default function RecipeCategoryFilter({ buttons, activeButton, handleButtonClick, recipes }) {
   return (
     <section className="choice">
-      <h2 className="titleRecipesCards">Choisissez votre :</h2>
+      <h2 className="titleRecipesCards">Catégories</h2>
       {recipes.length > 0 ? (
         <div className="choice_container">
           <Button

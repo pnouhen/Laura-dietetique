@@ -1,10 +1,10 @@
-export default function RecipeDetailsIngredients({ data, purchased, number }) {
+export default function RecipeDetailsIngredients({ data, connected, purchased, number }) {
   return (
     <div className="ingredients">
       <h3>Les ingrédients :</h3>
       <ul>
         {data.ingredients.map((ingredient, index) => {
-          const quantity = purchased ? ingredient.quantity * number : "***";
+          const quantity = connected && purchased ? ingredient.quantity * number : "***";
 
           const spacing =
             typeof ingredient.dosage === "string" &&
@@ -16,7 +16,7 @@ export default function RecipeDetailsIngredients({ data, purchased, number }) {
             <li key={index}>
               {quantity}
               {spacing}
-              {purchased ? ingredient.dosage : ""} {ingredient.name}
+              {connected && purchased ? ingredient.dosage : ""} {ingredient.name}
             </li>
           );
         })}

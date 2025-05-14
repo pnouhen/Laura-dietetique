@@ -30,6 +30,9 @@ export default function RecipesDetails() {
   // Achat / Vendre
   const [purchasedRecipe, setPurchasedRecipe] = useState(false);
 
+  // Connecté / Non connecté
+  const [connected, setConnected] = useState(false);
+
   // Fetch recipe data
   useEffect(() => {
     fetchData("/data/recipes.json")
@@ -69,6 +72,12 @@ export default function RecipesDetails() {
       <main className="recipesDetails">
         {/* Bouton d'achat/vente */}
         <ButtonSimul
+          className="connexion"
+          onClick={() => setConnected(!connected)}
+          text={connected ? "Déconnecter" : "Se connecter"}
+        />
+        <ButtonSimul
+          className="purschasedRecipe"
           onClick={() => setPurchasedRecipe(!purchasedRecipe)}
           text={purchasedRecipe ? "Vendre" : "Achat"}
         />
@@ -96,19 +105,22 @@ export default function RecipesDetails() {
               setNumber={setNumberPeople}
             />
 
+            {/* Liste des ustensiles */}
+            <RecipeDetailsUstensils data={recipeDetails} />
+            
             {/* Liste des ingrédients */}
             <RecipeDetailsIngredients
               data={recipeDetails}
+              connected={connected}
               purchased={purchasedRecipe}
               number={numberPeople}
             />
 
-            {/* Liste des ustensiles */}
-            <RecipeDetailsUstensils data={recipeDetails} />
           </div>
 
           {/* Étapes de la recette */}
           <RecipeDetailsSteps
+            connected={connected}
             purchased={purchasedRecipe}
             data={recipeDetails}
           />
