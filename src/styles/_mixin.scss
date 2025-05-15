@@ -99,7 +99,6 @@
 @mixin recipeButton {
   transition: all 0.2s ease;
   width: 210px;
-  background-color: #efd666;
   @media (max-width: 1024px) {
     width: 20%;
     padding: 10px;

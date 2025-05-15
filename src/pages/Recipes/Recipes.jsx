@@ -19,7 +19,7 @@ export default function Recipes() {
   const [buttons, setButtons] = useState([]);
   const [activeButton, setActiveButton] = useState(null);
   const [index, setIndex] = useState(0);
-  console.log(mode)
+
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
 
@@ -43,6 +43,26 @@ export default function Recipes() {
     setActiveButton(id);
     setIndex(0);
   };
+
+  // Mode Edition
+  const handleDelete = (id) => {
+  const updated = recipes.filter((recipe) => recipe.id !== id);
+  setRecipes(updated);
+
+  const filteredUpdated =
+    activeButton === null
+      ? updated
+      : updated.filter((r) => r.categorie.id === activeButton);
+
+  const maxIndex = Math.max(
+    0,
+    Math.floor((filteredUpdated.length - 1) / visibleCardsecipe) * visibleCardsecipe
+  );
+
+  if (index > maxIndex) {
+    setIndex(maxIndex);
+  }
+};
 
   // Filtrage des recettes selon la catégorie sélectionnée
   const filteredRecipes =
@@ -78,21 +98,22 @@ export default function Recipes() {
           }}
         />
         <RecipeBackground />
-        {admin ? (
+
+        {admin && (
           <RecipeMenuEditor
             mode={mode}
             onAddClick={() => setMode("view")}
             onDeleteClick={() => setMode("delete")}
             onEditClick={() => setMode("edit")}
           />
-        ) : (
-          <RecipeCategoryFilter
-            buttons={buttons}
-            activeButton={activeButton}
-            handleButtonClick={handleButtonClick}
-            recipes={recipes}
-          />
         )}
+
+        <RecipeCategoryFilter
+          buttons={buttons}
+          activeButton={activeButton}
+          handleButtonClick={handleButtonClick}
+          recipes={recipes}
+        />
 
         <RecipeList
           paginatedRecipes={paginatedRecipes}
@@ -104,6 +125,7 @@ export default function Recipes() {
           isLastPage={isLastPage}
           handlePrev={handlePrev}
           handleNext={handleNext}
+          handleDelete={handleDelete}
         />
       </main>
       <Footer />
