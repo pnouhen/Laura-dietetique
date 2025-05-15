@@ -8,3 +8,5 @@ En header :
 Footer : 
  lien facebook, insta...
 
+IMPORTANT :
+Conformité RGPD a prendre en compte

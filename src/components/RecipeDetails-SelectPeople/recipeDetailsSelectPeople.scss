@@ -9,5 +9,6 @@
   select {
     @include input;
     @include insideInput;
+    padding: 10px;
   }
 }

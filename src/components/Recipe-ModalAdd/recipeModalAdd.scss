@@ -1,0 +1,13 @@
+@use "../../styles/mixin" as *;
+
+.modalAdd{
+    z-index: 3;    
+    @include modal;    
+    
+    .modalAdd_container {
+        width: 800px;
+        min-height: 80vh;
+        justify-content: flex-start;
+        @include modal_container;
+    }
+}

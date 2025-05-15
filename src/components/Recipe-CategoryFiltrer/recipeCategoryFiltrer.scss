@@ -22,7 +22,12 @@
       gap: 20px;
     }
     .buttonRecipe {
-      background-color: #efd666;
+      background: #ffe6a1;
+      background: linear-gradient(
+        0deg,
+        rgba(255, 230, 161, 1) 0%,
+        rgba(252, 186, 3, 1) 100%
+      );
       @include recipeButton;
       @media (max-width: 768px) {
         width: 82px;

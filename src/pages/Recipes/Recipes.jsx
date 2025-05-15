@@ -3,6 +3,7 @@ import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 
 import Header from "../../components/Header/Header.jsx";
+import RecipeModalAdd from "../../components/Recipe-ModalAdd/RecipeModalAdd.jsx";
 import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
 import RecipeMenuEditor from "../../components/Recipe-MenuEditor/RecipeMenuEditor.jsx";
 import RecipeCategoryFilter from "../../components/Recipe-CategoryFiltrer/Recipe-CategoryFiltrer.jsx";
@@ -46,23 +47,24 @@ export default function Recipes() {
 
   // Mode Edition
   const handleDelete = (id) => {
-  const updated = recipes.filter((recipe) => recipe.id !== id);
-  setRecipes(updated);
+    const updated = recipes.filter((recipe) => recipe.id !== id);
+    setRecipes(updated);
 
-  const filteredUpdated =
-    activeButton === null
-      ? updated
-      : updated.filter((r) => r.categorie.id === activeButton);
+    const filteredUpdated =
+      activeButton === null
+        ? updated
+        : updated.filter((r) => r.categorie.id === activeButton);
 
-  const maxIndex = Math.max(
-    0,
-    Math.floor((filteredUpdated.length - 1) / visibleCardsecipe) * visibleCardsecipe
-  );
+    const maxIndex = Math.max(
+      0,
+      Math.floor((filteredUpdated.length - 1) / visibleCardsecipe) *
+        visibleCardsecipe
+    );
 
-  if (index > maxIndex) {
-    setIndex(maxIndex);
-  }
-};
+    if (index > maxIndex) {
+      setIndex(maxIndex);
+    }
+  };
 
   // Filtrage des recettes selon la catégorie sélectionnée
   const filteredRecipes =
@@ -88,6 +90,7 @@ export default function Recipes() {
   return (
     <>
       <Header />
+      {/* <RecipeModalAdd /> */}
       <main className="recipes">
         <ButtonSimul
           className="admin"

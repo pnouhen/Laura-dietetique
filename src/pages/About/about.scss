@@ -7,35 +7,41 @@
   display: flex;
   align-items: center;
   .about_container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 30% 60%;
     margin: 50px 0;
-    @media (max-width: 1024px){
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
+    justify-content: center;
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
     }
     img {
-      width: 20%;
+      width: 100%;
+      height: 100%;
       border-top-left-radius: 100%;
       object-fit: cover;
-      @media (max-width: 1024px){
+      @media (max-width: 1024px) {
         border-radius: 20px;
         width: 200px;
-    }
-    @media (max-width: 768px){
+      }
+      @media (max-width: 768px) {
         width: 150px;
+      }
     }
-    }
-    p {
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
       @include section;
-      width: 60%;
-      height: 100%;
-      border-radius: 0 20px 20px 0;
-      @media (max-width: 1024px){
+      padding: 20px;
+      @media (max-width: 1024px) {
         border-radius: 0;
         width: 100%;
-    }
+      }
     }
   }
 }

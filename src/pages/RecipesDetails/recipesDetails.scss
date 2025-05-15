@@ -10,7 +10,7 @@
   .recipesDetails_container {
     @include section;
     width: 1024px;
-    min-height: 724px;
+    min-height: 800px;
     display: grid;
     grid-template-columns: 300px auto;
     grid-template-rows: auto 1fr;

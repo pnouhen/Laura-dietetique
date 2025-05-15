@@ -9,6 +9,7 @@ label {
   }
 
   input{
+    padding: 10px 20px;
     @include input;
       @include insideInput;
   }

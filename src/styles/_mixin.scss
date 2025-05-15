@@ -1,7 +1,8 @@
 @use "./variables" as *;
 
 @mixin section {
-  background-color: rgb(255, 255, 255, 0.85);
+  background-color: rgba(253, 253, 253, 0.8);
+  border: 1px solid #fff;
   padding: 20px;
 }
 
@@ -67,7 +68,6 @@
 }
 
 @mixin insideInput {
-  padding: 10px 20px;
   font-size: 16px;
   background-color: #d9d9d9;
   resize: none;
@@ -82,6 +82,38 @@
 @mixin buttonSubmit {
   width: 210px;
   background-color: rgb(133, 170, 132, 0.7);
+}
+
+@mixin modal {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+@mixin modal_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+  i {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  p {
+    text-align: center;
+  }
 }
 
 @mixin displayFlex5px {
@@ -99,19 +131,18 @@
 @mixin recipeButton {
   transition: all 0.2s ease;
   width: 210px;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
   @media (max-width: 1024px) {
     width: 20%;
     padding: 10px;
     height: 60px;
   }
-  .buttonActive {
-    font-weight: 800;
-    box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
-  }
 }
 @mixin recipeButtonActive {
-  font-weight: 800;
-  box-shadow: 1px 1px 10px 6px rgb(0, 0, 0, 0.7);
+  font-weight: 700;
+  box-shadow: 0px;
+  box-shadow: 5px 5px 15px -2px rgba(144, 107, 0, 0.2);
+  -webkit-box-shadow: inset 5px 5px 15px -2px rgba(144, 107, 0, 0.2);
 }
 
 @mixin useBadgeInfo {

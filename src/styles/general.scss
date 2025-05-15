@@ -6,53 +6,58 @@
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  color: 	#2D2D2D;
 }
-html{
+html {
   position: relative;
 }
 body {
   max-width: 1440px;
   min-height: 100vh;
-  margin: 20px auto 0 auto;
+  margin: 0 auto;
 }
-#root{
+#root {
   @include displayColumn;
-    justify-content: space-between;
+  justify-content: space-between;
   min-height: 100vh;
 }
-main{
+main {
   padding: 20px 0;
 }
-h2{
+h2 {
   width: 100%;
-  font-family: 'Caprasimo';
-  font-size: 24px;
+  font-family: "Caprasimo";
+  font-size: 1.5rem;
   text-align: center;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 }
-h3{  
-  font-size: 20px;
+h3 {
+  font-size: 1.25rem;
   text-align: center;
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 1rem;
   }
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
-p, li, li::before, a, input {
-  font-size: 16px;
+p,
+li,
+li::before,
+a,
+input {
+  font-size: 1rem;
   line-height: 25px;
   @media (max-width: 1024px) {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 
@@ -61,18 +66,19 @@ textarea:focus {
   outline: none;
 }
 
-.dataNull{
+.dataNull {
   display: flex;
   justify-content: center;
   align-items: center;
-animation: opacity 500ms forwards;
+  animation: opacity 500ms forwards;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes opacity {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    opacity: 1;
   }
+}
+
