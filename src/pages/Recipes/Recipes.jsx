@@ -90,7 +90,7 @@ export default function Recipes() {
   return (
     <>
       <Header />
-      {/* <RecipeModalAdd /> */}
+      <RecipeModalAdd />
       <main className="recipes">
         <ButtonSimul
           className="admin"

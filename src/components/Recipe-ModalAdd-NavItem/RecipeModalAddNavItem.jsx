@@ -1,11 +1,9 @@
+import "./recipeModalAddNavItem.scss";
 
-
-import "./recipeModalAddNavItem.scss"
-
-export default function RecipeModalAddNavItem({text}){
-    return(
-        <li>
-            <p>{text}</p>
-        </li>
-    )
+export default function RecipeModalAddNavItem({ text, action, onClick }) {
+  return (
+    <button className={`modalNavItem ${action}`} onClick={onClick}>
+      {text}
+    </button>
+  );
 }

@@ -13,11 +13,12 @@
   .menuEditorButton {
     background-color: $brown;
     color: white;
+    width: 210px;
     @include recipeButton;
     @media (max-width: 768px) {
-        width: auto;
-        height: 70px;
-      }
+      width: auto;
+      height: 70px;
+    }
   }
   .menuEditorButtonActive {
     @include recipeButtonActive;

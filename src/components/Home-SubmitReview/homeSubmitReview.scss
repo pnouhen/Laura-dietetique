@@ -42,10 +42,10 @@
     .formReview {
       width: 100%;
       position: relative;
-      justify-content: space-between;
+      justify-content: space-between;      
+      gap: 10px;
       @include displayColumn;
       @include font18-600;
-      gap: 10px;
       textarea {
         height: 300px;
         overflow-y: auto;

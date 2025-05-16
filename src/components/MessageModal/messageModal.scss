@@ -6,6 +6,7 @@
     width: 400px;
     border-radius: 5px;
     justify-content: center;
+    gap: 10px;
     @include modal_container;
     @media (max-width: 768px) {
       width: 90%;

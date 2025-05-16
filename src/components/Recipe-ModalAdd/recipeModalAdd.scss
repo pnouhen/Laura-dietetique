@@ -1,13 +1,21 @@
 @use "../../styles/mixin" as *;
 
-.modalAdd{
-    z-index: 3;    
-    @include modal;    
-    
-    .modalAdd_container {
-        width: 800px;
-        min-height: 80vh;
-        justify-content: flex-start;
-        @include modal_container;
+.modalAdd {
+  z-index: 3;
+  @include modal;
+  .modalAdd_container {
+    width: 800px;
+    min-height: 80vh;
+    border-radius: 20px;
+    justify-content: flex-start;
+    gap: 30px;
+    @include modal_container;
+    nav {
+      display: flex;
+      justify-content: space-around;
+      .buttonRecipeActive{
+        @include recipeButtonActive;
+      }
     }
+  }
 }
