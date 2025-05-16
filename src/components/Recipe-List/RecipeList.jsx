@@ -34,8 +34,8 @@ export default function RecipeList({
                   <RecipeCard
                     id={id}
                     duration={duration}
-                    classNameRegime={vegetarian === true ? "regimeActive" : ""}
-                    textRegime={vegetarian === true ? "Végétarien" : ""}
+                    classNameRegime={vegetarian === "Oui" ? "regimeActive" : ""}
+                    textRegime={vegetarian === "Oui" ? "Végétarien" : ""}
                     title={title}
                     src={img}
                   />

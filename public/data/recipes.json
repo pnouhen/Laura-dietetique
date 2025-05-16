@@ -3,7 +3,7 @@
     "id": "houmous-maison",
     "title": "Houmous maison",
     "img": "/assets/img/recipes/Houmous-maison.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": { "id": 0, "text": "Apéritif" },
     "duration": "Moins de 15 minutes",
     "ingredients": [
@@ -67,7 +67,7 @@
     "id": "oeufs-mimosa",
     "title": "Œufs mimosa",
     "img": "/assets/img/recipes/Oeufs-mimosa.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "Moins de 15 minutes",
     "ingredients": [
@@ -88,7 +88,7 @@
     "id": "salade-de-chevre-chaud",
     "title": "Salade de chèvre chaud",
     "img": "/assets/img/recipes/Salade-de-chèvre-chaud.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "De 15 à 30 minutes",
     "ingredients": [
@@ -223,7 +223,7 @@
     "id": "soupe-de-potimarron",
     "title": "Soupe de potimarron",
     "img": "/assets/img/recipes/Soupe-de-potimarron.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "De 30 à 45 minutes",
     "ingredients": [
@@ -379,7 +379,7 @@
     "id": "saumon-aux-epinards",
     "title": "Saumon aux épinards",
     "img": "/assets/img/recipes/Saumon-aux-epinards.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 3,
       "text": "Plats"
@@ -409,7 +409,7 @@
     "id": "buddha-bowl-quinoa",
     "title": "Buddha bowl au quinoa",
     "img": "/assets/img/recipes/Buddha-bowl-quinoa.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 3,
       "text": "Plats"
@@ -467,7 +467,7 @@
     "id": "sauce-tomate-maison",
     "title": "Sauce tomate maison",
     "img": "/assets/img/recipes/Sauce-tomate-maison.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 5,
       "text": "Sauces"
@@ -525,7 +525,7 @@
     "id": "tarte-aux-pommes",
     "title": "Tarte aux pommes",
     "img": "/assets/img/recipes/Tarte-aux-pommes.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"
@@ -553,7 +553,7 @@
     "id": "mousse-au-chocolat",
     "title": "Mousse au chocolat",
     "img": "/assets/img/recipes/Mousse-au-chocolat.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"
@@ -578,7 +578,7 @@
     "id": "clafoutis-aux-cerises",
     "title": "Clafoutis aux cerises",
     "img": "/assets/img/recipes/Clafoutis-aux-cerises.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"
@@ -608,7 +608,7 @@
     "id": "panna-cotta-vanille",
     "title": "Panna cotta à la vanille",
     "img": "/assets/img/recipes/Panna-cotta-vanille.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"
@@ -634,7 +634,7 @@
     "id": "compote-pomme-poire",
     "title": "Compote pomme-poire",
     "img": "/assets/img/recipes/Compote-pomme-poire.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"
@@ -659,7 +659,7 @@
     "id": "tiramisu",
     "title": "Tiramisu",
     "img": "/assets/img/recipes/Tiramisu.webp",
-    "vegetarian": true,
+    "vegetarian": "Oui",
     "categorie": {
       "id": 4,
       "text": "Desserts"

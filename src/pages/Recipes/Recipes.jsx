@@ -87,6 +87,7 @@ export default function Recipes() {
 
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
+
   return (
     <>
       <Header />

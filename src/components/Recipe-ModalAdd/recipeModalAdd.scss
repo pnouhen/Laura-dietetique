@@ -4,18 +4,32 @@
   z-index: 3;
   @include modal;
   .modalAdd_container {
+    position: relative;
     width: 800px;
     min-height: 80vh;
     border-radius: 20px;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
     gap: 30px;
     @include modal_container;
-    nav {
+    h2 {
+      grid-row: 1;
+    }
+    .modalNav {
+      grid-row: 2;
       display: flex;
       justify-content: space-around;
-      .buttonRecipeActive{
-        @include recipeButtonActive;
+      .active {
+        font-weight: 700;
+        transform: scale(1.15);
       }
+    }
+    .recipeAdd {
+      grid-row: 4;
+      margin: auto;
+      padding: 10px;
+      border-radius: 20px;
+      @include buttonSubmit;
     }
   }
 }

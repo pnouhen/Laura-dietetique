@@ -9,19 +9,19 @@ import { downloadPDF } from "../../services/downloadPDF.jsx";
 import Header from "../../components/Header/Header.jsx";
 import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
 import RecipeBackground from "../../components/Recipe-Background/RecipeBackground.jsx";
+import RecipesDetailsCard from "../../components/RecipesDetails-Card/RecipeDetailsCard.jsx";
 import RecipeDetailsSelectPeople from "../../components/RecipeDetails-SelectPeople/RecipeDetailsSelectPeople.jsx";
 import RecipeDetailsIngredients from "../../components/RecipeDetails-Ingredients/RecipeDetailsIngredients.jsx";
 import RecipeDetailsUstensils from "../../components/RecipeDetails-Ustensils/RecipeDetailsUstensils.jsx";
 import RecipeDetailsSteps from "../../components/RecipeDetails-Steps/RecipeDetailsSteps.jsx";
-import RecipeCard from "../../components/Recipe-Card/RecipeCard.jsx";
 import Button from "../../components/Button/Button.jsx";
 import NoData from "../../components/NoData/NoData.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
 // Styles
-import "./recipesDetails.scss";
+import "./recipeDetails.scss";
 
-export default function RecipesDetails() {
+export default function RecipeDetails() {
   // State variables
   const { id } = useParams();
   const [recipeDetails, setRecipeDetails] = useState(null);
@@ -81,7 +81,6 @@ export default function RecipesDetails() {
           onClick={() => setPurchasedRecipe(!purchasedRecipe)}
           text={purchasedRecipe ? "Vendre" : "Achat"}
         />
-
         <RecipeBackground />
 
         {/* Conteneur principal de la recette */}
@@ -92,13 +91,7 @@ export default function RecipesDetails() {
           {/* Détails de la recette */}
           <div className="details">
             {/* Carte de la recette */}
-            <RecipeCard
-              duration={recipeDetails.duration}
-              classNameRegime={recipeDetails.vegetarian ? "regimeActive" : ""}
-              textRegime={recipeDetails.vegetarian ? "Végétarien" : ""}
-              src={recipeDetails.img}
-            />
-
+            <RecipesDetailsCard  data={recipeDetails}/>
             {/* Sélection du nombre de personnes */}
             <RecipeDetailsSelectPeople
               number={numberPeople}
@@ -107,7 +100,7 @@ export default function RecipesDetails() {
 
             {/* Liste des ustensiles */}
             <RecipeDetailsUstensils data={recipeDetails} />
-            
+
             {/* Liste des ingrédients */}
             <RecipeDetailsIngredients
               data={recipeDetails}
@@ -115,7 +108,6 @@ export default function RecipesDetails() {
               purchased={purchasedRecipe}
               number={numberPeople}
             />
-
           </div>
 
           {/* Étapes de la recette */}

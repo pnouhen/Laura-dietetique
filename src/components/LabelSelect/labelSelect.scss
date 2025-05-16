@@ -1,0 +1,16 @@
+@use "../../styles/mixin" as *;
+
+.labelSelect {
+  margin-left: 0;
+  gap: 10px;
+  justify-content: center;
+  @include displayColumn;
+  label {
+    @include font18-600;
+  }
+  select {
+    padding: 10px;
+    @include input;
+    @include insideInput;
+  }
+}

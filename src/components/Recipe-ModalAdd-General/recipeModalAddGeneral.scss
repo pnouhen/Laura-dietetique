@@ -1,0 +1,10 @@
+@use "../../styles/mixin" as*;
+
+.modalAddGeneral{
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    justify-content: space-around;
+    .labelInputModalAdd{
+        justify-content: center;
+    }
+}

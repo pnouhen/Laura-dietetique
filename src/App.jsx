@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home"
 import ConsultationTarifs from "./pages/ConsultationTarifs/ConsultationTarifs";
 import Recipes from "./pages/Recipes/Recipes";
-import RecipesDetails from "./pages/RecipesDetails/RecipesDetails"
+import RecipeDetails from "./pages/RecipeDetails/RecipeDetails"
 import AuthPage from "./pages/AuthPage/AuthPage";
 import About from "./pages/About/About";
 import "./styles/general.scss"
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   {
     path: "/recettes/:id",
     element: (
-        <RecipesDetails />
+        <RecipeDetails />
     ),
   },
   {

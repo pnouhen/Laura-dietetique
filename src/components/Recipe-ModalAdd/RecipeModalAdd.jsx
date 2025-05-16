@@ -2,41 +2,42 @@ import { useState } from "react";
 
 import RecipeModalAddNavItem from "../Recipe-ModalAdd-NavItem/RecipeModalAddNavItem";
 import RecipeModalAddGeneral from "../Recipe-ModalAdd-General/RecipeModalAddGeneral";
+import Button from "../Button/Button";
 
 import "./recipeModalAdd.scss";
 
 export default function RecipeModalAdd() {
-  const [activeCategorie, setActiveCategorie] = useState(null);
-  
+  const [index, setIndex] = useState(0);
+
   return (
     <section className="modalAdd">
       <div className="modalAdd_container">
         <h2>Ajouter une recette</h2>
-        <nav>
+        <div className="modalNav">
           <RecipeModalAddNavItem
-            onClick={() => setActiveCategorie(null)}
-            action={activeCategorie === null ? "buttonRecipeActive" : ""}
             text="Général"
+            action={index == 0 && "active"}
+            onClick={() => setIndex(0)}
           />
           <RecipeModalAddNavItem
-            onClick={() => setActiveCategorie("ingredients")}
-            action={
-              activeCategorie === "ingredients" ? "buttonRecipeActive" : ""
-            }
             text="Ingrédients"
+            action={index == 1 && "active"}
+            onClick={() => setIndex(1)}
           />
           <RecipeModalAddNavItem
-            onClick={() => setActiveCategorie("ustensils")}
-            action={activeCategorie === "ustensils" ? "buttonRecipeActive" : ""}
             text="Ustensils"
+            action={index == 2 && "active"}
+            onClick={() => setIndex(2)}
           />
           <RecipeModalAddNavItem
-            onClick={() => setActiveCategorie("steps")}
-            action={activeCategorie === "steps" ? "buttonRecipeActive" : ""}
             text="Etapes"
+            action={index == 3 && "active"}
+            onClick={() => setIndex(3)}
           />
-        </nav>
-        {activeCategorie == null && <RecipeModalAddGeneral />}
+        </div>
+        {index == 0 && <RecipeModalAddGeneral />}
+        {/* Cette page doit pourvoir garder les infos taper dans chaque partie + voir un code couleur pour confirmer la fin d'une partie */}
+        <Button className="recipeAdd" text="Valider" />
       </div>
     </section>
   );

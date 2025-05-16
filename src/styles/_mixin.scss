@@ -18,10 +18,10 @@
   text-decoration: none;
   box-shadow: 0 0 10px -2px;
   background-color: #85aa84;
-  font-size: 16px;
+  font-size: 1rem;
   padding: 10px 15px;
   @media (max-width: 1024px) {
-    font-size: 12px;
+    font-size: 0.75rem;
     padding: 5px 10px;
   }
   &:hover {
@@ -50,20 +50,22 @@
 @mixin input {
   border-radius: 10px;
   border: 0;
-  box-shadow: 1px 1px 7px 3px rgb(0, 0, 0, 0.7);
+  box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.7);
 }
 
 @mixin font18-600 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-left: 10px;
-
   @media (max-width: 1024px) {
     font-size: 1rem;
   }
 
   @media (max-width: 768px) {
     font-size: 0.875rem;
+  }
+
+  & {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-left: 10px;
   }
 }
 
@@ -81,7 +83,7 @@
 
 @mixin buttonSubmit {
   width: 210px;
-  background-color: rgb(133, 170, 132, 0.7);
+  background-color: rgba(133, 170, 132, 0.7);
 }
 
 @mixin modal {
@@ -89,7 +91,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @mixin modal_container {
@@ -98,13 +100,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(253, 253, 253, 0.9);
   @media (max-width: 768px) {
     width: 90%;
   }
-  i {
+  .fa-xmark {
     cursor: pointer;
     position: absolute;
     right: 20px;
@@ -137,20 +137,24 @@
     height: 60px;
   }
 }
+
 @mixin recipeButtonActive {
   font-weight: 700;
-  box-shadow: 0px;
   box-shadow: 5px 5px 15px -2px rgba(144, 107, 0, 0.2);
   -webkit-box-shadow: inset 5px 5px 15px -2px rgba(144, 107, 0, 0.2);
 }
 
 @mixin useBadgeInfo {
   position: absolute;
+  display: block;
+  width: auto;
   z-index: 1;
   padding: 5px 10px;
   background-color: #30672e;
+  color: #d6d6d6;
   font-weight: 600;
 }
+
 @mixin cardRecipe {
   width: 300px;
   height: 300px;
@@ -159,6 +163,20 @@
     height: 200px;
   }
 }
+@mixin regimeActive {
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 20px;
+  @include useBadgeInfo;
+}
+
+@mixin duration {
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 20px;
+  @include useBadgeInfo;
+}
+
 @mixin buttonBase {
   border: 0;
   background: transparent;
