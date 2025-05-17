@@ -1,5 +1,6 @@
 import LabelInput from "../LabelInput/LabelInput";
 import LabelSelect from "../LabelSelect/LabelSelect";
+import RecipeModalAddGeneralImportImg from "../Recipe-ModalAdd-General-ImportImg/RecipeModalAddGeneralImportImg";
 
 import "./recipeModalAddGeneral.scss";
 
@@ -10,6 +11,7 @@ export default function RecipeModalAddGeneral({
   categorie,
   duration,
   vegetarian,
+  img,
 }) {
   return (
     <form className="modalAddGeneral" action="">
@@ -50,6 +52,11 @@ export default function RecipeModalAddGeneral({
         onChange={(e) =>
           setValueGeneral((prev) => ({ ...prev, vegetarian: e.target.value }))
         }
+      />
+      <RecipeModalAddGeneralImportImg
+        data={data}
+        setData={setValueGeneral}
+        value={img}
       />
     </form>
   );

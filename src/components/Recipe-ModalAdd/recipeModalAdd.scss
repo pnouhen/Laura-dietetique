@@ -5,9 +5,8 @@
   z-index: 3;
   @include modal;
   .modalAdd_container {
-    position: relative;
-    width: 800px;
-    min-height: 80vh;
+    width: 768px;
+    
     border-radius: 20px;
     display: grid;
     grid-template-rows: auto auto 1fr auto;

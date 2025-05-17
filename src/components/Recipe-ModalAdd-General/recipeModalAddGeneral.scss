@@ -3,6 +3,7 @@
 .modalAddGeneral{
     display: grid;
     grid-template-columns: repeat(2, 40%);
+    gap: 20px;
     justify-content: space-around;
     .labelInputModalAdd{
         justify-content: center;

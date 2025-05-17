@@ -15,6 +15,7 @@ export default function RecipeModalAdd() {
     categorie: "",
     duration: "",
     vegetarian: "",
+    img: ""
   });
   const isValueGeneralComplete =
     valueGeneral.title &&
@@ -71,6 +72,7 @@ const [addRecipe, setAddRecipe] = useState();
             categorie={valueGeneral.categorie}
             duration={valueGeneral.duration}
             vegetarian={valueGeneral.vegetarian}
+            img={valueGeneral.img}
             setValueGeneral={setValueGeneral}
           />
         )}

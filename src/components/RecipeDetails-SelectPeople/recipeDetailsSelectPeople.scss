@@ -3,10 +3,10 @@
 .selectPeople {
   
   justify-content: center;
+  @include displayColumn;
   @media (max-width: 768px) {
     grid-column: 1 / 3;
   }
-@include displayColumn;
   select {
     padding: 10px;
     @include input;

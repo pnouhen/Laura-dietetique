@@ -1,8 +1,8 @@
 @use "../../styles/mixin" as *;
 
 .modalAddTableau{
-    @include displayColumn;
     gap: 20px;
+    @include displayColumn;
  .createTableau{
     display: grid;
     grid-template-columns: 300px 120px 150px;

@@ -6,11 +6,23 @@
   color: #b51212;
   background: linear-gradient(
     0deg,
-    rgba(83, 207, 79, 1) 0%,
+    rgb(111, 170, 132, 1) 0%,
     rgb(133, 170, 132, 1) 100%
   );
   padding: 20px;
   border-radius: 10px;
-  @include recipeButton;
-  @include font18-600;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: 0;
+  transition: all 400ms ease-in-out;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    width: 20%;
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 }
