@@ -3,6 +3,7 @@
 .modalNavItem {
   width: 160px;
   background: #95e38f;
+  color: #b51212;
   background: linear-gradient(
     0deg,
     rgba(83, 207, 79, 1) 0%,
@@ -13,4 +14,3 @@
   @include recipeButton;
   @include font18-600;
 }
-

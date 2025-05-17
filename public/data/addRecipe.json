@@ -17,5 +17,16 @@
   "vegetarian": [
     "Oui", 
     "Non"
+  ],
+  "dosage" : [
+    "ml",
+    "cl",
+    "L",
+    "g",
+    "Kg",
+    "cuil. à soupe",
+    "cuil. à café",
+    "cuil. à dessert",
+    "pincée"
   ]
 }
