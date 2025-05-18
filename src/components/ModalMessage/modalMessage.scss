@@ -3,6 +3,9 @@
 .message {
   @include modal;
   .message_container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
     width: 400px;
     border-radius: 5px;
     justify-content: center;

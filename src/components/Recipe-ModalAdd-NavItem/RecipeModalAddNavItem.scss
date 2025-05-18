@@ -1,6 +1,7 @@
 @use "../../styles/mixin" as *;
 
 .modalNavItem {
+  cursor: pointer;
   width: 160px;
   background: #95e38f;
   color: #b51212;

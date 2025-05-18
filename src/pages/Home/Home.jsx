@@ -6,7 +6,7 @@ import HomeCardObjectif from "../../components/Home-CardObjectif/HomeCardObjecti
 import HomeReviews from "../../components/Home-Reviews/HomeReviews.jsx";
 import HomeSubmitReview from "../../components/Home-SubmitReview/HomeSubmitReview.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import MessageModal from "../../components/MessageModal/MessageModal.jsx"
+import ModalMessage from "../../components/ModalMessage/MessageModal";
 
 import "./home.scss";
 
@@ -78,21 +78,17 @@ const [isSubmitted, setIsSubmitted] = useState(false);
       </main>
       <Footer />
        {/* Modals ici, en-dehors de <main> */}
-      <MessageModal
+      <ModalMessage
         action={isSubmitted}
-        poster="message"
         title="Avis déposé"
-        clickPoster={() => closeModal("success")}
-        clickClose={() => closeModal("success")}
+        onClick={() => closeModal("success")}
         message="Merci d'avoir partagé votre avis"
       />
 
-      <MessageModal
+      <ModalMessage
         action={!!validationError}
-        poster="message"
         title="Erreur de validation"
-        clickPoster={() => closeModal("validation")}
-        clickClose={() => closeModal("validation")}
+        onClick={() => closeModal("validation")}
         message={validationError}
       />
     </>

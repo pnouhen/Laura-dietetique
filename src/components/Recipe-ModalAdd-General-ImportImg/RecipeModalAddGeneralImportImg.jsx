@@ -1,14 +1,19 @@
 import { useRef } from "react";
 import { downloadImg } from "../../services/downloadImg";
 
+import ModalClose from "../ModalClose/ModalClose";
+
 import "./recipeModalAddGeneralImportImg.scss";
 
-export default function RecipeModalAddGeneralImportImg({ value, setData }) {
+export default function RecipeModalAddGeneralImportImg({ value, onclickCloseImg, setData }) {
   const inputRef = useRef(null);
   return (
     <div className="importImg">
       {value !== "" ? (
+        <>
         <img src={value} alt="Aperçu" />
+        <ModalClose onClick={onclickCloseImg} />
+        </>        
       ) : (
         <>
           <i className="fa-solid fa-image"></i>

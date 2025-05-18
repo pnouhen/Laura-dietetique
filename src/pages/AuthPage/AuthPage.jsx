@@ -5,7 +5,7 @@ import BackgroundImg from "../../components/BackgroundImg/BackgroundImg";
 import AuthPageConnexionForm from "../../components/AuthPage-ConnexionForm/AuthPageConnexionForm";
 import AuthPageSignInForm from "../../components/AuthPage-SignInForm/AuthPageSignInForm";
 import Footer from "../../components/Footer/Footer";
-import MessageModal from "../../components/MessageModal/MessageModal";
+import ModalMessage from "../../components/ModalMessage/MessageModal";
 
 import "./authPage.scss";
 
@@ -30,20 +30,16 @@ export default function AuthPage() {
         />
       </main>
       <Footer />
-      <MessageModal
+      <ModalMessage
         action={isSubmitted}
-        poster="message"
         title="Inscription envoyée"
-        clickPoster={() => closeModal("success")}
-        clickClose={() => closeModal("success")}
+        onClick={() => closeModal("success")}
         message="Vous allez recevoir un mail pour valider votre inscription"
       />
-      <MessageModal
+      <ModalMessage
         action={!!validationError}
-        poster="message"
         title="Erreur de validation"
-        clickPoster={() => closeModal("validation")}
-        clickClose={() => closeModal("validation")}
+        onClick={() => closeModal("validation")}
         message={validationError}
       />
     </>

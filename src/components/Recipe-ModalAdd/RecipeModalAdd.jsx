@@ -1,36 +1,48 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData";
 
+import ModalClose from "../ModalClose/ModalClose";
 import RecipeModalAddNavItem from "../Recipe-ModalAdd-NavItem/RecipeModalAddNavItem";
 import RecipeModalAddGeneral from "../Recipe-ModalAdd-General/RecipeModalAddGeneral";
-import RecipeModalAddTableau from "../Recipe-ModalAdd-Tableau/RecipeModalAddTableau";
-import Button from "../Button/Button";
+import RecipeModalAddIngredients from "../Recipe-ModalAdd-Ingredients/RecipeModalAddIngredients";
 
 import "./recipeModalAdd.scss";
 
 export default function RecipeModalAdd() {
   const [index, setIndex] = useState(0);
-  const [valueGeneral, setValueGeneral] = useState({
+  const [valueAdd, setValueAdd] = useState({
     title: "",
     categorie: "",
     duration: "",
     vegetarian: "",
-    img: ""
+    img: "",
+    ingredients: [],
   });
-  const isValueGeneralComplete =
-    valueGeneral.title &&
-    valueGeneral.categorie &&
-    valueGeneral.duration &&
-    valueGeneral.duration !== "";
+  const isvalueAddComplete =
+    valueAdd.title &&
+    valueAdd.categorie &&
+    valueAdd.duration &&
+    valueAdd.duration !== "";
 
-const [addRecipe, setAddRecipe] = useState();
+  const [addRecipe, setAddRecipe] = useState();
   useEffect(() => {
-    fetchData("/data/addRecipe.json")
+    fetchData("/data/infoAddRecipe.json")
       .then((data) => {
         setAddRecipe(data);
       })
       .catch((error) => console.log("Erro during fetech", error));
   }, []);
+
+  function isImgRemove() {
+    setValueAdd((prev) => ({ ...prev, img: "" }));
+  }
+
+function handleDeleteIngredient(indexToDelete) {
+  setValueAdd(prev => ({
+    ...prev,
+    ingredients: prev.ingredients.filter((_, index) => index !== indexToDelete)
+  }));
+}
 
   if (!addRecipe) {
     return <p></p>;
@@ -40,12 +52,12 @@ const [addRecipe, setAddRecipe] = useState();
     <section className="modalAdd">
       <div className="modalAdd_container">
         <h2>Ajouter une recette</h2>
+        <ModalClose />
         <div className="modalNav">
           <RecipeModalAddNavItem
             text="Général"
             action={
-              (index === 0 && "active ") +
-              (isValueGeneralComplete && " complete")
+              (index === 0 && "active ") + (isvalueAddComplete && " complete")
             }
             onClick={() => setIndex(0)}
           />
@@ -67,19 +79,26 @@ const [addRecipe, setAddRecipe] = useState();
         </div>
         {index == 0 && (
           <RecipeModalAddGeneral
-            title={valueGeneral.title}
+            title={valueAdd.title}
             data={addRecipe}
-            categorie={valueGeneral.categorie}
-            duration={valueGeneral.duration}
-            vegetarian={valueGeneral.vegetarian}
-            img={valueGeneral.img}
-            setValueGeneral={setValueGeneral}
+            categorie={valueAdd.categorie}
+            duration={valueAdd.duration}
+            vegetarian={valueAdd.vegetarian}
+            img={valueAdd.img}
+            setData={setValueAdd}
+            onclickCloseImg={isImgRemove}
           />
         )}
         {index == 1 && (
-          <RecipeModalAddTableau titleCreate="Créer un ingrédient" data={addRecipe}/>
+          <RecipeModalAddIngredients
+            value={valueAdd.ingredients}
+            onChange={(newIngredients) =>
+              setValueAdd((prev) => ({ ...prev, ingredients: newIngredients }))
+            }
+            data={addRecipe}
+            onDelete={handleDeleteIngredient}
+          />
         )}
-        <Button className="recipeAdd" text="Valider" />
       </div>
     </section>
   );

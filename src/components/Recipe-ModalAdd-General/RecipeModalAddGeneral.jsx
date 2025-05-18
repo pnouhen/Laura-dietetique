@@ -6,12 +6,13 @@ import "./recipeModalAddGeneral.scss";
 
 export default function RecipeModalAddGeneral({
   title,
-  setValueGeneral,
+  setData,
   data,
   categorie,
   duration,
   vegetarian,
   img,
+  onclickCloseImg,
 }) {
   return (
     <form className="modalAddGeneral" action="">
@@ -23,7 +24,7 @@ export default function RecipeModalAddGeneral({
         id="title"
         value={title}
         onChange={(e) =>
-          setValueGeneral((prev) => ({ ...prev, title: e.target.value }))
+          setData((prev) => ({ ...prev, title: e.target.value }))
         }
       />
       <LabelSelect
@@ -32,7 +33,7 @@ export default function RecipeModalAddGeneral({
         data={data.categories}
         value={categorie}
         onChange={(e) =>
-          setValueGeneral((prev) => ({ ...prev, categorie: e.target.value }))
+          setData((prev) => ({ ...prev, categorie: e.target.value }))
         }
       />
       <LabelSelect
@@ -41,7 +42,7 @@ export default function RecipeModalAddGeneral({
         data={data.durations}
         value={duration}
         onChange={(e) =>
-          setValueGeneral((prev) => ({ ...prev, duration: e.target.value }))
+          setData((prev) => ({ ...prev, duration: e.target.value }))
         }
       />
       <LabelSelect
@@ -50,13 +51,14 @@ export default function RecipeModalAddGeneral({
         data={data.vegetarian}
         value={vegetarian}
         onChange={(e) =>
-          setValueGeneral((prev) => ({ ...prev, vegetarian: e.target.value }))
+          setData((prev) => ({ ...prev, vegetarian: e.target.value }))
         }
       />
       <RecipeModalAddGeneralImportImg
         data={data}
-        setData={setValueGeneral}
+        setData={setData}
         value={img}
+        onclickCloseImg={onclickCloseImg}
       />
     </form>
   );

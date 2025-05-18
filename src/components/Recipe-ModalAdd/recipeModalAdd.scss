@@ -5,8 +5,9 @@
   z-index: 3;
   @include modal;
   .modalAdd_container {
+    position: absolute;
+    top: 210px;
     width: 768px;
-    
     border-radius: 20px;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
@@ -14,6 +15,10 @@
     @include modal_container;
     h2 {
       grid-row: 1;
+    }
+    .fa-xmark{
+      top: 15px;
+      right: 15px;
     }
     .modalNav {
       grid-row: 2;
