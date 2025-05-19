@@ -1,32 +1,14 @@
 @use "../../styles/mixin" as *;
-@use "../../styles/variables" as *;
 
-.createIngredients {
-  padding-right: 20px;
-  border-right: 1px solid black;
-  grid-column: 1;
-  gap: 20px;
-  @include displayColumn;
-  h3 {
+.createIngredient {
+  @include createElementIngredient;
+  .name{
     width: 100%;
   }
-  form {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    .name {
-      width: 100%;
-    }
-    .quantity {
-      width: 200px;
-    }
-    .dosage {
-      width: 123px;
-    }
-    .buttonAddIngredient {
-      width: 100%;
-      background-color: $backgroundButtonAdd;
-    }
+  .quantity  {
+    width: 200px;
+  }
+  .dosage {
+    width: 123px;
   }
 }

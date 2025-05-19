@@ -16,7 +16,7 @@
     h2 {
       grid-row: 1;
     }
-    .fa-xmark{
+    .fa-xmark {
       top: 15px;
       right: 15px;
     }
@@ -32,11 +32,54 @@
         color: $black;
       }
     }
-    .recipeAdd {
-      grid-row: 4;
-      margin: auto;
-      padding: 10px;
-      border-radius: 20px;
+    .addColumns {
+      display: grid;
+      grid-template-columns: repeat(2, calc(50%));
+      .createElement {
+        @include createElementIngredient;
+      }
+      .ingredientsList {
+        gap: 20px;
+        border-left: 1px solid black;
+        padding-left: 20px;
+        @include displayColumn;
+      }
+    }
+    ul {
+      gap: 20px;
+      @include displayColumn;
+      li {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .fa-trash {
+        cursor: pointer;
+      }
+    }
+
+    .steps {
+      @include displayColumn;
+      .createElement,
+      .ingredientsList,
+      form {
+        gap: 20px;
+        @include displayColumn;
+      }
+      .createElement {
+        padding-bottom: 20px;
+        border-bottom: 1px solid black;
+      }
+      .ingredientsList {
+        padding: 20px;
+        border-top: 1px solid black;
+      }
+    }
+    .displayNone {
+      display: none;
+    }
+    .addRecipes {
+      width: 100%;
       @include buttonSubmit;
     }
   }

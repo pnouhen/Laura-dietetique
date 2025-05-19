@@ -65,6 +65,7 @@
     }
   }
   .buttonSubmit {
+    width: 210px;
     @include buttonSubmit;
   }
 }

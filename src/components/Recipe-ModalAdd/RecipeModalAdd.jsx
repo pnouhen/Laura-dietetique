@@ -5,11 +5,15 @@ import ModalClose from "../ModalClose/ModalClose";
 import RecipeModalAddNavItem from "../Recipe-ModalAdd-NavItem/RecipeModalAddNavItem";
 import RecipeModalAddGeneral from "../Recipe-ModalAdd-General/RecipeModalAddGeneral";
 import RecipeModalAddIngredients from "../Recipe-ModalAdd-Ingredients/RecipeModalAddIngredients";
+import RecipeModalAddElement from "../Recipe-ModalAdd-Element/RecipeModalAddElement";
+import Button from "../Button/Button";
 
 import "./recipeModalAdd.scss";
 
 export default function RecipeModalAdd() {
   const [index, setIndex] = useState(0);
+  const [addRecipe, setAddRecipe] = useState(null);
+
   const [valueAdd, setValueAdd] = useState({
     title: "",
     categorie: "",
@@ -17,88 +21,131 @@ export default function RecipeModalAdd() {
     vegetarian: "",
     img: "",
     ingredients: [],
+    ustensils: [],
+    steps: [],
   });
-  const isvalueAddComplete =
-    valueAdd.title &&
-    valueAdd.categorie &&
-    valueAdd.duration &&
-    valueAdd.duration !== "";
 
-  const [addRecipe, setAddRecipe] = useState();
+  const isGeneralComplete = valueAdd.title && valueAdd.categorie && valueAdd.duration && valueAdd.img;
+  const isAllListsComplete =
+    valueAdd.ingredients.length > 0 &&
+    valueAdd.ustensils.length > 0 &&
+    valueAdd.steps.length > 0;
+
+  const showSaveButton = isGeneralComplete && isAllListsComplete;
+
   useEffect(() => {
     fetchData("/data/infoAddRecipe.json")
-      .then((data) => {
-        setAddRecipe(data);
-      })
-      .catch((error) => console.log("Erro during fetech", error));
+      .then(setAddRecipe)
+      .catch((error) => console.log("Error during fetch", error));
   }, []);
 
-  function isImgRemove() {
+  const removeImage = () => {
     setValueAdd((prev) => ({ ...prev, img: "" }));
-  }
+  };
 
-function handleDeleteIngredient(indexToDelete) {
-  setValueAdd(prev => ({
-    ...prev,
-    ingredients: prev.ingredients.filter((_, index) => index !== indexToDelete)
-  }));
-}
+  const handleDeleteElement = (elementName, indexToDelete) => {
+    setValueAdd((prev) => ({
+      ...prev,
+      [elementName]: prev[elementName].filter((_, i) => i !== indexToDelete),
+    }));
+  };
 
-  if (!addRecipe) {
-    return <p></p>;
-  }
+  if (!addRecipe) return null;
+
+  const tabs = [
+    {
+      label: "Général",
+      complete: isGeneralComplete,
+      component: (
+        <RecipeModalAddGeneral
+          title={valueAdd.title}
+          data={addRecipe}
+          categorie={valueAdd.categorie}
+          duration={valueAdd.duration}
+          vegetarian={valueAdd.vegetarian}
+          img={valueAdd.img}
+          setData={setValueAdd}
+          onclickCloseImg={removeImage}
+        />
+      ),
+    },
+    {
+      label: "Ingrédients",
+      complete: valueAdd.ingredients.length > 0,
+      component: (
+        <RecipeModalAddIngredients
+          className="addColumns"
+          value={valueAdd.ingredients}
+          onChange={(newIngredients) =>
+            setValueAdd((prev) => ({ ...prev, ingredients: newIngredients }))
+          }
+          data={addRecipe}
+          onDelete={(index) => handleDeleteElement("ingredients", index)}
+        />
+      ),
+    },
+    {
+      label: "Ustensils",
+      complete: valueAdd.ustensils.length > 0,
+      component: (
+        <RecipeModalAddElement
+          titleAdd="Créer un ustensil"
+          titleLabel="Nom de l'ustensil"
+          titleList="Liste des ustensils"
+          className="addColumns"
+          classNameAdd="addColumns createElement"
+          value={valueAdd.ustensils}
+          onChange={(newUstensils) =>
+            setValueAdd((prev) => ({ ...prev, ustensils: newUstensils }))
+          }
+          data={addRecipe}
+          onDelete={(index) => handleDeleteElement("ustensils", index)}
+        />
+      ),
+    },
+    {
+      label: "Étapes",
+      complete: valueAdd.steps.length > 0,
+      component: (
+        <RecipeModalAddElement
+          titleAdd="Créer une étape"
+          titleLabel="Nom de l'étape"
+          titleList="Liste des étapes"
+          className="steps"
+          value={valueAdd.steps}
+          onChange={(newSteps) =>
+            setValueAdd((prev) => ({ ...prev, steps: newSteps }))
+          }
+          data={addRecipe}
+          onDelete={(index) => handleDeleteElement("steps", index)}
+        />
+      ),
+    },
+  ];
 
   return (
     <section className="modalAdd">
       <div className="modalAdd_container">
         <h2>Ajouter une recette</h2>
         <ModalClose />
+
         <div className="modalNav">
-          <RecipeModalAddNavItem
-            text="Général"
-            action={
-              (index === 0 && "active ") + (isvalueAddComplete && " complete")
-            }
-            onClick={() => setIndex(0)}
-          />
-          <RecipeModalAddNavItem
-            text="Ingrédients"
-            action={index == 1 && "active"}
-            onClick={() => setIndex(1)}
-          />
-          <RecipeModalAddNavItem
-            text="Ustensils"
-            action={index == 2 && "active"}
-            onClick={() => setIndex(2)}
-          />
-          <RecipeModalAddNavItem
-            text="Etapes"
-            action={index == 3 && "active"}
-            onClick={() => setIndex(3)}
-          />
+          {tabs.map((tab, i) => (
+            <RecipeModalAddNavItem
+              key={tab.label}
+              text={tab.label}
+              action={`${index === i ? "active " : ""}${tab.complete ? "complete" : ""}`}
+              onClick={() => setIndex(i)}
+            />
+          ))}
         </div>
-        {index == 0 && (
-          <RecipeModalAddGeneral
-            title={valueAdd.title}
-            data={addRecipe}
-            categorie={valueAdd.categorie}
-            duration={valueAdd.duration}
-            vegetarian={valueAdd.vegetarian}
-            img={valueAdd.img}
-            setData={setValueAdd}
-            onclickCloseImg={isImgRemove}
-          />
-        )}
-        {index == 1 && (
-          <RecipeModalAddIngredients
-            value={valueAdd.ingredients}
-            onChange={(newIngredients) =>
-              setValueAdd((prev) => ({ ...prev, ingredients: newIngredients }))
-            }
-            data={addRecipe}
-            onDelete={handleDeleteIngredient}
-          />
-        )}
+
+        {tabs[index].component}
+
+        <Button
+          text="Enregister la recette"
+          className={!showSaveButton ? "displayNone" : "addRecipes"}
+        />
       </div>
     </section>
   );

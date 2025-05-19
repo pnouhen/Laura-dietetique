@@ -1,10 +1,8 @@
-import "./recipeModalAddList.scss";
-
-export default function RecipeModalAddList({ value, title, onDelete }) {
+export default function RecipeModalAddIngredientsList({ value, onDelete }) {
   return (
-    <div className="list">
-      <h3>{title}</h3>
-      <ul className="ingredientsList">
+    <div className="ingredientsList">
+      <h3>Liste des ingrédients</h3>
+      <ul>
         {value.map((item, index) => {
           const spacing =
             typeof item.dosage === "string" && item.dosage.length < 3 ? "" : " ";

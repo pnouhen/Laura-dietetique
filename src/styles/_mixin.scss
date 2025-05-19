@@ -78,7 +78,6 @@
 }
 
 @mixin buttonSubmit {
-  width: 210px;
   background: linear-gradient(
     0deg,
     rgba(145, 113, 81, 1) 0%,
@@ -170,4 +169,25 @@
 @mixin buttonBase {
   border: 0;
   background: transparent;
+}
+
+@mixin createElementIngredient {
+  padding-right: 20px;
+  border-right: 1px solid black;
+  grid-column: 1;
+  gap: 20px;
+  @include displayColumn;
+  h3 {
+    width: 100%;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    gap: 20px;
+    .buttonAddIngredient {
+      width: 100%;
+      background-color: $backgroundButtonAdd;
+    }
+  }
 }

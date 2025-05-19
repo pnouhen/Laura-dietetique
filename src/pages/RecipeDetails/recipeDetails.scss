@@ -60,6 +60,6 @@
     }
   }
   .downloadRecipe {
-    background-color: rgb(133, 170, 132);
+    @include buttonSubmit;
   }
 }

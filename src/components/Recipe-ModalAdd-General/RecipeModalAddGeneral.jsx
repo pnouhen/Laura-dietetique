@@ -14,6 +14,27 @@ export default function RecipeModalAddGeneral({
   img,
   onclickCloseImg,
 }) {
+  const selects = [
+    {
+      title: "Catégorie",
+      id: "categorie",
+      value: categorie,
+      options: data.categories,
+    },
+    {
+      title: "Durée",
+      id: "duration",
+      value: duration,
+      options: data.durations,
+    },
+    {
+      title: "Végétarien",
+      id: "vegetarian",
+      value: vegetarian,
+      options: data.vegetarian,
+    },
+  ];
+
   return (
     <form className="modalAddGeneral" action="">
       <LabelInput
@@ -27,33 +48,20 @@ export default function RecipeModalAddGeneral({
           setData((prev) => ({ ...prev, title: e.target.value }))
         }
       />
-      <LabelSelect
-        title="Catégorie"
-        id="categorie"
-        data={data.categories}
-        value={categorie}
-        onChange={(e) =>
-          setData((prev) => ({ ...prev, categorie: e.target.value }))
-        }
-      />
-      <LabelSelect
-        title="Durée"
-        id="duration"
-        data={data.durations}
-        value={duration}
-        onChange={(e) =>
-          setData((prev) => ({ ...prev, duration: e.target.value }))
-        }
-      />
-      <LabelSelect
-        title="Végétarien"
-        id="vegetarian"
-        data={data.vegetarian}
-        value={vegetarian}
-        onChange={(e) =>
-          setData((prev) => ({ ...prev, vegetarian: e.target.value }))
-        }
-      />
+
+      {selects.map(({ title, id, value, options }) => (
+        <LabelSelect
+          key={id}
+          title={title}
+          id={id}
+          data={options}
+          value={value}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, [id]: e.target.value }))
+          }
+        />
+      ))}
+
       <RecipeModalAddGeneralImportImg
         data={data}
         setData={setData}

@@ -1,17 +1,15 @@
-import RecipeModalAddIngredientsAdd from "../Recipe-ModalAdd-Ingredients-Add/RecipeModalAddIngredientsAdd";
-import RecipeModalAddList from "../Recipe-ModalAdd-List/RecipeModalAddList";
+import RecipeModalAddIngredientsAdd from "../Recipe-ModalAdd-Ingredients-Add/RecipeModalAddIngredientsAdd"
+import RecipeModalAddIngredientsList from "../Recipe-ModalAdd-Ingredients-List/RecipeModalAddIngredientsList";
 
-import "./recipeModalAddIngredients.scss";
-
-export default function RecipeModalAddIngredients({ value, onChange, data, onDelete }) {
+export default function RecipeModalAddIngredients({className, value, onChange, data, onDelete }) {
   return (
-    <div className="addIngredients">
+    <div className={className}>
       <RecipeModalAddIngredientsAdd
         value={value}
         onChange={onChange}
         data={data}
       />
-      <RecipeModalAddList value={value} title="Liste des ingrédients" onDelete={onDelete}/>
+      <RecipeModalAddIngredientsList value={value} onDelete={onDelete}/>
     </div>
   );
 }

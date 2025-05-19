@@ -4,7 +4,7 @@ import "./recipeDetailsSteps.scss";
 
 export default function RecipeDetailsSteps({ connected, purchased, data }) {
   return (
-    <div className="steps">
+    <div className="recipeDetailsSteps">
       <h3>Les étapes :</h3>
       {connected ? (
         purchased ? (
