@@ -81,14 +81,14 @@ const [isSubmitted, setIsSubmitted] = useState(false);
       <ModalMessage
         action={isSubmitted}
         title="Avis déposé"
-        onClick={() => closeModal("success")}
+        onClickClose={() => closeModal("success")}
         message="Merci d'avoir partagé votre avis"
       />
 
       <ModalMessage
         action={!!validationError}
         title="Erreur de validation"
-        onClick={() => closeModal("validation")}
+        onClickClose={() => closeModal("validation")}
         message={validationError}
       />
     </>

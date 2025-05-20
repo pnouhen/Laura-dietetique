@@ -14,6 +14,9 @@
     grid-template-rows: auto auto 1fr auto;
     gap: 30px;
     @include modal_container;
+    @media (max-width:768px){
+      @include displayColumn
+    }
     h2 {
       grid-row: 1;
     }
@@ -32,18 +35,31 @@
       .complete {
         color: $black;
       }
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
     }
     .addColumns {
       display: grid;
       grid-template-columns: repeat(2, calc(50%));
+      @media (max-width: 768px) {
+        @include displayColumn
+      }
       .createElement {
-        @include createElementIngredient;
+        @include createElementAdd;
       }
       .ingredientsList {
         gap: 20px;
         border-left: 1px solid black;
         padding-left: 20px;
         @include displayColumn;
+        @media (max-width: 768px) {
+        border-left: 0;
+        padding-left: 0;
+        @include paddingBorderTop
+      }
       }
     }
     ul {
@@ -67,16 +83,14 @@
         gap: 20px;
         @include displayColumn;
       }
-      .createElement {
-        padding-bottom: 20px;
-        border-bottom: 1px solid black;
+      .createElement{
+        @include paddingBorderBottom;
       }
-      .ingredientsList {
-        padding: 20px;
-        border-top: 1px solid black;
+      .ingredientsList{
+        @include paddingBorderTop;
       }
     }
-    .addRecipes {
+    .saveRecipe {
       width: 100%;
       @include buttonSubmit;
     }

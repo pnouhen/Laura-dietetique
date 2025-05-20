@@ -1,12 +1,15 @@
 @use "../../styles/mixin" as *;
 
 .createIngredient {
-  @include createElementIngredient;
+  @include createElementAdd;
   .name{
     width: 100%;
   }
   .quantity  {
     width: 200px;
+    @media (max-width: 768px) {
+      width: 140px;
+    }
   }
   .dosage {
     width: 123px;

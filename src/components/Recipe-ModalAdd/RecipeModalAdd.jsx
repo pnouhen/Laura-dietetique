@@ -10,7 +10,7 @@ import Button from "../Button/Button";
 
 import "./recipeModalAdd.scss";
 
-export default function RecipeModalAdd({ onClose, onAddRecipe }) {
+export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
   const [index, setIndex] = useState(0);
   const [addRecipe, setAddRecipe] = useState(null);
   const [valueAdd, setValueAdd] = useState({
@@ -168,8 +168,14 @@ export default function RecipeModalAdd({ onClose, onAddRecipe }) {
         {tabs[index].component}
 
         <Button
-          text="Enregister la recette"
-          className={!showSaveButton ? "displayNone" : "addRecipes"}
+          text={mode === "edit" ? "Modifier la recette" : "Enregister la recette"}
+          className={
+            !showSaveButton
+              ? mode === "edit"
+                ? "saveRecipe"
+                : "displayNone"
+              : "saveRecipe"
+          }
           onClick={() => {
             handleSaveRecipe();
             onClose();

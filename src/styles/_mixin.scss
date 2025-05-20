@@ -101,6 +101,7 @@
   background-color: rgba(253, 253, 253, 0.9);
   @media (max-width: 768px) {
     width: 90%;
+    position: absolute;
   }
 }
 
@@ -171,12 +172,17 @@
   background: transparent;
 }
 
-@mixin createElementIngredient {
+@mixin createElementAdd {
   padding-right: 20px;
   border-right: 1px solid black;
   grid-column: 1;
   gap: 20px;
   @include displayColumn;
+  @media (max-width: 768px) {
+    border-right: 0;
+    padding-right: 0;
+    @include paddingBorderBottom;
+  }
   h3 {
     width: 100%;
   }
@@ -190,4 +196,13 @@
       background-color: $backgroundButtonAdd;
     }
   }
+}
+
+@mixin paddingBorderBottom {
+        padding-bottom: 20px;
+        border-bottom: 1px solid black;
+}
+@mixin paddingBorderTop {
+        padding-top: 20px;
+        border-top: 1px solid black;
 }

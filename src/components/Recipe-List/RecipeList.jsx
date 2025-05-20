@@ -14,7 +14,8 @@ export default function RecipeList({
   isLastPage,
   handlePrev,
   handleNext,
-  handleDelete,
+  onConfirmDelete,
+  onModifRecipeCard
 }) {
   return (
     <section className="recipesList">
@@ -26,10 +27,10 @@ export default function RecipeList({
               ({ id, duration, vegetarian, title, img }) => (
                 <li key={id} id={id}>
                   {admin && mode === "delete" && (
-                    <i className="fa-solid fa-trash" id={id} onClick={() => handleDelete(id)}></i>
+                    <i className="fa-solid fa-trash" id={id} onClick={() => onConfirmDelete(id)}></i>
                   )}
                   {admin && mode === "edit" && (
-                    <i className="fa-solid fa-pen" id={id}></i>
+                    <i className="fa-solid fa-pen" id={id} onClick={() => onModifRecipeCard(id)}></i>
                   )}
                   <RecipeCard
                     id={id}

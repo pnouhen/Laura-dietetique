@@ -1,6 +1,7 @@
 @use "../../styles/mixin" as *;
 
 .message {
+  z-index: 10;
   @include modal;
   .message_container {
     position: fixed;
@@ -12,12 +13,18 @@
     gap: 10px;
     @include displayColumn;
     @include modal_container;
-    @media (max-width: 768px) {
-      width: 90%;
-    }
     p {
       text-align: center;
     }
+    .validation {
+      display: flex;
+      justify-content: space-around;
+      button {
+        width: 90px;
+        cursor: pointer;
+        padding: 10px;
+        @include buttonSubmit;
+      }
+    }
   }
 }
-// toute les modal doivent etre par rapport au html en position absolute -> probleme avec l'image

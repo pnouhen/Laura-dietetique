@@ -33,13 +33,13 @@ export default function AuthPage() {
       <ModalMessage
         action={isSubmitted}
         title="Inscription envoyée"
-        onClick={() => closeModal("success")}
+        onClickClose={() => closeModal("success")}
         message="Vous allez recevoir un mail pour valider votre inscription"
       />
       <ModalMessage
         action={!!validationError}
         title="Erreur de validation"
-        onClick={() => closeModal("validation")}
+        onClickClose={() => closeModal("validation")}
         message={validationError}
       />
     </>

@@ -3,6 +3,7 @@ import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 
 import Header from "../../components/Header/Header.jsx";
+import ModalMessage from "../../components/ModalMessage/MessageModal.jsx";
 import RecipeModalAdd from "../../components/Recipe-ModalAdd/RecipeModalAdd.jsx";
 import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
 import RecipeMenuEditor from "../../components/Recipe-MenuEditor/RecipeMenuEditor.jsx";
@@ -22,9 +23,12 @@ export default function Recipes() {
   const [index, setIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isMobile = useDetectWidth(768);
+  const [modalConfirmDelete, setModalConfirmDelete] = useState(false);
   const visibleCardsecipe = isMobile ? 6 : 2;
-
+  const [recipeToDeleteId, setRecipeToDeleteId] = useState(null);
+  
   const toggleModal = () => setIsModalOpen((prev) => !prev);
+  
   useEffect(() => {
     fetchData("/data/recipes.json")
       .then((data) => {
@@ -47,21 +51,30 @@ export default function Recipes() {
   };
 
   // Mode Edition
-
   const handleAddRecipe = (newRecipe) => {
-  const id = newRecipe.title.toLowerCase().replace(/\s+/g, "-");
-  const recipeWithId = { ...newRecipe, id };
+    const id = newRecipe.title.toLowerCase().replace(/\s+/g, "-");
+    const recipeWithId = { ...newRecipe, id };
 
-  const updatedRecipes = [...recipes, recipeWithId].sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
+    const updatedRecipes = [...recipes, recipeWithId].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
 
-  setRecipes(updatedRecipes);
-};
+    setRecipes(updatedRecipes);
+  };
 
+  const onModifRecipeCard =() => {
+    toggleModal()
+  }
 
-  const handleDelete = (id) => {
-    const updated = recipes.filter((recipe) => recipe.id !== id);
+  const confirmDelete = (recipeId) => {
+    setRecipeToDeleteId(recipeId);
+    setModalConfirmDelete(true);
+  };
+
+  const handleDelete = () => {
+    if (!recipeToDeleteId) return;
+
+    const updated = recipes.filter((recipe) => recipe.id !== recipeToDeleteId);
     setRecipes(updated);
 
     const filteredUpdated =
@@ -78,6 +91,9 @@ export default function Recipes() {
     if (index > maxIndex) {
       setIndex(maxIndex);
     }
+
+    setRecipeToDeleteId(null); // nettoyage après suppression
+    setModalConfirmDelete(false); // fermeture de la modale
   };
 
   // Filtrage des recettes selon la catégorie sélectionnée
@@ -101,18 +117,21 @@ export default function Recipes() {
 
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
-  
+
   return (
     <>
       <Header />
       {isModalOpen && (
-        <RecipeModalAdd onClose={toggleModal} onAddRecipe={handleAddRecipe} />
+        <RecipeModalAdd onClose={toggleModal} onAddRecipe={handleAddRecipe} mode={mode}/>
       )}
-        
-      {/* A faire :
-        Mettre un message de sécurité lors de la suppression
-        recipes -> valueAdd + button Enregister la modification
-        */}
+      <ModalMessage
+        action={modalConfirmDelete}
+        title="Confirmer la suppression"
+        message="Toute suppression est définitive"
+        classNameValidation={true}
+        onClickClose={() => setModalConfirmDelete(false)}
+        onClickValidate={handleDelete}
+      />
       <main className="recipes">
         <ButtonSimul
           className="admin"
@@ -127,7 +146,10 @@ export default function Recipes() {
         {admin && (
           <RecipeMenuEditor
             mode={mode}
-            onAddClick={() => {setMode("view"); toggleModal()}}
+            onAddClick={() => {
+              setMode("view");
+              toggleModal();
+            }}
             onDeleteClick={() => setMode("delete")}
             onEditClick={() => setMode("edit")}
           />
@@ -150,7 +172,8 @@ export default function Recipes() {
           isLastPage={isLastPage}
           handlePrev={handlePrev}
           handleNext={handleNext}
-          handleDelete={handleDelete}
+          onConfirmDelete={confirmDelete}
+          onModifRecipeCard={onModifRecipeCard}
         />
       </main>
       <Footer />
