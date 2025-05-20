@@ -1,7 +1,6 @@
 import RecipeMenuEditorButtonAdd from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonAdd";
 import RecipeMenuEditorButtonChange from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonChange";
-import RecipeMenuEditorButtonDelete from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonDelete";
-
+import RecipeMenuEditorButtonDelete from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonDelete"
 import "./recipeMenuEditor.scss";
 
 export default function RecipeMenuEditor({

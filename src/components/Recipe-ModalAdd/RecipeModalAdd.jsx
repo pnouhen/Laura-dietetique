@@ -10,10 +10,9 @@ import Button from "../Button/Button";
 
 import "./recipeModalAdd.scss";
 
-export default function RecipeModalAdd() {
+export default function RecipeModalAdd({ onClose, onAddRecipe }) {
   const [index, setIndex] = useState(0);
   const [addRecipe, setAddRecipe] = useState(null);
-
   const [valueAdd, setValueAdd] = useState({
     title: "",
     categorie: "",
@@ -25,7 +24,31 @@ export default function RecipeModalAdd() {
     steps: [],
   });
 
-  const isGeneralComplete = valueAdd.title && valueAdd.categorie && valueAdd.duration && valueAdd.img;
+  const handleSaveRecipe = () => {
+    const newRecipe = {
+      ...valueAdd,
+      id: Date.now(), // ou un autre identifiant unique
+    };
+
+    // callback reçu en prop
+    onAddRecipe(newRecipe);
+
+    // Réinitialise l'état
+    setValueAdd({
+      title: "",
+      categorie: "",
+      duration: "",
+      vegetarian: "",
+      img: "",
+      ingredients: [],
+      ustensils: [],
+      steps: [],
+    });
+    setIndex(0);
+  };
+
+  const isGeneralComplete =
+    valueAdd.title && valueAdd.categorie && valueAdd.duration && valueAdd.img;
   const isAllListsComplete =
     valueAdd.ingredients.length > 0 &&
     valueAdd.ustensils.length > 0 &&
@@ -124,17 +147,19 @@ export default function RecipeModalAdd() {
   ];
 
   return (
-    <section className="modalAdd">
-      <div className="modalAdd_container">
+    <section className="modalAdd" onClick={onClose}>
+      <div className="modalAdd_container" onClick={(e) => e.stopPropagation()}>
         <h2>Ajouter une recette</h2>
-        <ModalClose />
+        <ModalClose onClick={onClose} />
 
         <div className="modalNav">
           {tabs.map((tab, i) => (
             <RecipeModalAddNavItem
               key={tab.label}
               text={tab.label}
-              action={`${index === i ? "active " : ""}${tab.complete ? "complete" : ""}`}
+              action={`${index === i ? "active " : ""}${
+                tab.complete ? "complete" : ""
+              }`}
               onClick={() => setIndex(i)}
             />
           ))}
@@ -145,6 +170,10 @@ export default function RecipeModalAdd() {
         <Button
           text="Enregister la recette"
           className={!showSaveButton ? "displayNone" : "addRecipes"}
+          onClick={() => {
+            handleSaveRecipe();
+            onClose();
+          }}
         />
       </div>
     </section>

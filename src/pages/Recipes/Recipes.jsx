@@ -20,10 +20,11 @@ export default function Recipes() {
   const [buttons, setButtons] = useState([]);
   const [activeButton, setActiveButton] = useState(null);
   const [index, setIndex] = useState(0);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isMobile = useDetectWidth(768);
   const visibleCardsecipe = isMobile ? 6 : 2;
 
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
   useEffect(() => {
     fetchData("/data/recipes.json")
       .then((data) => {
@@ -46,6 +47,19 @@ export default function Recipes() {
   };
 
   // Mode Edition
+
+  const handleAddRecipe = (newRecipe) => {
+  const id = newRecipe.title.toLowerCase().replace(/\s+/g, "-");
+  const recipeWithId = { ...newRecipe, id };
+
+  const updatedRecipes = [...recipes, recipeWithId].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
+
+  setRecipes(updatedRecipes);
+};
+
+
   const handleDelete = (id) => {
     const updated = recipes.filter((recipe) => recipe.id !== id);
     setRecipes(updated);
@@ -87,11 +101,18 @@ export default function Recipes() {
 
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
-
+  
   return (
     <>
       <Header />
-      <RecipeModalAdd />
+      {isModalOpen && (
+        <RecipeModalAdd onClose={toggleModal} onAddRecipe={handleAddRecipe} />
+      )}
+        
+      {/* A faire :
+        Mettre un message de sécurité lors de la suppression
+        recipes -> valueAdd + button Enregister la modification
+        */}
       <main className="recipes">
         <ButtonSimul
           className="admin"
@@ -106,7 +127,7 @@ export default function Recipes() {
         {admin && (
           <RecipeMenuEditor
             mode={mode}
-            onAddClick={() => setMode("view")}
+            onAddClick={() => {setMode("view"); toggleModal()}}
             onDeleteClick={() => setMode("delete")}
             onEditClick={() => setMode("edit")}
           />

@@ -6,6 +6,7 @@
   @include modal;
   .modalAdd_container {
     position: absolute;
+    z-index: 4;
     top: 210px;
     width: 768px;
     border-radius: 20px;
@@ -74,9 +75,6 @@
         padding: 20px;
         border-top: 1px solid black;
       }
-    }
-    .displayNone {
-      display: none;
     }
     .addRecipes {
       width: 100%;
