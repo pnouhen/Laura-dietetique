@@ -14,6 +14,7 @@ export default function RecipeModalAddGeneral({
   img,
   onclickCloseImg,
 }) {
+  // Définition des champs <select>
   const selects = [
     {
       title: "Catégorie",
@@ -36,7 +37,8 @@ export default function RecipeModalAddGeneral({
   ];
 
   return (
-    <form className="modalAddGeneral" action="">
+    <form className="modalAddGeneral">
+      {/* Champ texte : titre de la recette */}
       <LabelInput
         className="labelInputModalAdd"
         htmlFor="title"
@@ -49,6 +51,7 @@ export default function RecipeModalAddGeneral({
         }
       />
 
+      {/* Champs select dynamiques */}
       {selects.map(({ title, id, value, options }) => (
         <LabelSelect
           key={id}
@@ -62,6 +65,7 @@ export default function RecipeModalAddGeneral({
         />
       ))}
 
+      {/* Composant d’import d’image */}
       <RecipeModalAddGeneralImportImg
         data={data}
         setData={setData}

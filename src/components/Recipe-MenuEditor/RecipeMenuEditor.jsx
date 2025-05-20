@@ -1,6 +1,4 @@
-import RecipeMenuEditorButtonAdd from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonAdd";
-import RecipeMenuEditorButtonChange from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonChange";
-import RecipeMenuEditorButtonDelete from "../Recipe-MenuEditor-Buttons/RecipeMenuEditorButtonDelete"
+import Button from "../Button/Button";
 import "./recipeMenuEditor.scss";
 
 export default function RecipeMenuEditor({
@@ -9,29 +7,36 @@ export default function RecipeMenuEditor({
   onEditClick,
   onDeleteClick,
 }) {
+  // Génère une classe conditionnelle en fonction du mode actif
   function getClass(action) {
     return `menuEditorButton ${
       mode === action ? "menuEditorButtonActive" : ""
     }`;
   }
 
+  const buttonEditor = [
+    {
+      className: getClass("view"),
+      text: "Ajouter",
+      onClick: onAddClick,
+    },
+    {
+      className: getClass("edit"),
+      text: "Modifier",
+      onClick: onEditClick,
+    },
+    {
+      className: getClass("delete"),
+      text: "Supprimer",
+      onClick: onDeleteClick,
+    },
+  ];
+
   return (
-    <>
-      <section className="menuEditor">
-        <h2>Que souhaites-tu faire :</h2>
-        <RecipeMenuEditorButtonAdd
-          onClick={onAddClick}
-          className={getClass("view")}
-        />
-        <RecipeMenuEditorButtonChange
-          onClick={onEditClick}
-          className={getClass("edit")}
-        />
-        <RecipeMenuEditorButtonDelete
-          onClick={onDeleteClick}
-          className={getClass("delete")}
-        />
-      </section>
-    </>
+    <section className="menuEditor">
+      {buttonEditor.map(({ className, text, onClick }) => (
+        <Button key={text} className={className} text={text} onClick={onClick} />
+      ))}
+    </section>
   );
 }

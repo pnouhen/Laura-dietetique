@@ -1,6 +1,13 @@
+// Imports React, hooks, services, composants et style
 import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
+import {
+  handleAddRecipe,
+  onModifRecipeCard,
+  confirmDelete,
+  handleDelete,
+} from "../../services/functionsRecipeAdmin.jsx";
 
 import Header from "../../components/Header/Header.jsx";
 import ModalMessage from "../../components/ModalMessage/MessageModal.jsx";
@@ -15,26 +22,25 @@ import Footer from "../../components/Footer/Footer.jsx";
 import "./recipes.scss";
 
 export default function Recipes() {
+  // États principaux
   const [recipes, setRecipes] = useState([]);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false); // mode admin actif ou non
   const [mode, setMode] = useState(null); // 'view', 'delete', 'edit'
-  const [buttons, setButtons] = useState([]);
-  const [activeButton, setActiveButton] = useState(null);
-  const [index, setIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const isMobile = useDetectWidth(768);
-  const [modalConfirmDelete, setModalConfirmDelete] = useState(false);
-  const visibleCardsecipe = isMobile ? 6 : 2;
-  const [recipeToDeleteId, setRecipeToDeleteId] = useState(null);
-  
-  const toggleModal = () => setIsModalOpen((prev) => !prev);
-  
+  const [buttons, setButtons] = useState([]); // boutons de filtre par catégorie
+  const [activeButton, setActiveButton] = useState(null); // id de la catégorie active
+  const [index, setIndex] = useState(0); // index de pagination
+  const [isModalOpen, setIsModalOpen] = useState(false); // modal d'ajout ouverte ?
+  const [modalConfirmDelete, setModalConfirmDelete] = useState(false); // modal de suppression ?
+  const [recipeToDeleteId, setRecipeToDeleteId] = useState(null); // id recette à supprimer
+
+  // Chargement des données au montage
   useEffect(() => {
     fetchData("/data/recipes.json")
       .then((data) => {
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setRecipes(sorted);
 
+        // Extraction des catégories uniques
         const categories = sorted.map((recipe) => recipe.categorie);
         const uniqueCategories = Array.from(
           new Map(categories.map((cat) => [cat.id, cat])).values()
@@ -44,71 +50,29 @@ export default function Recipes() {
       })
       .catch((error) => console.error("Error during fetch:", error));
   }, []);
+  
+  // Responsive : nombre de cartes à afficher selon la largeur
+  const isMobile = useDetectWidth(768);
+  const visibleCardsecipe = isMobile ? 6 : 2;
 
-  const handleButtonClick = (id) => {
+  // Sélection d’un filtre de catégorie
+  function handleButtonClick(id) {
     setActiveButton(id);
-    setIndex(0);
-  };
-
-  // Mode Edition
-  const handleAddRecipe = (newRecipe) => {
-    const id = newRecipe.title.toLowerCase().replace(/\s+/g, "-");
-    const recipeWithId = { ...newRecipe, id };
-
-    const updatedRecipes = [...recipes, recipeWithId].sort((a, b) =>
-      a.title.localeCompare(b.title)
-    );
-
-    setRecipes(updatedRecipes);
-  };
-
-  const onModifRecipeCard =() => {
-    toggleModal()
+    setIndex(0); // reset pagination
   }
 
-  const confirmDelete = (recipeId) => {
-    setRecipeToDeleteId(recipeId);
-    setModalConfirmDelete(true);
-  };
-
-  const handleDelete = () => {
-    if (!recipeToDeleteId) return;
-
-    const updated = recipes.filter((recipe) => recipe.id !== recipeToDeleteId);
-    setRecipes(updated);
-
-    const filteredUpdated =
-      activeButton === null
-        ? updated
-        : updated.filter((r) => r.categorie.id === activeButton);
-
-    const maxIndex = Math.max(
-      0,
-      Math.floor((filteredUpdated.length - 1) / visibleCardsecipe) *
-        visibleCardsecipe
-    );
-
-    if (index > maxIndex) {
-      setIndex(maxIndex);
-    }
-
-    setRecipeToDeleteId(null); // nettoyage après suppression
-    setModalConfirmDelete(false); // fermeture de la modale
-  };
-
-  // Filtrage des recettes selon la catégorie sélectionnée
+  // Filtrage des recettes selon la catégorie active
   const filteredRecipes =
     activeButton === null
       ? recipes
       : recipes.filter((recipe) => recipe.categorie.id === activeButton);
 
-  // Découper les recettes en pages
+  // Pagination des recettes
   const paginatedRecipes = filteredRecipes.slice(
     index,
     index + visibleCardsecipe
   );
 
-  // Pagination
   const handlePrev = () => setIndex(index - visibleCardsecipe);
   const handleNext = () => setIndex(index + visibleCardsecipe);
 
@@ -118,21 +82,48 @@ export default function Recipes() {
   const totalPages = Math.ceil(filteredRecipes.length / visibleCardsecipe);
   const currentPage = Math.floor(index / visibleCardsecipe) + 1;
 
+  // Toggle modal d'ajout/modif recette
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
+
   return (
     <>
       <Header />
-      {isModalOpen && (
-        <RecipeModalAdd onClose={toggleModal} onAddRecipe={handleAddRecipe} mode={mode}/>
+
+      {/* Modal d'ajout + confirmation suppression (admin uniquement) */}
+      {isModalOpen && admin && (
+        <>
+          <RecipeModalAdd
+            onClose={toggleModal}
+            onAddRecipe={(newRecipe) =>
+              handleAddRecipe(newRecipe, recipes, setRecipes)
+            }
+            mode={mode}
+          />
+          <ModalMessage
+            action={modalConfirmDelete}
+            title="Confirmer la suppression"
+            message="Toute suppression est définitive"
+            classNameValidation={true}
+            onClickClose={() => setModalConfirmDelete(false)}
+            onClickValidate={() =>
+              handleDelete(
+                recipes,
+                recipeToDeleteId,
+                setRecipes,
+                activeButton,
+                visibleCardsecipe,
+                index,
+                setIndex,
+                setRecipeToDeleteId,
+                setModalConfirmDelete
+              )
+            }
+          />
+        </>
       )}
-      <ModalMessage
-        action={modalConfirmDelete}
-        title="Confirmer la suppression"
-        message="Toute suppression est définitive"
-        classNameValidation={true}
-        onClickClose={() => setModalConfirmDelete(false)}
-        onClickValidate={handleDelete}
-      />
+
       <main className="recipes">
+        {/* Toggle admin/user */}
         <ButtonSimul
           className="admin"
           text={admin ? "User" : "Admin"}
@@ -141,8 +132,10 @@ export default function Recipes() {
             setMode(null);
           }}
         />
+
         <RecipeBackground />
 
+        {/* Menu admin (ajout, modif, suppression) */}
         {admin && (
           <RecipeMenuEditor
             mode={mode}
@@ -155,6 +148,7 @@ export default function Recipes() {
           />
         )}
 
+        {/* Filtres par catégorie */}
         <RecipeCategoryFilter
           buttons={buttons}
           activeButton={activeButton}
@@ -162,6 +156,7 @@ export default function Recipes() {
           recipes={recipes}
         />
 
+        {/* Liste des recettes paginée */}
         <RecipeList
           paginatedRecipes={paginatedRecipes}
           admin={admin}
@@ -172,10 +167,14 @@ export default function Recipes() {
           isLastPage={isLastPage}
           handlePrev={handlePrev}
           handleNext={handleNext}
-          onConfirmDelete={confirmDelete}
-          onModifRecipeCard={onModifRecipeCard}
+          onConfirmDelete={(id) =>
+            admin &&
+            confirmDelete(id, setRecipeToDeleteId, setModalConfirmDelete)
+          }
+          onModifRecipeCard={() => admin && onModifRecipeCard(toggleModal)}
         />
       </main>
+
       <Footer />
     </>
   );

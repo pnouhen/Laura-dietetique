@@ -16,19 +16,25 @@ export default function RecipeModalAddIngredientsAdd({
     dosage: "",
   });
 
+  // Mise à jour d'un champ spécifique
   const handleChange = (field) => (e) => {
     setIngredient((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
+  // Soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
     const quantity = parseFloat(ingredient.quantity);
     if (!ingredient.name || isNaN(quantity) || !ingredient.dosage) return;
 
+    // Ajout de l'ingrédient à la liste
     onChange([...value, { ...ingredient, quantity }]);
+
+    // Réinitialisation du formulaire
     setIngredient({ name: "", quantity: "", dosage: "" });
   };
 
+  // Configuration des champs du formulaire
   const inputs = [
     {
       component: LabelInput,
@@ -75,7 +81,6 @@ export default function RecipeModalAddIngredientsAdd({
           const Comp = input.component;
           return <Comp key={input.props.id} {...input.props} />;
         })}
-
         <Button
           text="+ Ajouter"
           className="buttonAddIngredient"

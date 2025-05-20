@@ -11,8 +11,8 @@ import Button from "../Button/Button";
 import "./recipeModalAdd.scss";
 
 export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
-  const [index, setIndex] = useState(0);
-  const [addRecipe, setAddRecipe] = useState(null);
+  const [index, setIndex] = useState(0); // onglet actif
+  const [addRecipe, setAddRecipe] = useState(null); // données chargées via JSON
   const [valueAdd, setValueAdd] = useState({
     title: "",
     categorie: "",
@@ -24,16 +24,10 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
     steps: [],
   });
 
+  // Enregistre la recette et réinitialise le formulaire
   const handleSaveRecipe = () => {
-    const newRecipe = {
-      ...valueAdd,
-      id: Date.now(), // ou un autre identifiant unique
-    };
-
-    // callback reçu en prop
-    onAddRecipe(newRecipe);
-
-    // Réinitialise l'état
+    const newRecipe = { ...valueAdd, id: Date.now() };
+    onAddRecipe(newRecipe); // callback parent
     setValueAdd({
       title: "",
       categorie: "",
@@ -47,25 +41,29 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
     setIndex(0);
   };
 
+  // Conditions d’affichage du bouton d’enregistrement
   const isGeneralComplete =
     valueAdd.title && valueAdd.categorie && valueAdd.duration && valueAdd.img;
   const isAllListsComplete =
-    valueAdd.ingredients.length > 0 &&
-    valueAdd.ustensils.length > 0 &&
-    valueAdd.steps.length > 0;
+    valueAdd.ingredients.length &&
+    valueAdd.ustensils.length &&
+    valueAdd.steps.length;
 
   const showSaveButton = isGeneralComplete && isAllListsComplete;
 
+  // Chargement des données du formulaire
   useEffect(() => {
     fetchData("/data/infoAddRecipe.json")
       .then(setAddRecipe)
       .catch((error) => console.log("Error during fetch", error));
   }, []);
 
+  // Supprime l’image de la recette
   const removeImage = () => {
     setValueAdd((prev) => ({ ...prev, img: "" }));
   };
 
+  // Supprime un élément d’une des listes (ingredients, ustensils, steps)
   const handleDeleteElement = (elementName, indexToDelete) => {
     setValueAdd((prev) => ({
       ...prev,
@@ -75,6 +73,7 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
 
   if (!addRecipe) return null;
 
+  // Définition des onglets
   const tabs = [
     {
       label: "Général",
@@ -152,6 +151,7 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
         <h2>Ajouter une recette</h2>
         <ModalClose onClick={onClose} />
 
+        {/* Navigation des onglets */}
         <div className="modalNav">
           {tabs.map((tab, i) => (
             <RecipeModalAddNavItem
@@ -165,8 +165,10 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
           ))}
         </div>
 
+        {/* Contenu dynamique selon l’onglet */}
         {tabs[index].component}
 
+        {/* Bouton d’enregistrement conditionnel */}
         <Button
           text={mode === "edit" ? "Modifier la recette" : "Enregister la recette"}
           className={

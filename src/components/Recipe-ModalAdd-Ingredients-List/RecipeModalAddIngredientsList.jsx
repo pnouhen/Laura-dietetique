@@ -4,8 +4,8 @@ export default function RecipeModalAddIngredientsList({ value, onDelete }) {
       <h3>Liste des ingrédients</h3>
       <ul>
         {value.map((item, index) => {
-          const spacing =
-            typeof item.dosage === "string" && item.dosage.length < 3 ? "" : " ";
+          // Gère un espace conditionnel entre la quantité et le dosage
+          const spacing = typeof item.dosage === "string" && item.dosage.length < 3 ? "" : " ";
           return (
             <li key={index}>
               {item.quantity}
