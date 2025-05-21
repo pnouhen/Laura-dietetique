@@ -12,12 +12,12 @@ import "./consultationTarifs.scss";
 
 export default function ConsultationTarifs() {
   const [admin, setAdmin] = useState(false);
-  const [tarif, setTarif] = useState();
+  const [tarifs, setTarifs] = useState();
 
   // Appel au fetch pour recuperer la base de données des tarifs
   useEffect(() => {
     fetchData("data/tarifs.json")
-      .then((data) => setTarif(data))
+      .then((data) => setTarifs(data))
       .catch((error) => console.error("Erreur de chargement admin :", error));
   }, []);
 
@@ -25,11 +25,11 @@ export default function ConsultationTarifs() {
    *  consultType pour selectionner firstConsult ou followUpConsult
    *  index + property pour choisir entre price et coupleRate
    */
-  const getTarifValue = (consultType, index, property) => {
+  const getTarifsValue = (consultType, index, property) => {
     if (consultType === "first") {
-      return tarif?.firstConsult?.[index]?.[property] || "";
+      return tarifs?.firstConsult?.[index]?.[property] || "";
     } else if (consultType === "followUp") {
-      return tarif?.followUpConsult?.[index]?.[property] || "";
+      return tarifs?.followUpConsult?.[index]?.[property] || "";
     }
     return "";
   };
@@ -48,8 +48,8 @@ export default function ConsultationTarifs() {
           diététique
           <strong> personnalisée et adaptée à VOS besoins.</strong>`,
       tarifs: true,
-      price: getTarifValue("first", 0, "price"),
-      coupleRate: getTarifValue("first", 1, "coupleRate"),
+      price: getTarifsValue("first", 0, "price"),
+      coupleRate: getTarifsValue("first", 1, "coupleRate"),
       priceCondition: true,
     },
     {
@@ -67,8 +67,8 @@ export default function ConsultationTarifs() {
           trouver les solutions les mieux adaptées à votre situation
           personnelle.`,
       tarifs: true,
-      price: getTarifValue("followUp", 0, "price"),
-      coupleRate: getTarifValue("followUp", 1, "coupleRate"),
+      price: getTarifsValue("followUp", 0, "price"),
+      coupleRate: getTarifsValue("followUp", 1, "coupleRate"),
       priceCondition: true,
     },
     {
@@ -98,8 +98,10 @@ export default function ConsultationTarifs() {
           onClick={() => setAdmin(!admin)}
           text={admin === false ? "Admin" : "User"}
         />
-        {admin === true && <ConsultationTarifsModalEditor />}
-        
+        {admin === true && (
+          <ConsultationTarifsModalEditor getTarifValue={getTarifsValue} setTarifs={setTarifs} />
+        )}
+
         <BackgroundImg url="/assets/img/background/background-methodRate.webp" />
 
         {/* Map du tableau */}

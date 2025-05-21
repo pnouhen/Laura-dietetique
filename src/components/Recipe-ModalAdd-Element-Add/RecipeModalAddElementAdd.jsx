@@ -2,7 +2,7 @@ import { useState } from "react";
 import LabelInput from "../LabelInput/LabelInput";
 import Button from "../Button/Button";
 
-import "./RecipeModalAddElementAdd.scss"
+import "./recipeModalAddElementAdd.scss";
 
 export default function RecipeModalAddElementAdd({
   titleAdd,
