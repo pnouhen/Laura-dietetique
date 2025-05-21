@@ -4,6 +4,7 @@ import { fetchData } from "../../services/fetchData.jsx";
 import ButtonSimul from "../../components/ButtonSimul/ButtonSimul.jsx";
 import Header from "../../components/Header/Header.jsx";
 import BackgroundImg from "../../components/BackgroundImg/BackgroundImg.jsx";
+import ConsultationTarifsModalEditor from "../../components/ConsultationTarifs-ModalEditor/ConsultationTarifsModalEditor.jsx";
 import ConsultationTarifsCard from "../../components/ConsultationTarifs-Card/ConsultationTarifsCard.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
@@ -97,7 +98,8 @@ export default function ConsultationTarifs() {
           onClick={() => setAdmin(!admin)}
           text={admin === false ? "Admin" : "User"}
         />
-
+        {admin === true && <ConsultationTarifsModalEditor />}
+        
         <BackgroundImg url="/assets/img/background/background-methodRate.webp" />
 
         {/* Map du tableau */}
