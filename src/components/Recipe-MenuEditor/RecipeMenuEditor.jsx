@@ -35,7 +35,12 @@ export default function RecipeMenuEditor({
   return (
     <section className="menuEditor">
       {buttonEditor.map(({ className, text, onClick }) => (
-        <Button key={text} className={className} text={text} onClick={onClick} />
+        <Button
+          key={text}
+          className={className}
+          text={text}
+          onClick={onClick}
+        />
       ))}
     </section>
   );

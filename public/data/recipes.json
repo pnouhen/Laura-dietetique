@@ -31,7 +31,7 @@
       { "name": "poulet cuit", "quantity": 200, "dosage": "g" },
       { "name": "pâte brisée", "quantity": 1, "dosage": "rouleau" },
       { "name": "œufs", "quantity": 3, "dosage": "" },
-      { "name": "crème fraîche", "quantity": 150, "dosage": "mL" }
+      { "name": "crème fraîche", "quantity": 15, "dosage": "cL" }
     ],
     "ustensils": ["moule à muffins", "fouet", "couteau"],
     "steps": [
@@ -136,7 +136,7 @@
     "duration": "De 30 à 45 minutes",
     "ingredients": [
       { "name": "poulet", "quantity": 400, "dosage": "g" },
-      { "name": "crème fraîche", "quantity": 100, "dosage": "mL" },
+      { "name": "crème fraîche", "quantity": 10, "dosage": "cL" },
       { "name": "œufs", "quantity": 3, "dosage": "" }
     ],
     "ustensils": ["moule à terrine", "fouet", "casserole"],
@@ -158,7 +158,7 @@
       { "name": "escalopes de dinde", "quantity": 4, "dosage": "" },
       { "name": "carottes", "quantity": 2, "dosage": "" },
       { "name": "courgette", "quantity": 1, "dosage": "" },
-      { "name": "crème fraîche", "quantity": 100, "dosage": "mL" },
+      { "name": "crème fraîche", "quantity": 10, "dosage": "cL" },
       { "name": "huile d’olive", "quantity": 1, "dosage": "c. à soupe" },
       { "name": "sel", "quantity": 1, "dosage": "pincée" },
       { "name": "poivre", "quantity": 1, "dosage": "pincée" }
@@ -229,8 +229,8 @@
     "ingredients": [
       { "name": "potimarron", "quantity": 1, "dosage": "" },
       { "name": "oignon", "quantity": 1, "dosage": "" },
-      { "name": "crème fraîche", "quantity": 100, "dosage": "mL" },
-      { "name": "bouillon de légumes", "quantity": 500, "dosage": "mL" }
+      { "name": "crème fraîche", "quantity": 10, "dosage": "cL" },
+      { "name": "bouillon de légumes", "quantity": 50, "dosage": "cL" }
     ],
     "ustensils": ["mixeur", "casserole", "épluche-légumes"],
     "steps": [
@@ -252,7 +252,7 @@
       { "name": "viande de bœuf", "quantity": 300, "dosage": "g" },
       { "name": "tomates", "quantity": 3, "dosage": "" },
       { "name": "oignon", "quantity": 1, "dosage": "" },
-      { "name": "bouillon de bœuf", "quantity": 500, "dosage": "mL" },
+      { "name": "bouillon de bœuf", "quantity": 50, "dosage": "cL" },
       { "name": "épices", "quantity": 1, "dosage": "c. à soupe" }
     ],
     "ustensils": ["mixeur", "casserole", "cuillère en bois"],
@@ -273,7 +273,7 @@
     "duration": "De 15 à 30 minutes",
     "ingredients": [
       { "name": "blancs de poulet", "quantity": 400, "dosage": "g" },
-      { "name": "lait de coco", "quantity": 400, "dosage": "mL" },
+      { "name": "lait de coco", "quantity": 40, "dosage": "cL" },
       { "name": "oignon", "quantity": 1, "dosage": "" },
       { "name": "pâte de curry", "quantity": 1, "dosage": "c. à soupe" }
     ],
@@ -297,7 +297,7 @@
     "duration": "De 45 à 60 minutes",
     "ingredients": [
       { "name": "blancs de poulet", "quantity": 400, "dosage": "g" },
-      { "name": "lait de coco", "quantity": 400, "dosage": "mL" },
+      { "name": "lait de coco", "quantity": 40, "dosage": "cL" },
       { "name": "oignon", "quantity": 1, "dosage": "" },
       { "name": "pâte de curry", "quantity": 1, "dosage": "c. à soupe" }
     ],
@@ -323,8 +323,8 @@
       { "name": "pâte brisée", "quantity": 1, "dosage": "pièce" },
       { "name": "lardons fumés", "quantity": 200, "dosage": "g" },
       { "name": "œufs", "quantity": 3, "dosage": "" },
-      { "name": "crème fraîche", "quantity": 200, "dosage": "mL" },
-      { "name": "lait", "quantity": 100, "dosage": "mL" },
+      { "name": "crème fraîche", "quantity": 20, "dosage": "cL" },
+      { "name": "lait", "quantity": 10, "dosage": "cL" },
       { "name": "gruyère râpé", "quantity": 100, "dosage": "g" },
       { "name": "sel", "quantity": 1, "dosage": "pincée" },
       { "name": "poivre", "quantity": 1, "dosage": "pincée" }
@@ -352,11 +352,11 @@
     "duration": "Plus de 60 minutes",
     "ingredients": [
       { "name": "viande de bœuf", "quantity": 800, "dosage": "g" },
-      { "name": "vin rouge", "quantity": 500, "dosage": "mL" },
+      { "name": "vin rouge", "quantity": 50, "dosage": "cL" },
       { "name": "carottes", "quantity": 3, "dosage": "" },
       { "name": "oignon", "quantity": 1, "dosage": "" },
       { "name": "ail", "quantity": 2, "dosage": "gousses" },
-      { "name": "bouillon de bœuf", "quantity": 500, "dosage": "mL" },
+      { "name": "bouillon de bœuf", "quantity": 50, "dosage": "cL" },
       { "name": "lardons", "quantity": 150, "dosage": "g" },
       { "name": "champignons", "quantity": 200, "dosage": "g" },
       { "name": "thym", "quantity": 1, "dosage": "brin" },
@@ -388,7 +388,7 @@
     "ingredients": [
       { "name": "filets de saumon", "quantity": 4, "dosage": "pièces" },
       { "name": "épinards frais", "quantity": 300, "dosage": "g" },
-      { "name": "crème fraîche", "quantity": 100, "dosage": "mL" },
+      { "name": "crème fraîche", "quantity": 10, "dosage": "cL" },
       { "name": "ail", "quantity": 2, "dosage": "gousses" },
       { "name": "huile d'olive", "quantity": 2, "dosage": "c. à soupe" },
       { "name": "sel", "quantity": 1, "dosage": "pincée" },
@@ -448,9 +448,9 @@
     "duration": "Moins de 15 minutes",
     "ingredients": [
       { "name": "beurre", "quantity": 150, "dosage": "g" },
-      { "name": "vin blanc", "quantity": 100, "dosage": "mL" },
+      { "name": "vin blanc", "quantity": 10, "dosage": "cL" },
       { "name": "échalotes", "quantity": 2, "dosage": "" },
-      { "name": "crème fraîche", "quantity": 50, "dosage": "mL" },
+      { "name": "crème fraîche", "quantity": 5, "dosage": "cL" },
       { "name": "sel", "quantity": 1, "dosage": "pincée" }
     ],
     "ustensils": ["casserole", "fouet"],
@@ -504,8 +504,8 @@
     },
     "duration": "De 45 à 60 minutes",
     "ingredients": [
-      { "name": "vin madère", "quantity": 200, "dosage": "mL" },
-      { "name": "fond de veau", "quantity": 500, "dosage": "mL" },
+      { "name": "vin madère", "quantity": 20, "dosage": "cL" },
+      { "name": "fond de veau", "quantity": 50, "dosage": "cL" },
       { "name": "échalotes", "quantity": 2, "dosage": "" },
       { "name": "beurre", "quantity": 50, "dosage": "g" },
       { "name": "sel", "quantity": 1, "dosage": "pincée" },
@@ -589,7 +589,7 @@
       { "name": "œufs", "quantity": 3, "dosage": "" },
       { "name": "sucre", "quantity": 100, "dosage": "g" },
       { "name": "farine", "quantity": 100, "dosage": "g" },
-      { "name": "lait", "quantity": 300, "dosage": "mL" },
+      { "name": "lait", "quantity": 30, "dosage": "cL" },
       { "name": "beurre", "quantity": 30, "dosage": "g" },
       { "name": "vanille", "quantity": 1, "dosage": "gousse" }
     ],
@@ -615,7 +615,7 @@
     },
     "duration": "De 15 à 30 minutes",
     "ingredients": [
-      { "name": "crème liquide", "quantity": 500, "dosage": "mL" },
+      { "name": "crème liquide", "quantity": 50, "dosage": "cL" },
       { "name": "sucre", "quantity": 80, "dosage": "g" },
       { "name": "gélatine", "quantity": 2, "dosage": "feuilles" },
       { "name": "vanille", "quantity": 1, "dosage": "gousse" }
@@ -669,7 +669,7 @@
       { "name": "mascarpone", "quantity": 250, "dosage": "g" },
       { "name": "œufs", "quantity": 3, "dosage": "" },
       { "name": "sucre", "quantity": 100, "dosage": "g" },
-      { "name": "café", "quantity": 200, "dosage": "mL" },
+      { "name": "café", "quantity": 20, "dosage": "cL" },
       { "name": "biscuits à la cuillère", "quantity": 100, "dosage": "g" },
       { "name": "cacao en poudre", "quantity": 1, "dosage": "c. à soupe" }
     ],

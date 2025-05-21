@@ -15,6 +15,8 @@ export function onModifRecipeCard(toggleModal) {
   toggleModal();
 }
 
+// MANQUE LA MODIFICATION D'UNE RECETTE.
+
 // Prépare la suppression d’une recette en ouvrant une modale de confirmation
 export function confirmDelete(
   recipeId,
