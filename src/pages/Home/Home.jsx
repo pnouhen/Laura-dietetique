@@ -11,15 +11,53 @@ import ModalMessage from "../../components/ModalMessage/MessageModal";
 import "./home.scss";
 
 export default function Home() {
-
   // ModalMessage is here for the background color
-const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [validationError, setValidationError] = useState(null);
 
   const closeModal = (type) => {
     if (type === "success") setIsSubmitted(false);
     if (type === "validation") setValidationError(null);
   };
+
+  const cardsObjectif = [
+    {
+      article: "manage",
+      logo: "fa-solid fa-seedling",
+      title: "Gérer durablement<br />votre poids",
+      text: "contre l’obésité, le<br />surpoids et la maigreur",
+    },
+    {
+      article: "control",
+      logo: "fa-solid fa-scale-balanced",
+      title: "Contrôle<br />votre poids",
+      text: "face à des<br />changements de vie",
+    },
+    {
+      article: "adapt",
+      logo: "fa-solid fa-rotate",
+      title: "Adapter votre<br />alimentation",
+      text: "pour éviter les problèmes<br />digestifs ou mieux vieillir",
+    },
+    {
+      article: "face",
+      logo: "fa-solid fa-heart-pulse",
+      title: "Affronter les défis<br />quotidiens",
+      text: "comme une pathologie ou<br />un déséquilibre métabolique",
+    },
+    {
+      article: "optimize",
+      logo: "fa-solid fa-dumbbell",
+      title: "Optimiser vos<br />performances",
+      text: "physiques et<br />sportives",
+    },
+    {
+      article: "improve",
+      logo: "fa-solid fa-bullseye",
+      title: "Améliorer votre<br />alimentation",
+      text: "pour prendre soin<br />de votre corps",
+    },
+  ];
 
   return (
     <>
@@ -28,47 +66,15 @@ const [isSubmitted, setIsSubmitted] = useState(false);
         <BackgroundImg url="/assets/img/background/background-home.webp" />
         <section className="objectif">
           <h2>Ensemble, nous pouvons :</h2>
-          <HomeCardObjectif
-            article="manage"
-            logo="fa-solid fa-seedling"
-            title="Gérer durablement<br />votre poids"
-            text="contre l’obésité, le<br />surpoids et la maigreur"
-          />
-
-          <HomeCardObjectif
-            article="control"
-            logo="fa-solid fa-scale-balanced"
-            title="Contrôle<br />votre poids"
-            text="face à des<br />changements de vie"
-          />
-
-          <HomeCardObjectif
-            article="adapt"
-            logo="fa-solid fa-rotate"
-            title="Adapter votre<br />alimentation"
-            text="pour éviter les problèmes<br />digestifs ou mieux vieillir"
-          />
-
-          <HomeCardObjectif
-            article="face"
-            logo="fa-solid fa-heart-pulse"
-            title="Affronter les défis<br />quotidiens"
-            text="comme une pathologie ou<br />un déséquilibre métabolique"
-          />
-
-          <HomeCardObjectif
-            article="optimize"
-            logo="fa-solid fa-dumbbell"
-            title="Optimiser vos<br />performances"
-            text="physiques et<br />sportives"
-          />
-
-          <HomeCardObjectif
-            article="improve"
-            logo="fa-solid fa-bullseye"
-            title="Améliorer votre<br />alimentation"
-            text="pour prendre soin<br />de votre corps"
-          />
+          {cardsObjectif.map(({ article, logo, title, text }) => (
+            <HomeCardObjectif
+              key={article}
+              article={article}
+              logo={logo}
+              title={title}
+              text={text}
+            />
+          ))}
         </section>
         <HomeReviews />
         <HomeSubmitReview
@@ -77,7 +83,7 @@ const [isSubmitted, setIsSubmitted] = useState(false);
         />
       </main>
       <Footer />
-       {/* Modals ici, en-dehors de <main> */}
+      {/* Modals ici, en-dehors de <main> */}
       <ModalMessage
         action={isSubmitted}
         title="Avis déposé"
