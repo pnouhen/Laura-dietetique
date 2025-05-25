@@ -12,33 +12,35 @@ export default function AuthPageSignInForm({ onSuccess, onValidationError }) {
   const confirmPasswordSignInRef = useRef();
 
   const handleSubmit = (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const refs = [
-    nameSignInRef,
-    firstNameSignInRef,
-    emailSignInRef,
-    passwordSignInRef,
-    confirmPasswordSignInRef,
-  ];
+    const refs = [
+      nameSignInRef,
+      firstNameSignInRef,
+      emailSignInRef,
+      passwordSignInRef,
+      confirmPasswordSignInRef,
+    ];
 
-  if (isFormEmpty(refs)) {
-    onValidationError("Veuillez remplir tous les éléments");
-    return;
-  }
+    if (isFormEmpty(refs)) {
+      onValidationError("Veuillez remplir tous les éléments");
+      return;
+    }
 
-  if (passwordSignInRef.current.value !== confirmPasswordSignInRef.current.value) {
-    onValidationError("Les mots de passe ne correspondent pas");
-    return;
-  }
-  if (passwordSignInRef.current.value.length < 8) {
-    onValidationError("Le mot de passe doit contenir 8 caractères minimun");
-    return;
-  }
+    if (
+      passwordSignInRef.current.value !== confirmPasswordSignInRef.current.value
+    ) {
+      onValidationError("Les mots de passe ne correspondent pas");
+      return;
+    }
+    if (passwordSignInRef.current.value.length < 8) {
+      onValidationError("Le mot de passe doit contenir 8 caractères minimun");
+      return;
+    }
 
-  onSuccess();
-  resetForm();
-};
+    onSuccess();
+    resetForm();
+  };
 
   const resetForm = () => {
     resetFormFields([

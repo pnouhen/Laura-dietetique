@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { fetchData } from "../../services/fetchData.jsx";
 import { useDetectWidth } from "../../services/useDetectWidth.jsx";
 import HomeReviewCard from "../Home-ReviewCard/HomeReviewCard.jsx";
@@ -12,7 +12,6 @@ import "./homeReviews.scss";
 export default function HomeReviews() {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
-  const reviewsRef = useRef(null);
 
   useEffect(() => {
     fetchData("/data/reviews.json")
@@ -32,7 +31,7 @@ export default function HomeReviews() {
     setIndex((index + visibleCardReview) % reviews.length);
 
   return (
-    <section className="reviews" ref={reviewsRef}>
+    <section className="reviews">
       <h2>Les avis :</h2>
 
       {reviews.length > 0 ? (
