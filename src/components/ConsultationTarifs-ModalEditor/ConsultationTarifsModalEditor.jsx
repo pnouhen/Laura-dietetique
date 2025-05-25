@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import LabelInput from "../LabelInput/LabelInput";
 import Button from "../Button/Button";
 
@@ -7,6 +8,54 @@ export default function ConsultationTarifsModalEditor({
   getTarifValue,
   setTarifs,
 }) {
+  // État local pour stocker les modifications temporaires
+  const [tempTarifs, setTempTarifs] = useState({
+    firstConsult: {
+      price: "",
+      coupleRate: "",
+    },
+    followUpConsult: {
+      price: "",
+      coupleRate: "",
+    },
+  });
+
+  // Initialiser les valeurs temporaires avec les valeurs actuelles
+  useEffect(() => {
+    setTempTarifs({
+      firstConsult: {
+        price: getTarifValue("first", 0, "price"),
+        coupleRate: getTarifValue("first", 1, "coupleRate"),
+      },
+      followUpConsult: {
+        price: getTarifValue("followUp", 0, "price"),
+        coupleRate: getTarifValue("followUp", 1, "coupleRate"),
+      },
+    });
+  }, [getTarifValue]);
+
+  // Fonction pour sauvegarder les modifications
+  const handleSave = () => {
+    setTarifs((prev) => ({
+      ...prev,
+      firstConsult: [
+        { price: tempTarifs.firstConsult.price },
+        { coupleRate: tempTarifs.firstConsult.coupleRate },
+      ],
+      followUpConsult: [
+        { price: tempTarifs.followUpConsult.price },
+        { coupleRate: tempTarifs.followUpConsult.coupleRate },
+      ],
+    }));
+  };
+
+  // Vérifier que toutes les input sont remplis
+  const isInputTarifsComplete =
+    tempTarifs.firstConsult.price &&
+    tempTarifs.followUpConsult.coupleRate &&
+    tempTarifs.followUpConsult.price &&
+    tempTarifs.firstConsult.coupleRate;
+
   const contenant = [
     {
       title: "Premier bilan",
@@ -15,13 +64,15 @@ export default function ConsultationTarifsModalEditor({
         label: "Tarif :",
         id: "firstConsultPrice",
         type: "number",
-        value: getTarifValue("first", 0, "price"),
+        value: tempTarifs.firstConsult.price,
         onChange: (e) => {
-          setTarifs((prev) => {
-            const updated = { ...prev };
-            updated.firstConsult[0].price = e.target.value;
-            return updated;
-          });
+          setTempTarifs((prev) => ({
+            ...prev,
+            firstConsult: {
+              ...prev.firstConsult,
+              price: e.target.value,
+            },
+          }));
         },
       },
       firstConsultCoupleRate: {
@@ -29,13 +80,15 @@ export default function ConsultationTarifsModalEditor({
         label: "Tarif en couple :",
         id: "firstConsultCoupleRate",
         type: "number",
-        value: getTarifValue("first", 1, "coupleRate"),
+        value: tempTarifs.firstConsult.coupleRate,
         onChange: (e) => {
-          setTarifs((prev) => {
-            const updated = { ...prev };
-            updated.firstConsult[1].coupleRate = e.target.value;
-            return updated;
-          });
+          setTempTarifs((prev) => ({
+            ...prev,
+            firstConsult: {
+              ...prev.firstConsult,
+              coupleRate: e.target.value,
+            },
+          }));
         },
       },
     },
@@ -46,13 +99,15 @@ export default function ConsultationTarifsModalEditor({
         label: "Tarif :",
         id: "followUpPrice",
         type: "number",
-        value: getTarifValue("followUp", 0, "price"),
+        value: tempTarifs.followUpConsult.price,
         onChange: (e) => {
-          setTarifs((prev) => {
-            const updated = { ...prev };
-            updated.followUpConsult[0].price = e.target.value;
-            return updated;
-          });
+          setTempTarifs((prev) => ({
+            ...prev,
+            followUpConsult: {
+              ...prev.followUpConsult,
+              price: e.target.value,
+            },
+          }));
         },
       },
       firstConsultCoupleRate: {
@@ -60,13 +115,15 @@ export default function ConsultationTarifsModalEditor({
         label: "Tarif en couple :",
         id: "followUpCoupleRate",
         type: "number",
-        value: getTarifValue("followUp", 1, "coupleRate"),
+        value: tempTarifs.followUpConsult.coupleRate,
         onChange: (e) => {
-          setTarifs((prev) => {
-            const updated = { ...prev };
-            updated.followUpConsult[1].coupleRate = e.target.value;
-            return updated;
-          });
+          setTempTarifs((prev) => ({
+            ...prev,
+            followUpConsult: {
+              ...prev.followUpConsult,
+              coupleRate: e.target.value,
+            },
+          }));
         },
       },
     },
@@ -98,7 +155,7 @@ export default function ConsultationTarifsModalEditor({
           />
         </article>
       ))}
-      <Button />
+      <Button className={!isInputTarifsComplete ? "displayNone" : "saveConsult"} onClick={handleSave} text="Sauvegarder" />
     </section>
   );
 }
