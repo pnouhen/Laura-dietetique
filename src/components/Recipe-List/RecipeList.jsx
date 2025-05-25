@@ -18,7 +18,7 @@ import "./recipeList.scss";
  * - isFirstPage, isLastPage : booléens pagination
  * - handlePrev, handleNext : fonctions pagination
  * - onConfirmDelete : fonction suppression recette (admin)
- * - onModifRecipeCard : fonction modification recette (admin)
+ * - onModifRecipeCard : fonction modification recette (admin) - reçoit maintenant l'ID
  */
 export default function RecipeList({
   paginatedRecipes,

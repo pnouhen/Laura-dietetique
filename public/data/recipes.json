@@ -24,7 +24,7 @@
     "id": "mini-quiches-au-poulet",
     "title": "Mini quiches au poulet",
     "img": "/assets/img/recipes/Mini-quiches-au-poulet.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 0, "text": "Apéritif" },
     "duration": "De 30 à 45 minutes",
     "ingredients": [
@@ -46,7 +46,7 @@
     "id": "cromesquis-de-volaille",
     "title": "Cromesquis de volaille",
     "img": "/assets/img/recipes/Cromesquis-de-volaille.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 0, "text": "Apéritif" },
     "duration": "De 45 à 60 minutes",
     "ingredients": [
@@ -109,7 +109,7 @@
     "id": "rouleaux-de-printemps-au-poulet",
     "title": "Rouleaux de printemps au poulet",
     "img": "/assets/img/recipes/Rouleaux-de-printemps-au-poulet.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "De 15 à 30 minutes",
     "ingredients": [
@@ -131,7 +131,7 @@
     "id": "terrine-de-volaille-legere",
     "title": "Terrine de volaille légère",
     "img": "/assets/img/recipes/Terrine-de-volaille-legere.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "De 30 à 45 minutes",
     "ingredients": [
@@ -151,7 +151,7 @@
     "id": "ballotine-de-dinde-aux-legumes",
     "title": "Ballotine de dinde aux légumes",
     "img": "/assets/img/recipes/Ballotine-de-dinde-aux-legumes.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "De 45 à 60 minutes",
     "ingredients": [
@@ -177,7 +177,7 @@
     "id": "foie-de-volaille-en-salade-tiède",
     "title": "Foie de volaille en salade tiède",
     "img": "/assets/img/recipes/Foie-de-volaille-en-salade-tiede.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 1, "text": "Entrées" },
     "duration": "Plus de 60 minutes",
     "ingredients": [
@@ -200,7 +200,7 @@
     "id": "soupe-de-boeuf-a-l-ancienne",
     "title": "Soupe de bœuf à l'ancienne",
     "img": "/assets/img/recipes/Soupe-de-boeuf-a-l-ancienne.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "De 15 à 30 minutes",
     "ingredients": [
@@ -245,7 +245,7 @@
     "id": "bisque-de-boeuf-et-epices",
     "title": "Bisque de bœuf et épices",
     "img": "/assets/img/recipes/Bisque-de-boeuf-et-epices.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 2, "text": "Soupes et Veloutés" },
     "duration": "Plus de 60 minutes",
     "ingredients": [
@@ -268,7 +268,7 @@
     "id": "poulet-au-lait-de-coco",
     "title": "Poulet au lait de coco",
     "img": "/assets/img/recipes/Poulet-au-lait-de-coco.webp",
-    "vegetarian": "",
+    "vegetarian": "Non",
     "categorie": { "id": 3, "text": "Plats" },
     "duration": "De 15 à 30 minutes",
     "ingredients": [
@@ -289,7 +289,7 @@
     "id": "poulet-au-curry",
     "title": "Poulet au curry",
     "img": "/assets/img/recipes/Poulet-au-curry.webp",
-    "vegetarian": false,
+    "vegetarian": "Non",
     "categorie": {
       "id": 3,
       "text": "Plats"
@@ -313,7 +313,7 @@
     "id": "quiche-lorraine",
     "title": "Quiche lorraine",
     "img": "/assets/img/recipes/Quiche-lorraine.webp",
-    "vegetarian": false,
+    "vegetarian": "Non",
     "categorie": {
       "id": 3,
       "text": "Plats"
@@ -344,7 +344,7 @@
     "id": "boeuf-bourguignon",
     "title": "Boeuf bourguignon",
     "img": "/assets/img/recipes/Boeuf-bourguignon.webp",
-    "vegetarian": false,
+    "vegetarian": "Non",
     "categorie": {
       "id": 3,
       "text": "Plats"
@@ -440,7 +440,7 @@
     "id": "sauce-beurre-blanc",
     "title": "Sauce beurre blanc",
     "img": "/assets/img/recipes/Sauce-beurre-blanc.webp",
-    "vegetarian": false,
+    "vegetarian": "Non",
     "categorie": {
       "id": 5,
       "text": "Sauces"
@@ -497,7 +497,7 @@
     "id": "sauce-madera",
     "title": "Sauce madère",
     "img": "/assets/img/recipes/Sauce-madere.webp",
-    "vegetarian": false,
+    "vegetarian": "Non",
     "categorie": {
       "id": 5,
       "text": "Sauces"

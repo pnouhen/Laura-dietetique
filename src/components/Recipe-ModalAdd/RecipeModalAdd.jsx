@@ -10,9 +10,15 @@ import Button from "../Button/Button";
 
 import "./recipeModalAdd.scss";
 
-export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
-  const [index, setIndex] = useState(0); // onglet actif
-  const [addRecipe, setAddRecipe] = useState(null); // données chargées via JSON
+export default function RecipeModalAdd({ 
+  isAddNexRecipe, 
+  onClickClose, 
+  mode = "add", 
+  editingRecipe = null 
+}) {
+  // États de la modal
+  const [index, setIndex] = useState(0); // Index de l'onglet actif
+  const [addRecipe, setAddRecipe] = useState(null); // Données de configuration chargées depuis le JSON
   const [valueAdd, setValueAdd] = useState({
     title: "",
     categorie: "",
@@ -23,47 +29,110 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
     ustensils: [],
     steps: [],
   });
+  /**
+   * Pré-remplit le formulaire en mode édition
+   * Réinitialise le formulaire en mode ajout
+   */
+  useEffect(() => {
+    if (mode === "edit" && editingRecipe) {
+      // Mode édition : pré-remplir avec les données existantes
+      setValueAdd({
+        title: editingRecipe.title || "",
+        categorie: editingRecipe.categorie || "",
+        duration: editingRecipe.duration || "",
+        vegetarian: editingRecipe.vegetarian || "",
+        img: editingRecipe.img || "",
+        ingredients: editingRecipe.ingredients || [],
+        ustensils: editingRecipe.ustensils || [],
+        steps: editingRecipe.steps || [],
+      });
+    } else {
+      // Mode ajout : formulaire vide
+      setValueAdd({
+        title: "",
+        categorie: "",
+        duration: "",
+        vegetarian: "",
+        img: "",
+        ingredients: [],
+        ustensils: [],
+        steps: [],
+      });
+    }
+  }, [mode, editingRecipe]);
 
-  // Enregistre la recette et réinitialise le formulaire
+  /**
+   * Sauvegarde la recette (ajout ou modification)
+   * Ferme la modal après sauvegarde
+   */
   const handleSaveRecipe = () => {
-    const newRecipe = { ...valueAdd, id: Date.now() };
-    onAddRecipe(newRecipe); // callback parent
-    setValueAdd({
-      title: "",
-      categorie: "",
-      duration: "",
-      vegetarian: "",
-      img: "",
-      ingredients: [],
-      ustensils: [],
-      steps: [],
-    });
+    let recipeToSave;
+    
+    if (mode === "edit" && editingRecipe) {
+      // Mode modification : conserver l'ID existant
+      recipeToSave = { ...valueAdd, id: editingRecipe.id };
+    } else {
+      // Mode ajout : générer un nouvel ID basé sur le timestamp
+      recipeToSave = { ...valueAdd, id: Date.now() };
+    }
+    
+    // Appel de la fonction parent pour sauvegarder
+    isAddNexRecipe(recipeToSave);
+    
+    // Réinitialisation uniquement en mode ajout
+    if (mode === "add") {
+      setValueAdd({
+        title: "",
+        categorie: "",
+        duration: "",
+        vegetarian: "",
+        img: "",
+        ingredients: [],
+        ustensils: [],
+        steps: [],
+      });
+    }
+    
+    // Retour au premier onglet et fermeture de la modal
     setIndex(0);
+    onClickClose();
   };
 
-  // Conditions d’affichage du bouton d’enregistrement
+  /**
+   * Validation des champs requis
+   */
+  // Vérification des champs obligatoires de l'onglet "Général"
   const isGeneralComplete =
-    valueAdd.title && valueAdd.categorie && valueAdd.duration && valueAdd.img;
-  const isAllListsComplete =
-    valueAdd.ingredients.length &&
-    valueAdd.ustensils.length &&
-    valueAdd.steps.length;
+    valueAdd.title && 
+    valueAdd.categorie && 
+    valueAdd.duration && 
+    valueAdd.img;
 
+  // Vérification que toutes les listes ont au moins un élément
+  const isAllListsComplete =
+    valueAdd.ingredients.length > 0 &&
+    valueAdd.ustensils.length > 0 &&
+    valueAdd.steps.length > 0;
+
+  // Le bouton n'apparaît que si tout est complété
   const showSaveButton = isGeneralComplete && isAllListsComplete;
 
-  // Chargement des données du formulaire
+  /**
+   * Chargement des données de configuration au montage du composant
+   */
   useEffect(() => {
     fetchData("/data/infoAddRecipe.json")
       .then(setAddRecipe)
       .catch((error) => console.log("Error during fetch", error));
   }, []);
 
-  // Supprime l’image de la recette
+  /**
+   * Supprime l'image de la recette
+   */
   const removeImage = () => {
     setValueAdd((prev) => ({ ...prev, img: "" }));
   };
 
-  // Supprime un élément d’une des listes (ingredients, ustensils, steps)
   const handleDeleteElement = (elementName, indexToDelete) => {
     setValueAdd((prev) => ({
       ...prev,
@@ -71,9 +140,12 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
     }));
   };
 
+  // Chargement en cours - affichage d'attente
   if (!addRecipe) return null;
 
-  // Définition des onglets
+  /**
+   * Configuration des onglets de la modal
+   */
   const tabs = [
     {
       label: "Général",
@@ -146,10 +218,10 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
   ];
 
   return (
-    <section className="modalAdd" onClick={onClose}>
+    <section className="modalAdd" onClick={onClickClose}>
       <div className="modalAdd_container" onClick={(e) => e.stopPropagation()}>
-        <h2>Ajouter une recette</h2>
-        <ModalClose onClick={onClose} />
+        <h2>{mode === "edit" ? "Modifier une recette" : "Ajouter une recette"}</h2>
+        <ModalClose onClick={onClickClose}/>
 
         {/* Navigation des onglets */}
         <div className="modalNav">
@@ -165,24 +237,17 @@ export default function RecipeModalAdd({ onClose, onAddRecipe, mode }) {
           ))}
         </div>
 
-        {/* Contenu dynamique selon l’onglet */}
+        {/* Contenu dynamique selon l'onglet */}
         {tabs[index].component}
 
-        {/* Bouton d’enregistrement conditionnel */}
-        <Button
-          text={mode === "edit" ? "Modifier la recette" : "Enregister la recette"}
-          className={
-            !showSaveButton
-              ? mode === "edit"
-                ? "saveRecipe"
-                : "displayNone"
-              : "saveRecipe"
-          }
-          onClick={() => {
-            handleSaveRecipe();
-            onClose();
-          }}
-        />
+        {/* Bouton d'enregistrement - n'apparaît que si le formulaire est complet */}
+        {showSaveButton && (
+          <Button
+            text={mode === "edit" ? "Modifier la recette" : "Enregistrer la recette"}
+            className="saveRecipe"
+            onClick={handleSaveRecipe}
+          />
+        )}
       </div>
     </section>
   );
